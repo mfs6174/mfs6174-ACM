@@ -18,7 +18,6 @@ using namespace std;
 //ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 const int maxlongint=2147483647;
-
 struct D
 {
   int l,r,d,xx,yy;
@@ -64,30 +63,25 @@ int  cha(int tt,int x,int y)
   //if (cc>20)
   // return;
   int md=(shu[tt].xx+shu[tt].yy)>>1;
-  if ((x==shu[tt].xx)&&(y==shu[tt].yy))
+  if ((x>=shu[tt].xx)&&(y<=shu[tt].yy))
   {
     return shu[tt].d;
   }
   if (y<=md)
   {
-    // cc++;
     return  cha(shu[tt].l,x,y);
-    //cc--;
   }
   if (x>md)
   {
-    //cc++;
     return cha(shu[tt].r,x,y);
-    // cc--;
   }
-  //cc++;
-  return max(cha(shu[tt].l,x,md),cha(shu[tt].r,md+1,y));
-  //cc--;
+  return max(cha(shu[tt].l,x,y),cha(shu[tt].r,x,y));
 }
 
   
 int main()
 {
+  freopen("ti.in","r",stdin);
   while (scanf("%d%d",&n,&m)!=EOF)
   {
     memset(shu,0,sizeof(shu));
@@ -111,7 +105,7 @@ int main()
         mm=0;
         cc=0;
         cha(0,t,tt);
-        cout<<mm<<endl;
+        printf("%d\n",mm);
       }
     }
   }
