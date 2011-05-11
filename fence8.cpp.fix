@@ -1,0 +1,90 @@
+/*
+ID: mfs.dev2
+PROG: fence8
+LANG: C++
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<sstream>
+#include<cstring>
+using namespace std;
+ifstream inf("fence8.in");
+ofstream ouf("fence8.out");
+
+int maxx,hh,ss,n,m,i,j,k,t,cai[55],xu[1100],chushi,st,mm,l,xian,t1;
+int he[1100];
+
+void sort(int a[],int n,int x)
+{
+  int i,j;
+  for (i=1;i<n;i++)
+    for (j=i;j<=n;j++)
+      if ((x)?(a[j]<a[i]):(a[j]>a[i]))
+      {
+        t=a[i];
+        a[i]=a[j];
+        a[j]=t;
+      }
+}
+
+void dfs(int x,int q)
+{
+  if (x-1>mm)
+    mm=x-1;
+  if (x>m)
+    return;
+  int t,i,ttt,tt[51];
+  maxx=0;
+  hh=0;
+  ss=0;
+  for (i=l;i>=1;i--)
+  {
+    if (cai[i]>maxx)
+      maxx=cai[i];
+    if (cai[i]>=xu[x])
+    {
+      hh+=cai[i];
+      ss+=cai[i]/xu[x];
+    }
+  }
+  if (x+ss-1<=mm)
+  {
+    return;
+  }
+  if (hh<he[x]-he[mm+2])
+  {
+    return;
+  }
+  // if (ma[x][maxx>xu[m]?xu[m]:maxx]+x-1<=mm)
+  for (i=1;i<=l;i++)
+  {
+    if ((cai[i]<xu[x])||(cai[i]==cai[i-1])||((xu[x]==xu[x-1])&&(i<q)))
+      continue;
+    t=cai[i];
+    cai[i]-=xu[x];
+    dfs(x+1,i);
+    cai[i]=t;
+  }
+}
+
+int main()
+{
+  inf>>n;
+  for (i=1;i<=n;i++)
+    inf>>cai[i];
+  inf>>m;
+  for (i=1;i<=m;i++)
+    inf>>xu[i];
+  sort(cai,n,0);
+  sort(xu,m,1);
+  l=n;
+  for (i=m;i>=1;i--)
+  {
+    he[i]=he[i+1]+xu[i];
+  }
+  dfs(1,1);
+  ouf<<mm<<endl;
+}
+

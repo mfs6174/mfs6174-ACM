@@ -19,7 +19,7 @@ ofstream ouf("milk6.out");
 const long long  maxlongint=2147483647;
 
 int i,j,n,m,k;
-long long d[50],vd[50],bian[1200][2];
+int d[50],vd[50],bian[1200][2];
 long long tu[50][50],g[50][50],lt,mm;
 bool ff[50];
 
@@ -78,10 +78,10 @@ int main()
   vd[0] = n;
   while(d[1] < n)
     mm+=dfs(1,maxlongint*maxlongint,n);
-  ouf<<(mm/(502000*1001))<<' '<<((mm/502000)%1001)<<endl;
+  cout<<(mm/(502000*1001))<<' '<<((mm%(502000*1001))/502000)<<endl;
   floodfill(1);
   for (i=1;i<=m;i++)
     if (ff[bian[i][0]]&&(!ff[bian[i][1]]))
-      ouf<<i<<endl;
+      cout<<i<<endl;
 }
 

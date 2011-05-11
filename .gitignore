@@ -3,4 +3,7 @@
 *~
 #*#
 *.data
+*.gcov
+*.gcda
+*.gcno
 
