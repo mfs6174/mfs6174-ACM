@@ -4,4 +4,6 @@ GCJ2011a.cpp // Google code jam 2011 qualification round A // 构造
 gcj2011d.s.cpp // Google code jam 2011 qualification round A // 数学
 hdu1166.cpp //hdoj 1166 // segments tree // twit
 hdu1754.cpp //hdoj 1754 // segments tre  //
+SRM506-250.cpp // SRM506 // 不解释
+SRM506-500.cpp // SRＭ506 // 贪心 //越小的越难以被用于命名，于是从小到大检查可不可能和大于后一个，如果可能，最后一个可以作为命名
 
