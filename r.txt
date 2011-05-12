@@ -1,0 +1,639 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 19.89      0.36     0.36  1990971     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const
+ 16.57      0.66     0.30        1     0.30     1.78  dfs(std::string, int)
+ 10.50      0.85     0.19 24346029     0.00     0.00  bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  9.67      1.02     0.17 24346029     0.00     0.00  std::less<std::string>::operator()(std::string const&, std::string const&) const
+  8.56      1.18     0.15 22351666     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node<std::pair<std::string const, bool> > const*)
+  4.97      1.27     0.09 24347835     0.00     0.00  std::_Select1st<std::pair<std::string const, bool> >::operator()(std::pair<std::string const, bool> const&) const
+  4.42      1.35     0.08 22351666     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node<std::pair<std::string const, bool> > const*)
+  4.14      1.43     0.07 11934751     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base const*)
+  3.87      1.50     0.07  6340756     0.00     0.00  std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> > const*)
+  3.87      1.56     0.07  4349785     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() const
+  2.21      1.60     0.04  3981942     0.00     0.00  std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> > const&) const
+  2.21      1.65     0.04  1990971     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const
+  1.66      1.68     0.03 10404650     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base const*)
+  1.66      1.71     0.03    51982     0.00     0.00  hashing(unsigned int, std::string const&)
+  1.38      1.73     0.03  1990971     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() const
+  1.10      1.75     0.02  1993570     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*)
+  0.83      1.76     0.01  1993570     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node_base const*)
+  0.83      1.78     0.01                             std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator++()
+  0.55      1.79     0.01  1259472     0.00     0.00  std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.55      1.80     0.01     1874     0.00     0.00  std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator*() const
+  0.28      1.80     0.01  1990971     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() const
+  0.28      1.81     0.01     1081     0.00     0.00  std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end()
+  0.00      1.81     0.00  1990971     0.00     0.00  std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::count(std::string const&) const
+  0.00      1.81     0.00    39582     0.00     0.00  std::char_traits<char>::compare(char const*, char const*, unsigned int)
+  0.00      1.81     0.00    39582     0.00     0.00  __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      1.81     0.00    39582     0.00     0.00  bool std::operator!=<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      1.81     0.00    10601     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base*)
+  0.00      1.81     0.00     4580     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base*)
+  0.00      1.81     0.00     3233     0.00     0.00  std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*)
+  0.00      1.81     0.00     2905     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end()
+  0.00      1.81     0.00     2138     0.00     0.00  __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::new_allocator()
+  0.00      1.81     0.00     2138     0.00     0.00  __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::~new_allocator()
+  0.00      1.81     0.00     2138     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::get_allocator() const
+  0.00      1.81     0.00     2138     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_Node_allocator() const
+  0.00      1.81     0.00     2138     0.00     0.00  std::allocator<std::pair<std::string const, bool> >::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >(std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > > const&)
+  0.00      1.81     0.00     2138     0.00     0.00  std::allocator<std::pair<std::string const, bool> >::~allocator()
+  0.00      1.81     0.00     2138     0.00     0.00  std::pair<std::string const, bool>::~pair()
+  0.00      1.81     0.00     1083     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin()
+  0.00      1.81     0.00     1082     0.00     0.00  std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) const
+  0.00      1.81     0.00     1081     0.00     0.00  std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&)
+  0.00      1.81     0.00     1081     0.00     0.00  std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&)
+  0.00      1.81     0.00     1081     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&)
+  0.00      1.81     0.00     1081     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&)
+  0.00      1.81     0.00     1081     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end()
+  0.00      1.81     0.00     1069     0.00     0.00  __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::deallocate(std::_Rb_tree_node<std::pair<std::string const, bool> >*, unsigned int)
+  0.00      1.81     0.00     1069     0.00     0.00  __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocate(unsigned int, void const*)
+  0.00      1.81     0.00     1069     0.00     0.00  __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::destroy(std::pair<std::string const, bool>*)
+  0.00      1.81     0.00     1069     0.00     0.00  __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::construct(std::pair<std::string const, bool>*, std::pair<std::string const, bool> const&)
+  0.00      1.81     0.00     1069     0.00     0.00  __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::max_size() const
+  0.00      1.81     0.00     1069     0.00     0.00  std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&)
+  0.00      1.81     0.00     1069     0.00     0.00  std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::insert(std::_Rb_tree_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&)
+  0.00      1.81     0.00     1069     0.00     0.00  std::pair<std::string const, bool>::pair(std::pair<std::string const, bool> const&)
+  0.00      1.81     0.00     1069     0.00     0.00  std::pair<std::string const, bool>::pair(std::string const&, bool const&)
+  0.00      1.81     0.00     1069     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&)
+  0.00      1.81     0.00     1069     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_node()
+  0.00      1.81     0.00     1069     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_put_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*)
+  0.00      1.81     0.00     1069     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&)
+  0.00      1.81     0.00     1069     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*)
+  0.00      1.81     0.00     1069     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&)
+  0.00      1.81     0.00     1069     0.00     0.00  operator new(unsigned int, void*)
+  0.00      1.81     0.00      793     0.00     0.00  std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const
+  0.00      1.81     0.00      793     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const
+  0.00      1.81     0.00      787     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_leftmost()
+  0.00      1.81     0.00      778     0.00     0.00  std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator--()
+  0.00      1.81     0.00      574     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_rightmost()
+  0.00      1.81     0.00      288     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::size() const
+  0.00      1.81     0.00        1     0.00     0.00  global constructors keyed to inf
+  0.00      1.81     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      1.81     0.00        1     0.00     0.02  chushi(std::string const&)
+  0.00      1.81     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::new_allocator()
+  0.00      1.81     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~new_allocator()
+  0.00      1.81     0.00        1     0.00     0.00  std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocator()
+  0.00      1.81     0.00        1     0.00     0.00  std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~allocator()
+  0.00      1.81     0.00        1     0.00     0.00  std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::map()
+  0.00      1.81     0.00        1     0.00     0.00  std::pair<std::_Rb_tree_iterator<std::pair<std::string const, bool> >, bool>::pair(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&, bool const&)
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_M_initialize()
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_Rb_tree_impl()
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::~_Rb_tree_impl()
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&)
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::begin()
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*)
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree()
+  0.00      1.81     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::~_Rb_tree()
+  0.00      1.81     0.00        1     0.00     0.00  std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.55% of 1.81 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     99.2    0.00    1.79                 main [1]
+                0.30    1.48       1/1           dfs(std::string, int) [2]
+                0.00    0.02       1/1           chushi(std::string const&) [20]
+-----------------------------------------------
+                              419824             dfs(std::string, int) [2]
+                0.30    1.48       1/1           main [1]
+[2]     98.3    0.30    1.48       1+419824  dfs(std::string, int) [2]
+                0.00    1.44 1990971/1990971     std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::count(std::string const&) const [3]
+                0.03    0.00   51982/51982       hashing(unsigned int, std::string const&) [17]
+                0.01    0.00 1259472/1259472     std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [23]
+                0.00    0.00   39582/39582       bool std::operator!=<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+                              419824             dfs(std::string, int) [2]
+-----------------------------------------------
+                0.00    1.44 1990971/1990971     dfs(std::string, int) [2]
+[3]     79.5    0.00    1.44 1990971         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::count(std::string const&) const [3]
+                0.04    1.33 1990971/1990971     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+                0.03    0.02 1990971/4349785     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() const [9]
+                0.02    0.00 1990971/3981942     std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> > const&) const [15]
+-----------------------------------------------
+                0.04    1.33 1990971/1990971     std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::count(std::string const&) const [3]
+[4]     75.4    0.04    1.33 1990971         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+                0.36    0.78 1990971/1990971     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [5]
+                0.04    0.03 2358814/4349785     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() const [9]
+                0.02    0.02 1990971/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*) [14]
+                0.01    0.02 1990971/24346029     std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+                0.03    0.00 1990971/1990971     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() const [18]
+                0.02    0.00 1990971/3981942     std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> > const&) const [15]
+                0.01    0.00 1990971/1990971     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() const [25]
+-----------------------------------------------
+                0.36    0.78 1990971/1990971     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+[5]     62.9    0.36    0.78 1990971         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [5]
+                0.16    0.17 22338623/24346029     std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+                0.15    0.16 22338623/22351666     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [7]
+                0.07    0.00 11933973/11934751     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base const*) [12]
+                0.03    0.00 10404650/10404650     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base const*) [16]
+                0.02    0.00 1990971/6340756     std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [13]
+-----------------------------------------------
+                0.00    0.00     753/24346029     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00     793/24346029     std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+                0.00    0.00    1846/24346029     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+                0.00    0.00   13043/24346029     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&) [29]
+                0.01    0.02 1990971/24346029     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+                0.16    0.17 22338623/24346029     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [5]
+[6]     20.2    0.17    0.19 24346029         std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+                0.19    0.00 24346029/24346029     bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [8]
+-----------------------------------------------
+                0.00    0.00   13043/22351666     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&) [29]
+                0.15    0.16 22338623/22351666     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [5]
+[7]     17.5    0.15    0.16 22351666         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [7]
+                0.08    0.00 22351666/24347835     std::_Select1st<std::pair<std::string const, bool> >::operator()(std::pair<std::string const, bool> const&) const [10]
+                0.08    0.00 22351666/22351666     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [11]
+-----------------------------------------------
+                0.19    0.00 24346029/24346029     std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+[8]     10.5    0.19    0.00 24346029         bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [8]
+-----------------------------------------------
+                0.03    0.02 1990971/4349785     std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::count(std::string const&) const [3]
+                0.04    0.03 2358814/4349785     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+[9]      6.5    0.07    0.05 4349785         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() const [9]
+                0.05    0.00 4349785/6340756     std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [13]
+-----------------------------------------------
+                0.00    0.00     753/24347835     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00    1846/24347835     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+                0.01    0.00 1993570/24347835     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*) [14]
+                0.08    0.00 22351666/24347835     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [7]
+[10]     5.0    0.09    0.00 24347835         std::_Select1st<std::pair<std::string const, bool> >::operator()(std::pair<std::string const, bool> const&) const [10]
+-----------------------------------------------
+                0.08    0.00 22351666/22351666     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [7]
+[11]     4.4    0.08    0.00 22351666         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [11]
+-----------------------------------------------
+                0.00    0.00     778/11934751     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+                0.07    0.00 11933973/11934751     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [5]
+[12]     4.1    0.07    0.00 11934751         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base const*) [12]
+-----------------------------------------------
+                0.02    0.00 1990971/6340756     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [5]
+                0.05    0.00 4349785/6340756     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() const [9]
+[13]     3.9    0.07    0.00 6340756         std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [13]
+-----------------------------------------------
+                0.00    0.00     753/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00    1846/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+                0.02    0.02 1990971/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+[14]     2.3    0.02    0.02 1993570         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*) [14]
+                0.01    0.00 1993570/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node_base const*) [21]
+                0.01    0.00 1993570/24347835     std::_Select1st<std::pair<std::string const, bool> >::operator()(std::pair<std::string const, bool> const&) const [10]
+-----------------------------------------------
+                0.02    0.00 1990971/3981942     std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::count(std::string const&) const [3]
+                0.02    0.00 1990971/3981942     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+[15]     2.2    0.04    0.00 3981942         std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> > const&) const [15]
+-----------------------------------------------
+                0.03    0.00 10404650/10404650     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [5]
+[16]     1.7    0.03    0.00 10404650         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base const*) [16]
+-----------------------------------------------
+                0.03    0.00   51982/51982       dfs(std::string, int) [2]
+[17]     1.7    0.03    0.00   51982         hashing(unsigned int, std::string const&) [17]
+-----------------------------------------------
+                0.03    0.00 1990971/1990971     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+[18]     1.4    0.03    0.00 1990971         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() const [18]
+-----------------------------------------------
+                0.00    0.02    1081/1081        chushi(std::string const&) [20]
+[19]     0.9    0.00    0.02    1081         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+                0.01    0.00    1874/1874        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator*() const [24]
+                0.01    0.00    1081/1081        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() [26]
+                0.00    0.00    1081/1081        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [27]
+                0.00    0.00    1069/1069        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::insert(std::_Rb_tree_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [30]
+                0.00    0.00     793/24346029     std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+                0.00    0.00    1081/1082        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) const [56]
+                0.00    0.00    1069/1069        std::pair<std::string const, bool>::pair(std::string const&, bool const&) [65]
+                0.00    0.00    1069/2138        std::pair<std::string const, bool>::~pair() [54]
+                0.00    0.00     793/793         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const [71]
+-----------------------------------------------
+                0.00    0.02       1/1           main [1]
+[20]     0.9    0.00    0.02       1         chushi(std::string const&) [20]
+                0.00    0.02    1081/1081        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+-----------------------------------------------
+                0.01    0.00 1993570/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*) [14]
+[21]     0.8    0.01    0.00 1993570         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node_base const*) [21]
+-----------------------------------------------
+                                                 <spontaneous>
+[22]     0.8    0.01    0.00                 std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator++() [22]
+-----------------------------------------------
+                0.01    0.00 1259472/1259472     dfs(std::string, int) [2]
+[23]     0.6    0.01    0.00 1259472         std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [23]
+-----------------------------------------------
+                0.01    0.00    1874/1874        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+[24]     0.6    0.01    0.00    1874         std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator*() const [24]
+-----------------------------------------------
+                0.01    0.00 1990971/1990971     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [4]
+[25]     0.3    0.01    0.00 1990971         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() const [25]
+-----------------------------------------------
+                0.01    0.00    1081/1081        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+[26]     0.3    0.01    0.00    1081         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() [26]
+                0.00    0.00    1081/1081        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() [57]
+-----------------------------------------------
+                0.00    0.00    1081/1081        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+[27]     0.0    0.00    0.00    1081         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [27]
+                0.00    0.00    1081/1081        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [28]
+-----------------------------------------------
+                0.00    0.00    1081/1081        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [27]
+[28]     0.0    0.00    0.00    1081         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [28]
+                0.00    0.00    1081/1081        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&) [29]
+                0.00    0.00    1081/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() [47]
+                0.00    0.00    1081/1083        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() [55]
+-----------------------------------------------
+                0.00    0.00    1081/1081        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [28]
+[29]     0.0    0.00    0.00    1081         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&) [29]
+                0.00    0.00   13043/24346029     std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+                0.00    0.00   13043/22351666     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [7]
+                0.00    0.00    9532/10601       std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base*) [44]
+                0.00    0.00    3511/4580        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base*) [45]
+                0.00    0.00    1081/3233        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [46]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+[30]     0.0    0.00    0.00    1069         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::insert(std::_Rb_tree_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [30]
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+                0.00    0.00    1069/1069        std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) [63]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::insert(std::_Rb_tree_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [30]
+[31]     0.0    0.00    0.00    1069         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+                0.00    0.00    1846/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*) [14]
+                0.00    0.00    1068/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00    1846/24346029     std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+                0.00    0.00    1846/24347835     std::_Select1st<std::pair<std::string const, bool> >::operator()(std::pair<std::string const, bool> const&) const [10]
+                0.00    0.00     778/11934751     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base const*) [12]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+                0.00    0.00    1069/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() [47]
+                0.00    0.00     787/787         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_leftmost() [73]
+                0.00    0.00     778/778         std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator--() [74]
+                0.00    0.00     574/574         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_rightmost() [75]
+                0.00    0.00     288/288         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::size() const [76]
+-----------------------------------------------
+                0.00    0.00       1/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+                0.00    0.00    1068/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+[32]     0.0    0.00    0.00    1069         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00     753/1993570     std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*) [14]
+                0.00    0.00     753/24346029     std::less<std::string>::operator()(std::string const&, std::string const&) const [6]
+                0.00    0.00     753/24347835     std::_Select1st<std::pair<std::string const, bool> >::operator()(std::pair<std::string const, bool> const&) const [10]
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&) [68]
+                0.00    0.00    1069/3233        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [46]
+                0.00    0.00     754/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() [47]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+[33]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+                0.00    0.00       1/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00       1/1083        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() [55]
+                0.00    0.00       1/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() [47]
+                0.00    0.00       1/3233        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [46]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::begin() [88]
+                0.00    0.00       1/1082        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) const [56]
+                0.00    0.00       1/1           std::pair<std::_Rb_tree_iterator<std::pair<std::string const, bool> >, bool>::pair(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&, bool const&) [84]
+-----------------------------------------------
+                0.00    0.00   39582/39582       __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [42]
+[41]     0.0    0.00    0.00   39582         std::char_traits<char>::compare(char const*, char const*, unsigned int) [41]
+-----------------------------------------------
+                0.00    0.00   39582/39582       bool std::operator!=<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+[42]     0.0    0.00    0.00   39582         __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [42]
+                0.00    0.00   39582/39582       std::char_traits<char>::compare(char const*, char const*, unsigned int) [41]
+-----------------------------------------------
+                0.00    0.00   39582/39582       dfs(std::string, int) [2]
+[43]     0.0    0.00    0.00   39582         bool std::operator!=<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+                0.00    0.00   39582/39582       __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [42]
+-----------------------------------------------
+                0.00    0.00    1069/10601       std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [89]
+                0.00    0.00    9532/10601       std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&) [29]
+[44]     0.0    0.00    0.00   10601         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base*) [44]
+-----------------------------------------------
+                0.00    0.00    1069/4580        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [89]
+                0.00    0.00    3511/4580        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&) [29]
+[45]     0.0    0.00    0.00    4580         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base*) [45]
+-----------------------------------------------
+                0.00    0.00       1/3233        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+                0.00    0.00       1/3233        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::begin() [88]
+                0.00    0.00    1069/3233        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00    1081/3233        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() [57]
+                0.00    0.00    1081/3233        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&) [29]
+[46]     0.0    0.00    0.00    3233         std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [46]
+-----------------------------------------------
+                0.00    0.00       1/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+                0.00    0.00     754/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+                0.00    0.00    1069/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+                0.00    0.00    1081/2905        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [28]
+[47]     0.0    0.00    0.00    2905         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() [47]
+-----------------------------------------------
+                0.00    0.00    2138/2138        std::allocator<std::pair<std::string const, bool> >::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >(std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > > const&) [52]
+[48]     0.0    0.00    0.00    2138         __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::new_allocator() [48]
+-----------------------------------------------
+                0.00    0.00    2138/2138        std::allocator<std::pair<std::string const, bool> >::~allocator() [53]
+[49]     0.0    0.00    0.00    2138         __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::~new_allocator() [49]
+-----------------------------------------------
+                0.00    0.00    1069/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [69]
+                0.00    0.00    1069/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&) [68]
+[50]     0.0    0.00    0.00    2138         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::get_allocator() const [50]
+                0.00    0.00    2138/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_Node_allocator() const [51]
+                0.00    0.00    2138/2138        std::allocator<std::pair<std::string const, bool> >::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >(std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > > const&) [52]
+-----------------------------------------------
+                0.00    0.00    2138/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::get_allocator() const [50]
+[51]     0.0    0.00    0.00    2138         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_Node_allocator() const [51]
+-----------------------------------------------
+                0.00    0.00    2138/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::get_allocator() const [50]
+[52]     0.0    0.00    0.00    2138         std::allocator<std::pair<std::string const, bool> >::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >(std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > > const&) [52]
+                0.00    0.00    2138/2138        __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::new_allocator() [48]
+-----------------------------------------------
+                0.00    0.00    1069/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [69]
+                0.00    0.00    1069/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&) [68]
+[53]     0.0    0.00    0.00    2138         std::allocator<std::pair<std::string const, bool> >::~allocator() [53]
+                0.00    0.00    2138/2138        __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::~new_allocator() [49]
+-----------------------------------------------
+                0.00    0.00    1069/2138        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+                0.00    0.00    1069/2138        __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::destroy(std::pair<std::string const, bool>*) [60]
+[54]     0.0    0.00    0.00    2138         std::pair<std::string const, bool>::~pair() [54]
+-----------------------------------------------
+                0.00    0.00       1/1083        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::~_Rb_tree() [91]
+                0.00    0.00       1/1083        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+                0.00    0.00    1081/1083        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [28]
+[55]     0.0    0.00    0.00    1083         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() [55]
+-----------------------------------------------
+                0.00    0.00       1/1082        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+                0.00    0.00    1081/1082        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+[56]     0.0    0.00    0.00    1082         std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) const [56]
+-----------------------------------------------
+                0.00    0.00    1081/1081        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() [26]
+[57]     0.0    0.00    0.00    1081         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() [57]
+                0.00    0.00    1081/3233        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [46]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_put_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [67]
+[58]     0.0    0.00    0.00    1069         __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::deallocate(std::_Rb_tree_node<std::pair<std::string const, bool> >*, unsigned int) [58]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_node() [66]
+[59]     0.0    0.00    0.00    1069         __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocate(unsigned int, void const*) [59]
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::max_size() const [62]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [69]
+[60]     0.0    0.00    0.00    1069         __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::destroy(std::pair<std::string const, bool>*) [60]
+                0.00    0.00    1069/2138        std::pair<std::string const, bool>::~pair() [54]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&) [68]
+[61]     0.0    0.00    0.00    1069         __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::construct(std::pair<std::string const, bool>*, std::pair<std::string const, bool> const&) [61]
+                0.00    0.00    1069/1069        operator new(unsigned int, void*) [70]
+                0.00    0.00    1069/1069        std::pair<std::string const, bool>::pair(std::pair<std::string const, bool> const&) [64]
+-----------------------------------------------
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocate(unsigned int, void const*) [59]
+[62]     0.0    0.00    0.00    1069         __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::max_size() const [62]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::insert(std::_Rb_tree_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [30]
+[63]     0.0    0.00    0.00    1069         std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) [63]
+-----------------------------------------------
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::construct(std::pair<std::string const, bool>*, std::pair<std::string const, bool> const&) [61]
+[64]     0.0    0.00    0.00    1069         std::pair<std::string const, bool>::pair(std::pair<std::string const, bool> const&) [64]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+[65]     0.0    0.00    0.00    1069         std::pair<std::string const, bool>::pair(std::string const&, bool const&) [65]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&) [68]
+[66]     0.0    0.00    0.00    1069         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_node() [66]
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocate(unsigned int, void const*) [59]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [69]
+[67]     0.0    0.00    0.00    1069         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_put_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [67]
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::deallocate(std::_Rb_tree_node<std::pair<std::string const, bool> >*, unsigned int) [58]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [32]
+[68]     0.0    0.00    0.00    1069         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&) [68]
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_node() [66]
+                0.00    0.00    1069/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::get_allocator() const [50]
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::construct(std::pair<std::string const, bool>*, std::pair<std::string const, bool> const&) [61]
+                0.00    0.00    1069/2138        std::allocator<std::pair<std::string const, bool> >::~allocator() [53]
+-----------------------------------------------
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [89]
+[69]     0.0    0.00    0.00    1069         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [69]
+                0.00    0.00    1069/2138        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::get_allocator() const [50]
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::destroy(std::pair<std::string const, bool>*) [60]
+                0.00    0.00    1069/2138        std::allocator<std::pair<std::string const, bool> >::~allocator() [53]
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_put_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [67]
+-----------------------------------------------
+                0.00    0.00    1069/1069        __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::construct(std::pair<std::string const, bool>*, std::pair<std::string const, bool> const&) [61]
+[70]     0.0    0.00    0.00    1069         operator new(unsigned int, void*) [70]
+-----------------------------------------------
+                0.00    0.00     793/793         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [19]
+[71]     0.0    0.00    0.00     793         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const [71]
+                0.00    0.00     793/793         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const [72]
+-----------------------------------------------
+                0.00    0.00     793/793         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const [71]
+[72]     0.0    0.00    0.00     793         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const [72]
+-----------------------------------------------
+                0.00    0.00     787/787         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+[73]     0.0    0.00    0.00     787         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_leftmost() [73]
+-----------------------------------------------
+                0.00    0.00     778/778         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+[74]     0.0    0.00    0.00     778         std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator--() [74]
+-----------------------------------------------
+                0.00    0.00     574/574         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+[75]     0.0    0.00    0.00     574         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_rightmost() [75]
+-----------------------------------------------
+                0.00    0.00     288/288         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [31]
+[76]     0.0    0.00    0.00     288         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::size() const [76]
+-----------------------------------------------
+                0.00    0.00       1/1           __do_global_ctors_aux [97]
+[77]     0.0    0.00    0.00       1         global constructors keyed to inf [77]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [78]
+-----------------------------------------------
+                0.00    0.00       1/1           global constructors keyed to inf [77]
+[78]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [78]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) [92]
+                0.00    0.00       1/1           std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::map() [83]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocator() [81]
+[79]     0.0    0.00    0.00       1         __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::new_allocator() [79]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~allocator() [82]
+[80]     0.0    0.00    0.00       1         __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~new_allocator() [80]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_Rb_tree_impl() [86]
+[81]     0.0    0.00    0.00       1         std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocator() [81]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::new_allocator() [79]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::~_Rb_tree_impl() [87]
+[82]     0.0    0.00    0.00       1         std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~allocator() [82]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~new_allocator() [80]
+-----------------------------------------------
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [78]
+[83]     0.0    0.00    0.00       1         std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::map() [83]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree() [90]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+[84]     0.0    0.00    0.00       1         std::pair<std::_Rb_tree_iterator<std::pair<std::string const, bool> >, bool>::pair(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&, bool const&) [84]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_Rb_tree_impl() [86]
+[85]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_M_initialize() [85]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree() [90]
+[86]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_Rb_tree_impl() [86]
+                0.00    0.00       1/1           std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocator() [81]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_M_initialize() [85]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::~_Rb_tree() [91]
+[87]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::~_Rb_tree_impl() [87]
+                0.00    0.00       1/1           std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~allocator() [82]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&) [33]
+[88]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::begin() [88]
+                0.00    0.00       1/3233        std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [46]
+-----------------------------------------------
+                                1069             std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [89]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::~_Rb_tree() [91]
+[89]     0.0    0.00    0.00       1+1069    std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [89]
+                0.00    0.00    1069/10601       std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base*) [44]
+                0.00    0.00    1069/4580        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base*) [45]
+                0.00    0.00    1069/1069        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [69]
+                                1069             std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [89]
+-----------------------------------------------
+                0.00    0.00       1/1           std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::map() [83]
+[90]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree() [90]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_Rb_tree_impl() [86]
+-----------------------------------------------
+                0.00    0.00       1/1           std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::~map() [95]
+[91]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::~_Rb_tree() [91]
+                0.00    0.00       1/1083        std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() [55]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [89]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::~_Rb_tree_impl() [87]
+-----------------------------------------------
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [78]
+[92]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Openmode, std::_Ios_Openmode) [92]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+  [77] global constructors keyed to inf (cryptcow.cpp) [18] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin() const [86] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_Rb_tree_impl()
+   [2] dfs(std::string, int)  [72] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const [87] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::~_Rb_tree_impl()
+  [78] __static_initialization_and_destruction_0(int, int) (cryptcow.cpp) [81] std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocator() [68] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_create_node(std::pair<std::string const, bool> const&)
+  [20] chushi(std::string const&) [82] std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~allocator() [29] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::_Rb_tree_node<std::pair<std::string const, bool> >*, std::string const&)
+  [17] hashing(unsigned int, std::string const&) [52] std::allocator<std::pair<std::string const, bool> >::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >(std::allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > > const&) [69] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_destroy_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*)
+  [58] __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::deallocate(std::_Rb_tree_node<std::pair<std::string const, bool> >*, unsigned int) [53] std::allocator<std::pair<std::string const, bool> >::~allocator() [33] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique(std::pair<std::string const, bool> const&)
+  [59] __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::allocate(unsigned int, void const*) [41] std::char_traits<char>::compare(char const*, char const*, unsigned int) [31] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&)
+  [79] __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::new_allocator() [46] std::_Rb_tree_iterator<std::pair<std::string const, bool> >::_Rb_tree_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [57] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end()
+  [80] __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::~new_allocator() [13] std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_node<std::pair<std::string const, bool> > const*) [88] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::begin()
+  [60] __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::destroy(std::pair<std::string const, bool>*) [63] std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::_Rb_tree_const_iterator(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) [47] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end()
+  [61] __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::construct(std::pair<std::string const, bool>*, std::pair<std::string const, bool> const&) [74] std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator--() [7] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node<std::pair<std::string const, bool> > const*)
+  [48] __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::new_allocator() [22] std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator++() [14] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_key(std::_Rb_tree_node_base const*)
+  [49] __gnu_cxx::new_allocator<std::pair<std::string const, bool> >::~new_allocator() [27] std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [16] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base const*)
+  [62] __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, bool> > >::max_size() const [26] std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() [45] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_left(std::_Rb_tree_node_base*)
+  [10] std::_Select1st<std::pair<std::string const, bool> >::operator()(std::pair<std::string const, bool> const&) const [30] std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::insert(std::_Rb_tree_iterator<std::pair<std::string const, bool> >, std::pair<std::string const, bool> const&) [55] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_begin()
+  [24] std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator*() const [83] std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::map() [89] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, bool> >*)
+  [56] std::_Rb_tree_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&) const [19] std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::operator[](std::string const&) [12] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base const*)
+  [15] std::_Rb_tree_const_iterator<std::pair<std::string const, bool> >::operator==(std::_Rb_tree_const_iterator<std::pair<std::string const, bool> > const&) const [64] std::pair<std::string const, bool>::pair(std::pair<std::string const, bool> const&) [44] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_right(std::_Rb_tree_node_base*)
+   [3] std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::count(std::string const&) const [65] std::pair<std::string const, bool>::pair(std::string const&, bool const&) [11] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node<std::pair<std::string const, bool> > const*)
+  [71] std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::key_comp() const [54] std::pair<std::string const, bool>::~pair() [21] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_S_value(std::_Rb_tree_node_base const*)
+   [6] std::less<std::string>::operator()(std::string const&, std::string const&) const [84] std::pair<std::_Rb_tree_iterator<std::pair<std::string const, bool> >, bool>::pair(std::_Rb_tree_iterator<std::pair<std::string const, bool> > const&, bool const&) [90] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree()
+  [50] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::get_allocator() const [32] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base const*, std::pair<std::string const, bool> const&) [91] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::~_Rb_tree()
+   [5] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::_Rb_tree_node<std::pair<std::string const, bool> > const*, std::string const&) const [66] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_node() [42] __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [51] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_get_Node_allocator() const [73] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_leftmost() [8] bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+   [9] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::end() const [67] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_put_node(std::_Rb_tree_node<std::pair<std::string const, bool> >*) [43] bool std::operator!=<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+   [4] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::find(std::string const&) const [28] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::lower_bound(std::string const&) [92] std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+  [76] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::size() const [75] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_rightmost() [23] std::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [25] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_M_end() const [85] std::_Rb_tree<std::string, std::pair<std::string const, bool>, std::_Select1st<std::pair<std::string const, bool> >, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >::_Rb_tree_impl<std::less<std::string>, false>::_M_initialize() [70] operator new(unsigned int, void*)

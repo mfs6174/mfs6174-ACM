@@ -1,10 +1,8 @@
-//============================================================================
-// Name        : starry.cpp
-// Author      : 
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
-//============================================================================
+/*
+ID: mfs.dev2
+PROG: starry
+LANG: C++
+*/
 
 #include <iostream>
 #include <fstream>
@@ -68,10 +66,10 @@ int main()
 		kuai[k].n=kuai[k].b-kuai[k].a;
 		kuai[k].m=kuai[k].d-kuai[k].c;
 		string s[4]={""};
-		if (m>n)
+		if (kuai[k].m>kuai[k].n) //not m,n try not to use same var evenif able 
 		{
-			for (i=0;i<=kuai[k].m;i++)
-				for (j=0;j<=kuai[k].n;j++)
+			for (i=0;i<=kuai[k].n;i++)
+              for (j=0;j<=kuai[k].m;j++) //think clear n m i and j
 				{
 					s[0]=s[0]+((fl[kuai[k].a+i][kuai[k].c+j]==k)?("1"):("0"));
 					s[1]=s[1]+((fl[kuai[k].a+i][kuai[k].d-j]==k)?("1"):("0"));
@@ -81,8 +79,8 @@ int main()
 		}
 		else
 		{
-			for (j=0;j<=kuai[k].n;j++)
-				for (i=0;i<=kuai[k].m;i++)
+			for (j=0;j<=kuai[k].m;j++)
+				for (i=0;i<=kuai[k].n;i++)
 				{
 					s[0]=s[0]+((fl[kuai[k].a+i][kuai[k].c+j]==k)?("1"):("0"));
 					s[1]=s[1]+((fl[kuai[k].a+i][kuai[k].d-j]==k)?("1"):("0"));
@@ -95,6 +93,7 @@ int main()
 		for (i=1;i<4;i++)
 			if (s[i]<s[0])
 				s[0]=s[i];
+        
 		if (!ha[max(kuai[k].m,kuai[k].n)][min(kuai[k].m,kuai[k].n)])
 		{
 			ha[max(kuai[k].m,kuai[k].n)][min(kuai[k].m,kuai[k].n)]=true;

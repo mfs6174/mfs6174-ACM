@@ -129,12 +129,12 @@ int main()
         shu[c]=tt.n;
         for (int i=1;i<tn;i++)
           dui.push(a[i]);
-        //if (c>=mm)
-        // break;
+        if (c>=mm)
+          break;
         if (ccc)
         {
           q++;
-          if (q>=m+1)
+          if (q>=m)
           {
             break;
           }
@@ -147,7 +147,7 @@ int main()
         
       }
       m+=6;
-      memcpy(shang,dang,sizeof(dang));
+      memcpy(dang,shang,sizeof(dang));
       kk=k;
       k++;
       break;
