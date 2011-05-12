@@ -29,36 +29,26 @@ int i,j,kk,t,n,m,tt,mm,c,cc,zz,zu;
 
 void jia(int t,int x,int y)
 {
-  int m=(shu[x].xx+shu[x].yy)/2;
+  int m=(shu[t].xx+shu[t].yy)>>1;
   if ((x<=shu[t].xx)&&(y>=shu[t].yy))
   {
     shu[t].h=kk;
     return;
   }
-  if (shu[x].xx==shu[x].yy)
+  if (shu[t].xx==shu[t].yy)
     return;
-  if (w<=m)
-  {
-    if (!shu[x].l)
-    {
-      c++;
-      shu[c].xx=shu[x].xx;
-      shu[c].yy=m;
-      shu[x].l=c;
-    }
-    jia(shu[x].l,w,d);
-  }
+  shu[t].h=0;
+  if (y<=m)
+    jia(shu[t].l,x,y);
+  else if (x>m)
+    jia(shu[t].r,x,y);
   else
   {
-    if (!shu[x].r)
-    {
-      c++;
-      shu[c].xx=m+1;
-      shu[c].yy=shu[x].yy;
-      shu[x].r=c;
-    }
-    jia(shu[x].r,w,d);
+    jia(shu[t].l,x,y);
+    jia(shu[t].r,x,y);
   }
+  if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l]))
+    shu[t].h=shu[shu[t].l].h;
 }
 
 int main()
