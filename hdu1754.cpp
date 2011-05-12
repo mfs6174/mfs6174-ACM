@@ -49,6 +49,7 @@ void jia(int x,int w,int d)
   {
     if (!shu[x].r)
     {
+      c++;
       shu[c].xx=m+1;
       shu[c].yy=shu[x].yy;
       shu[x].r=c;
@@ -63,7 +64,7 @@ int  cha(int tt,int x,int y)
   //if (cc>20)
   // return;
   int md=(shu[tt].xx+shu[tt].yy)>>1;
-  if ((x>=shu[tt].xx)&&(y<=shu[tt].yy))
+  if ((x<=shu[tt].xx)&&(y>=shu[tt].yy))
   {
     return shu[tt].d;
   }
@@ -81,7 +82,7 @@ int  cha(int tt,int x,int y)
   
 int main()
 {
-  freopen("ti.in","r",stdin);
+  // freopen("ti.in","r",stdin);
   while (scanf("%d%d",&n,&m)!=EOF)
   {
     memset(shu,0,sizeof(shu));
@@ -102,9 +103,14 @@ int main()
       }
       else
       {
+        if (t>tt)
+        {
+          mm=t;
+          t=tt;
+          tt=m;
+        }
         mm=0;
-        cc=0;
-        cha(0,t,tt);
+        mm=cha(0,t,tt);
         printf("%d\n",mm);
       }
     }
