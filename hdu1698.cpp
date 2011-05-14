@@ -47,9 +47,13 @@ void jia(int t,int x,int y)
     jia(shu[t].l,x,y);
     jia(shu[t].r,x,y);
   }
-  if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l]))
+  if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l].h))
     shu[t].h=shu[shu[t].l].h;
 }
+
+int he(int x)
+{
+  if (
 
 int main()
 {
@@ -59,13 +63,14 @@ int main()
   {
     scanf("%d%d",&n,&m);
     memset(shu,0,sizeof(0));
-    shu[0].xx=1;
-    shu[0].yy=n;
-    shu[0].h=1;
+    init(0);
     for (i=1;i<=m;i++)
     {
       scanf("%d%d",&t,&tt,&kk);
       jia(0,t,tt);
     }
-    
+    cout<<he(0)<<endl;
+  }
+}
+
     
