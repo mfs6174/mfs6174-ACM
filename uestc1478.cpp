@@ -131,7 +131,7 @@ int main()
     zou[i]=~wei[i];
   }
   inf>>zu;
-  for (zz=1;zz<=zu;zz++)
+  for (zz=1;zz<=zu;zz++)y
   {
     inf>>n>>m;
     //  for (i=0;i<sushu;i++)
