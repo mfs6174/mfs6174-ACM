@@ -19,7 +19,7 @@ ofstream ouf("ti.out");
 const int maxlongint=2147483647,sushu=1003001;
 
 int i,j,k,t,n,m,mm,zz,zu;
-vector<unsigned> hash[sushu+10];
+//vector<unsigned> hash[sushu+10];
 int bu[50][2],qu[50][10],hui[50][2];
 unsigned wei[50],zou[50],tt;
 bool ff;
@@ -79,7 +79,8 @@ void init(int x,int y)
   }
 }
 
-bool shash(unsigned x)
+/*
+  bool shash(unsigned x)
 {
   unsigned t=x%sushu;
   if (hash[t].empty())
@@ -93,6 +94,7 @@ bool shash(unsigned x)
   hash[t].push_back(x);
   return false;
 }
+*/
     
 
 bool dfs(int h,unsigned zh)
@@ -102,8 +104,8 @@ bool dfs(int h,unsigned zh)
   int i;
   bool tf=false;
   zh=zh&zou[h];
-  if (shash(zh+h*7+h*h*h*13))
-    return false;
+  //if (shash(zh+h*7+h*h*h*13))
+  // return false;
   bu[0][0]++;
   bu[bu[0][0]][0]=hui[h][0];
   bu[bu[0][0]][1]=hui[h][1];
@@ -132,8 +134,8 @@ int main()
   for (zz=1;zz<=zu;zz++)
   {
     inf>>n>>m;
-    for (i=0;i<sushu;i++)
-      hash[i].clear();
+    //  for (i=0;i<sushu;i++)
+    // hash[i].clear();
     memset(bu,0,sizeof(bu));
     memset(qu,0,sizeof(qu));
     for (i=1;i<=n;i++)
