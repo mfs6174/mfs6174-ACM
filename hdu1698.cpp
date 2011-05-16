@@ -34,9 +34,8 @@ void jia(int t,int x,int y)
     shu[t].h=kk;
     return;
   }
-  if (shu[t].xx==shu[t].yy)
+  if ((shu[t].xx==shu[t].yy)&&shu[t].xx==0)
   {
-    shu[t].h=kk;
     return;
   }
   if (shu[t].h==0)
