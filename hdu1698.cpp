@@ -23,7 +23,7 @@ struct D
   int l,r,xx,yy,h;
 };
 
-D shu[300000];
+D shu[500000];
 int i,j,kk,t,n,m,tt,mm,c,cc,zz,zu;
 
 void jia(int t,int x,int y)
@@ -34,7 +34,12 @@ void jia(int t,int x,int y)
     shu[t].h=kk;
     return;
   }
-  if (!shu[t].h)
+  if (shu[t].xx==shu[t].yy)
+  {
+    shu[t].h=kk;
+    return;
+  }
+  if (shu[t].h==0)
   {
     if (y<=m)
       jia(shu[t].l,x,y);
