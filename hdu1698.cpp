@@ -23,7 +23,7 @@ struct D
   int xx,yy,h;
 };
 
-D shu[500000];
+D shu[800000];
 int i,j,kk,t,n,m,tt,mm,c,cc,zz,zu;
 
 void init(int t,int x,int y)
@@ -55,12 +55,12 @@ void jia(int t,int x,int y)
   }
   if (y<=m)
     jia(t<<1,x,y);
-  else if (x>=m+1)
+  else if (x>m)
     jia((t<<1)+1,x,y);
   else
   {
-    jia(t<<1,x,m);
-    jia((t<<1)+1,m+1,y);
+    jia(t<<1,x,y);
+    jia((t<<1)+1,x,y);
   }
   //if ((shu[t<<1].h==shu[(t<<1)+1].h)&&(shu[t<<1].h))
   // shu[t].h=shu[t<<1].h;
@@ -83,7 +83,6 @@ int main()
   {
     scanf("%d%d",&n,&m);
     memset(shu,0,sizeof(0));
-    c=0;
     init(1,1,n);
     for (i=1;i<=m;i++)
     {
