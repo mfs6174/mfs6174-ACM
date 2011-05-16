@@ -20,29 +20,12 @@ const int maxlongint=2147483647;
 
 struct D
 {
-  int l,r,d,xx,yy,h;
+  int l,r,xx,yy,h;
 };
 
 D shu[300000];
 int i,j,kk,t,n,m,tt,mm,c,cc,zz,zu;
 
-
-
-void init(int x,int a,int b)
-{
-  int m=(a+b)>>1;
-  shu[x].h=1;
-  shu[x].xx=a;shu[x].yy=b;
-  if (a==b)
-    return;
-  c++;
-  shu[x].l=c;
-  init(shu[x].l,a,m);
-  c++;
-  shu[x].r=c;
-  init(shu[x].r,m+1,b);
-}
-  
 void jia(int t,int x,int y)
 {
   int m=(shu[t].xx+shu[t].yy)>>1;
@@ -51,33 +34,49 @@ void jia(int t,int x,int y)
     shu[t].h=kk;
     return;
   }
-  if (shu[t].xx==shu[t].yy)
-    return;
-  if (y<=m)
+  if (!shu[t].h)
   {
-    jia(shu[t].l,x,y);
-    if (shu[t].h&&(y<m))
-      jia(shu[t].l,y+1,m);
-  }
-  else if (x>m)
-  {
-    jia(shu[t].r,x,y);
-    if (shu[t].h&&(m+1>x))
-      jia(shu[t].r,m+1,x-1);
-  }
-  else
-  {
-    jia(shu[t].l,x,y);
-    jia(shu[t].r,x,y);
-    if (shu[t].h)
+    if (y<=m)
+      jia(shu[t].l,x,y);
+    else if (x>m)
+      jia(shu[t].r,x,y);
+    else
     {
-      if (shu[t].xx<=x-1)
-        jia(shu[t].l,shu[t].xx,x-1);
-      if (shu[t].yy>=y+1)
-        jia(shu[t].r,y+1,shu[t].yy);
+      jia(shu[t].l,x,y);
+      jia(shu[t].r,x,y);
     }
+    if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l].h))
+      shu[t].h=shu[shu[t].l].h;
+    return;
   }
-    shu[t].h=0;
+  if (shu[t].h==kk)
+    return;
+  if (!shu[t].l)
+  {
+    c++;
+    shu[t].l=c;
+    shu[c].xx=shu[t].xx;
+    shu[c].yy=m;
+  }
+  if (!shu[t].r)
+  {
+    c++;
+    shu[c].xx=m+1;
+    shu[c].yy=shu[t].yy;
+    shu[t].r=c;
+  }
+  shu[shu[t].l].h=shu[t].h;
+  shu[shu[t].r].h=shu[t].h;
+  shu[t].h=0;
+  if (y<=m)
+    jia(shu[t].l,x,y);
+  else if (x>m)
+    jia(shu[t].r,x,y);
+  else
+    {
+      jia(shu[t].l,x,y);
+      jia(shu[t].r,x,y);
+    }
   if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l].h))
     shu[t].h=shu[shu[t].l].h;
 }
@@ -98,7 +97,9 @@ int main()
     scanf("%d%d",&n,&m);
     memset(shu,0,sizeof(0));
     c=0;
-    init(0,1,n);
+    shu[0].xx=1;
+    shu[0].yy=n;
+    shu[0].h=1;
     for (i=1;i<=m;i++)
     {
       scanf("%d%d%d",&t,&tt,&kk);
