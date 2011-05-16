@@ -20,11 +20,22 @@ const int maxlongint=2147483647;
 
 struct D
 {
-  int l,r,xx,yy,h;
+  int xx,yy,h;
 };
 
 D shu[500000];
 int i,j,kk,t,n,m,tt,mm,c,cc,zz,zu;
+
+void init(int t,int x,int y)
+{
+  shu[t].xx=x;
+  shu[t].yy=y;
+  shu[t].h=1;
+  if (x==y)
+    return;
+  init(t<<1,x,(x+y)>>1);
+  init((t<<1)+1,((x+y)>>1)+1,y);
+}
 
 void jia(int t,int x,int y)
 {
@@ -34,51 +45,34 @@ void jia(int t,int x,int y)
     shu[t].h=kk;
     return;
   }
-  if (shu[t].xx!=shu[t].yy)
-  {
-    if (!shu[t].l)
-    {
-      c++;
-      shu[t].l=c;
-      shu[c].xx=shu[t].xx;
-      shu[c].yy=m;
-      shu[c].h=shu[t].h;
-    }
-    if (!shu[t].r)
-    {
-      c++;
-      shu[c].xx=m+1;
-      shu[c].yy=shu[t].yy;
-      shu[t].r=c;
-      shu[c].h=shu[t].h;
-    }
-  }
   if (shu[t].h==kk)
     return;
-  if (shu[t].h!=0)
+  if (shu[t].h>0)
   {
-    shu[shu[t].l].h=shu[t].h;
-    shu[shu[t].r].h=shu[t].h;
+    shu[t<<1].h=shu[t].h;
+    shu[(t<<1)+1].h=shu[t].h;
     shu[t].h=0;
   }
   if (y<=m)
-    jia(shu[t].l,x,y);
+    jia(t<<1,x,y);
   else if (x>=m+1)
-    jia(shu[t].r,x,y);
+    jia((t<<1)+1,x,y);
   else
   {
-      jia(shu[t].l,x,y);
-      jia(shu[t].r,x,y);
+    jia(t<<1,x,m);
+    jia((t<<1)+1,m+1,y);
   }
-  if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l].h))
-    shu[t].h=shu[shu[t].l].h;
+  //if ((shu[t<<1].h==shu[(t<<1)+1].h)&&(shu[t<<1].h))
+  // shu[t].h=shu[t<<1].h;
 }
 
 int he(int t)
 {
   if (shu[t].h)
     return shu[t].h*(shu[t].yy-shu[t].xx+1);
-  return he(shu[t].l)+he(shu[t].r);
+  if (shu[t].xx==shu[t].yy)
+    return shu[t].h;
+  return he(t<<1)+he((t<<1)+1);
 }
 
 int main()
@@ -90,15 +84,13 @@ int main()
     scanf("%d%d",&n,&m);
     memset(shu,0,sizeof(0));
     c=0;
-    shu[0].xx=1;
-    shu[0].yy=n;
-    shu[0].h=1;
+    init(1,1,n);
     for (i=1;i<=m;i++)
     {
       scanf("%d%d%d",&t,&tt,&kk);
-      jia(0,t,tt);
+      jia(1,t,tt);
     }
-    cout<<"Case "<<zz<<": The total value of the hook is "<<he(0)<<'.'<<endl;
+    cout<<"Case "<<zz<<": The total value of the hook is "<<he(1)<<'.'<<endl;
   }
 }
 
