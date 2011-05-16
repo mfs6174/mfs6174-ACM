@@ -34,53 +34,42 @@ void jia(int t,int x,int y)
     shu[t].h=kk;
     return;
   }
-  if (shu[t].xx>y||shu[t].yy>x)
+  if (shu[t].xx!=shu[t].yy)
   {
-    return;
-  }
-  if (shu[t].h==0)
-  {
-    if (y<=m)
-      jia(shu[t].l,x,y);
-    else if (x>m)
-      jia(shu[t].r,x,y);
-    else
+    if (!shu[t].l)
     {
-      jia(shu[t].l,x,y);
-      jia(shu[t].r,x,y);
+      c++;
+      shu[t].l=c;
+      shu[c].xx=shu[t].xx;
+      shu[c].yy=m;
+      shu[c].h=shu[t].h;
     }
-    if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l].h))
-      shu[t].h=shu[shu[t].l].h;
-    return;
+    if (!shu[t].r)
+    {
+      c++;
+      shu[c].xx=m+1;
+      shu[c].yy=shu[t].yy;
+      shu[t].r=c;
+      shu[c].h=shu[t].h;
+    }
   }
   if (shu[t].h==kk)
     return;
-  if (!shu[t].l)
+  if (shu[t].h!=0)
   {
-    c++;
-    shu[t].l=c;
-    shu[c].xx=shu[t].xx;
-    shu[c].yy=m;
+    shu[shu[t].l].h=shu[t].h;
+    shu[shu[t].r].h=shu[t].h;
+    shu[t].h=0;
   }
-  if (!shu[t].r)
-  {
-    c++;
-    shu[c].xx=m+1;
-    shu[c].yy=shu[t].yy;
-    shu[t].r=c;
-  }
-  shu[shu[t].l].h=shu[t].h;
-  shu[shu[t].r].h=shu[t].h;
-  shu[t].h=0;
   if (y<=m)
     jia(shu[t].l,x,y);
-  else if (x>m)
+  else if (x>=m+1)
     jia(shu[t].r,x,y);
   else
-    {
+  {
       jia(shu[t].l,x,y);
       jia(shu[t].r,x,y);
-    }
+  }
   if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l].h))
     shu[t].h=shu[shu[t].l].h;
 }
