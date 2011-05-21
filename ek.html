@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>EK.cpp</title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<pre>
+<font color="0000ff"><strong>#include<font color="#008000">&lt;iostream&gt;</font></strong></font>
+<font color="0000ff"><strong>#include<font color="#008000">&lt;cstring&gt;</font></strong></font>
+<font color="0000ff"><strong>#include<font color="#008000">&lt;queue&gt;</font></strong></font>
+<strong>using</strong> <strong>namespace</strong> <font color="#2040a0">std</font><font color="4444FF">;</font>
+
+<strong>const</strong> <strong>int</strong> <font color="#2040a0">maxlongint</font><font color="4444FF">=</font><font color="#FF0000">2147483647</font><font color="4444FF">;</font>
+<strong>const</strong> <strong>int</strong> <font color="#2040a0">maxm</font><font color="4444FF">=</font><font color="#FF0000">200</font><font color="4444FF">;</font>
+<strong>int</strong> <font color="#2040a0">n</font>,<font color="#2040a0">m</font>,<font color="#2040a0">t</font>,<font color="#2040a0">i</font>,<font color="#2040a0">j</font>,<font color="#2040a0">k</font><font color="4444FF">;</font>
+<strong>int</strong> <font color="#2040a0">zhen</font><font color="4444FF">[</font><font color="#2040a0">maxm</font><font color="4444FF">+</font><font color="#FF0000">5</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">maxm</font><font color="4444FF">+</font><font color="#FF0000">5</font><font color="4444FF">]</font>,<font color="#2040a0">rong</font><font color="4444FF">[</font><font color="#2040a0">maxm</font><font color="4444FF">+</font><font color="#FF0000">5</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">maxm</font><font color="4444FF">+</font><font color="#FF0000">5</font><font color="4444FF">]</font>,<font color="#2040a0">q</font><font color="4444FF">[</font><font color="#2040a0">maxm</font><font color="4444FF">+</font><font color="#FF0000">5</font><font color="4444FF">]</font>,<font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">maxm</font><font color="4444FF">+</font><font color="#FF0000">5</font><font color="4444FF">]</font><font color="4444FF">;</font>
+
+<strong>int</strong> <font color="#2040a0">min</font><font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">x</font>,<strong>int</strong> <font color="#2040a0">y</font><font color="4444FF">)</font>
+<font color="4444FF"><strong>{</strong></font>
+  <strong>return</strong> <font color="#2040a0">x</font><font color="4444FF">&lt;</font><font color="#2040a0">y</font>?<font color="#2040a0">x</font><font color="4444FF">:</font><font color="#2040a0">y</font><font color="4444FF">;</font>
+<font color="4444FF"><strong>}</strong></font>
+
+<strong>bool</strong> <font color="#2040a0">EKbfs</font><font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">x</font>,<strong>int</strong> <font color="#2040a0">y</font>,<strong>int</strong> <font color="#2040a0">n</font><font color="4444FF">)</font>
+<font color="4444FF"><strong>{</strong></font>
+  <strong>int</strong> <font color="#2040a0">i</font>,<font color="#2040a0">t</font><font color="4444FF">;</font>
+  <strong>bool</strong> <font color="#2040a0">f</font><font color="4444FF">[</font><font color="#2040a0">maxm</font><font color="4444FF">+</font><font color="#FF0000">5</font><font color="4444FF">]</font><font color="4444FF">=</font><font color="4444FF"><strong>{</strong></font><strong>false</strong><font color="4444FF"><strong>}</strong></font><font color="4444FF">;</font>
+  <font color="#2040a0">queue</font><font color="4444FF">&lt;</font><strong>int</strong><font color="4444FF">&gt;</font> <font color="#2040a0">dui</font><font color="4444FF">;</font>
+  <font color="#2040a0">dui</font>.<font color="#2040a0">push</font><font color="4444FF">(</font><font color="#2040a0">x</font><font color="4444FF">)</font><font color="4444FF">;</font>
+  <font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">x</font><font color="4444FF">]</font><font color="4444FF">=</font><font color="#2040a0">maxlongint</font><font color="4444FF">;</font>
+  <strong>while</strong> <font color="4444FF">(</font><font color="4444FF">!</font><font color="#2040a0">dui</font>.<font color="#2040a0">empty</font><font color="4444FF">(</font><font color="4444FF">)</font><font color="4444FF">)</font>
+  <font color="4444FF"><strong>{</strong></font>
+    <font color="#2040a0">t</font><font color="4444FF">=</font><font color="#2040a0">dui</font>.<font color="#2040a0">front</font><font color="4444FF">(</font><font color="4444FF">)</font><font color="4444FF">;</font>
+    <font color="#2040a0">dui</font>.<font color="#2040a0">pop</font><font color="4444FF">(</font><font color="4444FF">)</font><font color="4444FF">;</font>
+    <strong>for</strong> <font color="4444FF">(</font><font color="#2040a0">i</font><font color="4444FF">=</font><font color="#FF0000">1</font><font color="4444FF">;</font><font color="#2040a0">i</font><font color="4444FF">&lt;</font><font color="4444FF">=</font><font color="#2040a0">n</font><font color="4444FF">;</font><font color="#2040a0">i</font><font color="4444FF">+</font><font color="4444FF">+</font><font color="4444FF">)</font>
+    <font color="4444FF"><strong>{</strong></font>
+      <strong>if</strong> <font color="4444FF">(</font><font color="#2040a0">f</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">)</font><font color="#444444">//访问标志</font>
+        <strong>continue</strong><font color="4444FF">;</font>
+      <strong>if</strong> <font color="4444FF">(</font><font color="#2040a0">zhen</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">&lt;</font><font color="#2040a0">rong</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">)</font><font color="#444444">//正向灌流 若还有流量</font>
+      <font color="4444FF"><strong>{</strong></font>
+        <font color="#2040a0">f</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">=</font><strong>true</strong><font color="4444FF">;</font>
+        <font color="#2040a0">q</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">=</font><font color="#2040a0">t</font><font color="4444FF">;</font>
+        <font color="#2040a0">dui</font>.<font color="#2040a0">push</font><font color="4444FF">(</font><font color="#2040a0">i</font><font color="4444FF">)</font><font color="4444FF">;</font>
+        <font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">=</font><font color="#2040a0">min</font><font color="4444FF">(</font><font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font>,<font color="#2040a0">rong</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">-</font><font color="#2040a0">zhen</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">)</font><font color="4444FF">;</font><font color="#444444">//记录改进量</font>
+        <strong>if</strong> <font color="4444FF">(</font><font color="#2040a0">i</font><font color="4444FF">=</font><font color="4444FF">=</font><font color="#2040a0">y</font><font color="4444FF">)</font>
+          <strong>return</strong> <strong>true</strong><font color="4444FF">;</font>
+      <font color="4444FF"><strong>}</strong></font>
+      <strong>if</strong> <font color="4444FF">(</font><font color="#2040a0">zhen</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">&gt;</font><font color="#FF0000">0</font><font color="4444FF">)</font><font color="#444444">//退流 跟上段类似 反向边</font>
+      <font color="4444FF"><strong>{</strong></font>
+        <font color="#2040a0">f</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">=</font><strong>true</strong><font color="4444FF">;</font>
+        <font color="#2040a0">q</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">=</font><font color="4444FF">-</font><font color="#2040a0">t</font><font color="4444FF">;</font><font color="#444444">//前驱记负,区分进流退流</font>
+        <font color="#2040a0">dui</font>.<font color="#2040a0">push</font><font color="4444FF">(</font><font color="#2040a0">i</font><font color="4444FF">)</font><font color="4444FF">;</font>
+        <font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">=</font><font color="#2040a0">min</font><font color="4444FF">(</font><font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font>,<font color="#2040a0">zhen</font><font color="4444FF">[</font><font color="#2040a0">i</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">)</font><font color="4444FF">;</font>
+        <strong>if</strong> <font color="4444FF">(</font><font color="#2040a0">i</font><font color="4444FF">=</font><font color="4444FF">=</font><font color="#2040a0">y</font><font color="4444FF">)</font>
+          <strong>return</strong> <strong>true</strong><font color="4444FF">;</font>
+      <font color="4444FF"><strong>}</strong></font>
+    <font color="4444FF"><strong>}</strong></font>
+  <font color="4444FF"><strong>}</strong></font>
+  <strong>return</strong> <strong>false</strong><font color="4444FF">;</font>
+<font color="4444FF"><strong>}</strong></font>
+<strong>int</strong> <font color="#2040a0">EK</font><font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">x</font>,<strong>int</strong> <font color="#2040a0">y</font>,<strong>int</strong> <font color="#2040a0">n</font><font color="4444FF">)</font><font color="#444444">//起始点 结束点 点个数 返回最大流</font>
+<font color="4444FF"><strong>{</strong></font>
+  <strong>int</strong> <font color="#2040a0">tt</font>,<font color="#2040a0">t</font>,<font color="#2040a0">mm</font><font color="4444FF">=</font><font color="#FF0000">0</font><font color="4444FF">;</font>
+  <strong>while</strong> <font color="4444FF">(</font><font color="#2040a0">EKbfs</font><font color="4444FF">(</font><font color="#2040a0">x</font>,<font color="#2040a0">y</font>,<font color="#2040a0">n</font><font color="4444FF">)</font><font color="4444FF">)</font>
+  <font color="4444FF"><strong>{</strong></font>
+    <font color="#2040a0">t</font><font color="4444FF">=</font><font color="#2040a0">y</font><font color="4444FF">;</font><font color="#2040a0">mm</font><font color="4444FF">+</font><font color="4444FF">=</font><font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">y</font><font color="4444FF">]</font><font color="4444FF">;</font>
+    <strong>while</strong> <font color="4444FF">(</font><font color="#2040a0">t</font><font color="4444FF">!</font><font color="4444FF">=</font><font color="#2040a0">x</font><font color="4444FF">)</font>
+    <font color="4444FF"><strong>{</strong></font>
+      <font color="#2040a0">tt</font><font color="4444FF">=</font><font color="4444FF">(</font><font color="#2040a0">q</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">&gt;</font><font color="#FF0000">0</font><font color="4444FF">)</font>?<font color="#2040a0">q</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">:</font><font color="4444FF">(</font><font color="4444FF">-</font><font color="#2040a0">q</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">)</font><font color="4444FF">;</font>
+      <strong>if</strong> <font color="4444FF">(</font><font color="#2040a0">q</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">&gt;</font><font color="#FF0000">0</font><font color="4444FF">)</font>
+        <font color="#2040a0">zhen</font><font color="4444FF">[</font><font color="#2040a0">tt</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">+</font><font color="4444FF">=</font><font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">y</font><font color="4444FF">]</font><font color="4444FF">;</font>
+      <strong>else</strong>
+        <font color="#2040a0">zhen</font><font color="4444FF">[</font><font color="#2040a0">t</font><font color="4444FF">]</font><font color="4444FF">[</font><font color="#2040a0">tt</font><font color="4444FF">]</font><font color="4444FF">-</font><font color="4444FF">=</font><font color="#2040a0">shu</font><font color="4444FF">[</font><font color="#2040a0">y</font><font color="4444FF">]</font><font color="4444FF">;</font>
+      <font color="#2040a0">t</font><font color="4444FF">=</font><font color="#2040a0">tt</font><font color="4444FF">;</font>
+    <font color="4444FF"><strong>}</strong></font>
+  <font color="4444FF"><strong>}</strong></font>
+  <strong>return</strong> <font color="#2040a0">mm</font><font color="4444FF">;</font>
+<font color="4444FF"><strong>}</strong></font>
+
+<strong>int</strong> <font color="#2040a0">main</font><font color="4444FF">(</font><font color="4444FF">)</font>
+<font color="4444FF"><strong>{</strong></font>
+<font color="4444FF"><strong>}</strong></font>
+
+</pre>
+<hr>
+syntax highlighted by <a href="http://www.palfrader.org/code2html">Code2HTML</a>, v. 0.9.1
+</body>
+</html>

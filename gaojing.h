@@ -113,7 +113,7 @@ dashu jian(dashu &x,dashu &y)
 			rr.a[i+1]--;
 			rr.a[i]+=10;
 		}
-		rr.a[i]+=x.a[i]-y.a[j];
+		rr.a[i]+=x.a[i]-y.a[i];
 	}
 	while ((rr.a[rr.a[0]]==0)&&(rr.a[0]>1))
 		rr.a[0]--;
