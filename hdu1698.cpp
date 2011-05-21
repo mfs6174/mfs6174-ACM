@@ -20,29 +20,23 @@ const int maxlongint=2147483647;
 
 struct D
 {
-  int l,r,d,xx,yy,h;
+  int xx,yy,h;
 };
 
-D shu[300000];
+D shu[500000];
 int i,j,kk,t,n,m,tt,mm,c,cc,zz,zu;
 
-
-
-void init(int x,int a,int b)
+void init(int t,int x,int y)
 {
-  int m=(a+b)>>1;
-  shu[x].h=1;
-  shu[x].xx=a;shu[x].yy=b;
-  if (a==b)
+  shu[t].xx=x;
+  shu[t].yy=y;
+  shu[t].h=1;
+  if (x==y)
     return;
-  c++;
-  shu[x].l=c;
-  init(shu[x].l,a,m);
-  c++;
-  shu[x].r=c;
-  init(shu[x].r,m+1,b);
+  init(t<<1,x,(x+y)>>1);
+  init((t<<1)+1,((x+y)>>1)+1,y);
 }
-  
+
 void jia(int t,int x,int y)
 {
   int m=(shu[t].xx+shu[t].yy)>>1;
@@ -51,42 +45,34 @@ void jia(int t,int x,int y)
     shu[t].h=kk;
     return;
   }
-  if (shu[t].xx==shu[t].yy)
+  if (shu[t].h==kk)
     return;
+  if (shu[t].h>0)
+  {
+    shu[t<<1].h=shu[t].h;
+    shu[(t<<1)+1].h=shu[t].h;
+    shu[t].h=0;
+  }
   if (y<=m)
-  {
-    jia(shu[t].l,x,y);
-    if (shu[t].h&&(y<m))
-      jia(shu[t].l,y+1,m);
-  }
-  else if (x>m)
-  {
-    jia(shu[t].r,x,y);
-    if (shu[t].h&&(m+1>x))
-      jia(shu[t].r,m+1,x-1);
-  }
+    jia(t<<1,x,y);
+  else if (x>=m+1)
+    jia((t<<1)+1,x,y);
   else
   {
-    jia(shu[t].l,x,y);
-    jia(shu[t].r,x,y);
-    if (shu[t].h)
-    {
-      if (shu[t].xx<=x-1)
-        jia(shu[t].l,shu[t].xx,x-1);
-      if (shu[t].yy>=y+1)
-        jia(shu[t].r,y+1,shu[t].yy);
-    }
+    jia(t<<1,x,y);
+    jia((t<<1)+1,x,y);
   }
-    shu[t].h=0;
-  if ((shu[shu[t].l].h==shu[shu[t].r].h)&&(shu[shu[t].l].h))
-    shu[t].h=shu[shu[t].l].h;
+  if ((shu[t<<1].h==shu[(t<<1)+1].h)&&(shu[t<<1].h))
+   shu[t].h=shu[t<<1].h;
 }
 
 int he(int t)
 {
   if (shu[t].h)
     return shu[t].h*(shu[t].yy-shu[t].xx+1);
-  return he(shu[t].l)+he(shu[t].r);
+  if (shu[t].xx==shu[t].yy)
+    return shu[t].h;
+  return he(t<<1)+he((t<<1)+1);
 }
 
 int main()
@@ -98,14 +84,12 @@ int main()
     scanf("%d%d",&n,&m);
     memset(shu,0,sizeof(0));
     c=0;
-    init(0,1,n);
+    init(1,1,n);
     for (i=1;i<=m;i++)
     {
       scanf("%d%d%d",&t,&tt,&kk);
-      jia(0,t,tt);
+      jia(1,t,tt);
     }
-    cout<<"Case "<<zz<<": The total value of the hook is "<<he(0)<<'.'<<endl;
+    cout<<"Case "<<zz<<": The total value of the hook is "<<he(1)<<'.'<<endl;
   }
 }
-
-    
