@@ -23,9 +23,9 @@ class TheJackpotDivOne
 public:
   vector<long long> find(vector<long long> money, long long jackpot)
   {
-    long long ss,t,m=jackpot,zz,z=0,s=0;
+    long long ss=0,t,m=jackpot,zz,z=0,s=0;
     int i,n;
-    set<long long> shu;
+    multiset<long long> shu;
     vector<long long> rr;
     for (i=0;i<money.size();i++)
     {
@@ -33,9 +33,7 @@ public:
       shu.insert(money[i]);
     }
     n=money.size();
-    zz=(long long)((double)ss/n);
-    if (ss%n)
-      zz++;
+    zz=(long long)((double)ss/n)+1;
     while (1)
     {
       t=*(shu.begin());
@@ -50,10 +48,9 @@ public:
       shu.erase(shu.begin());
       shu.insert(zz);
       ss=ss-t+zz;
-      zz=(long long)((double)ss/n);
-      if (ss%n)
-        zz++;
       m=m-(zz-t);
+      zz=(long long)((double)ss/n)+1;
+      
     }
     if (t==zz)
     {
@@ -70,3 +67,22 @@ public:
   }
 };
 
+vector<long long> v,rr;
+TheJackpotDivOne test;
+
+int main()
+{
+  int n,i;
+  long long t,jp;
+  cin>>n;
+  for (i=1;i<=n;i++)
+  {
+    cin>>t;
+    v.push_back(t);
+  }
+  cin>>jp;
+  rr=test.find(v,jp);
+  return 0;
+}
+
+  
