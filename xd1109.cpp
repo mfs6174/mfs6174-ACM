@@ -1,3 +1,4 @@
+<<<<<<< HEAD:xd1109.cpp
 /*
 ID: mfs6174
 PROG: xd1109
@@ -71,5 +72,4 @@ int main()
         tw=min(b,ss);
         shu[cc].x=;
         shu[cc].y=shu[j].y+(pan(j)?1:-1;
-        shu[cc].l=shu[cc].y-shu[cc].x+1;
-      
+                            shu[cc].l=shu[cc].y-shu[cc].x+1;
