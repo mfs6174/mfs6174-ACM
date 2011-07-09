@@ -26,6 +26,7 @@ unsigned tt;
 
 void mfs(int x,unsigned d)
 {
+  int i;
   if (x>n)
     return;
   if (ff[x][d])
