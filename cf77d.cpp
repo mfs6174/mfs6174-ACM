@@ -37,7 +37,7 @@ void spfa(int x)
   memset(f,0,sizeof(f));
   memset(dui,0,sizeof(dui));
   di[x]=0;
-  s=0;e=-1;
+  s=1%n;e=0;
   dui[s]=x;f[x]=true;
   while (s!=e)
   {
@@ -54,7 +54,10 @@ void spfa(int x)
           if ((di[tu[d].h[i]]<=di[dui[(e+1)%n]]))
           {
             dui[e]=tu[d].h[i];
-            e=(e-1)%n;
+            if (e==0)
+              e=n-1;
+            else
+              e=(e-1)%n;
           }
           else
           {
@@ -76,7 +79,7 @@ void spfa1(int x)
   memset(f,0,sizeof(f));
   memset(dui,0,sizeof(dui));
   di[x]=0;
-  s=0;e=-1;
+  s=1%n;e=0;
   dui[s]=x;f[x]=true;
   while (s!=e)
   {
@@ -93,7 +96,10 @@ void spfa1(int x)
           if ((di[xin[d].h[i]]<=di[dui[(e+1)%n]]))
           {
             dui[e]=xin[d].h[i];
-            e=(e-1)%n;
+            if (e==0)
+              e=n-1;
+            else
+              e=(e-1)%n;
           }
           else
           {
