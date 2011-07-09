@@ -71,6 +71,7 @@ int main()
   cin>>n;
   st=str(n);
   m=st.size();
+  long long tm;
   if (st[0]>'7'||(m%2!=0))
   {
     l=m+1;
@@ -87,8 +88,20 @@ int main()
     mm=7;
     for (i=1;i<=10;i++)
       mm=mm*10+7;
+    tm=mm;
     dfs(2,4);
     dfs(2,7);
+  }
+  if (mm==tm)
+  {
+    l=m+1;
+    if (l%2!=0)
+      l++;
+    mm=4;
+    for (i=2;i<=l/2;i++)
+      mm=mm*10+4;
+    for (i=l/2+1;i<=l;i++)
+      mm=mm*10+7;
   }
   cout<<mm<<endl;
   return 0;

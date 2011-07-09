@@ -37,8 +37,8 @@ void spfa(int x)
   memset(f,0,sizeof(f));
   memset(dui,0,sizeof(dui));
   di[x]=0;
-  s=0;e=0;
-  s++;dui[s]=x;f[x]=true;
+  s=0;e=-1;
+  dui[s]=x;f[x]=true;
   while (s!=e)
   {
     e=(e+1)%n;
@@ -76,8 +76,8 @@ void spfa1(int x)
   memset(f,0,sizeof(f));
   memset(dui,0,sizeof(dui));
   di[x]=0;
-  s=0;e=0;
-  s++;dui[s]=x;f[x]=true;
+  s=0;e=-1;
+  dui[s]=x;f[x]=true;
   while (s!=e)
   {
     e=(e+1)%n;
@@ -110,7 +110,7 @@ void spfa1(int x)
 
 int main()
 {
-  inf>>n>>m;
+  cin>>n>>m;
   for (i=1;i<=n;i++)
     mmd[i]=mm;
    for (i=1;i<=n;i++)
@@ -120,10 +120,10 @@ int main()
     xin[i].l.push_back(0);
     xin[i].h.push_back(0);
   }
-  inf>>s>>z;
+  cin>>s>>z;
   for (i=1;i<=m;i++)
   {
-    inf>>t>>tt>>j;
+    cin>>t>>tt>>j;
     tu[t].n++;
     tu[tt].n++;
     tu[t].h.push_back(tt);
@@ -132,7 +132,7 @@ int main()
     tu[tt].l.push_back(j);
   }
   for (i=1;i<=n;i++)
-    inf>>zui[i]>>qian[i];
+    cin>>zui[i]>>qian[i];
   for (i=1;i<=n;i++)
   {
     memcpy(di,mmd,sizeof(di));
