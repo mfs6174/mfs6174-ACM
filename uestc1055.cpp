@@ -15,7 +15,7 @@ LANG: C++
 #include<iomanip>
 
 using namespace std;
-ifstream inf("ti.in");
+//ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 const int maxlongint=2147483647;
 
@@ -27,51 +27,51 @@ unsigned tt;
 void mfs(int x,unsigned d)
 {
   int i;
-  if (x>n)
+  if (x<1)
     return;
   if (ff[x][d])
     return;
   ff[x][d]=true;
-  if (d&(1<<(x-1)))
+  if (!(d&(1<<(x-1))))
   {
-    f[x+1][d]=max(f[x+1][d],f[x][d]);
-    mfs(x+1,d);
+    mfs(x-1,d);
+    f[x][d]=max(f[x][d],f[x-1][d]);
     return;
   }
-  unsigned t=d|(1<<(x-1));
-  for (i=x+1;i<=n;i++)
+  unsigned t=d&(~(1<<(x-1)));
+  for (i=1;i<=n;i++)
   {
     unsigned tt;
-    if (d&(1<<(i-1)))
+    if (!(d&(1<<(i-1))))
       continue;
-    tt=t|(1<<(i-1));
-    f[x+1][tt]=max(f[x+1][tt],f[x][d]+dui[x][i]);
-    mfs(x+1,tt);
+    tt=t&(~(1<<(i-1)));
+    mfs(x-1,tt);
+    f[x][d]=max(f[x][d],f[x-1][tt]+dui[x][i]);
   }
 }
 
   
 int main()
 {
-  inf>>zu;
+  cin>>zu;
   for (zz=1;zz<=zu;zz++)
   {
-    inf>>n;
+    cin>>n;
     for (i=1;i<=n;i++)
       for (j=1;j<=n;j++)
-        inf>>dui[i][j];
+        cin>>dui[i][j];
     memset(f,0,sizeof(f));
     memset(ff,0,sizeof(ff));
-    mfs(1,0);
     tt=1;
     for (i=2;i<=n;i++)
     {
       tt=tt<<1;
       tt=tt|1;
     }
+    mfs(n,tt);
     mm=0;
-    for (i=1;i<=n+1;i++)
-      mm=max(mm,f[i][tt]);
+    for (i=0;i<=n;i++)
+      mm=max(mm,f[n][tt]);
     cout<<fixed<<setprecision(2)<<mm<<endl;
   }
   return 0;
