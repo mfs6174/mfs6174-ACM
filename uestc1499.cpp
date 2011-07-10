@@ -14,7 +14,7 @@ LANG: C++
 #include<vector>
 
 using namespace std;
-ifstream inf("ti.in");
+//ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 const int maxlongint=2147483647;
 
@@ -79,7 +79,7 @@ int main()
     mmd[i][0]=maxlongint;
     mmd[i][1]=maxlongint;
   }
-  freopen("ti.in","r",stdin);
+  //freopen("ti.in","r",stdin);
   while (scanf("%d",&n)!=EOF)
   {
     memset(shu,0,sizeof(shu));
