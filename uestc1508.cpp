@@ -27,23 +27,23 @@ int main()
   for (i=1;i<=1000;i++)
     for (j=1;j<=1000;j++)
       mmd[i][j]=maxlongint;
-  inf>>zu;
+  cin>>zu;
   for (zz=1;zz<=zu;zz++)
   {
     memset(f,0,sizeof(f));
     memcpy(shu,mmd,sizeof(shu));
-    inf>>n;
+    cin>>n;
     for (i=1;i<=n;i++)
     {
-      inf>>ts;
-      inf>>ts>>shang[i];
+      cin>>ts;
+      cin>>ts>>shang[i];
       tong1[i]=ts;
     }
-    inf>>m;
+    cin>>m;
     for (i=1;i<=m;i++)
     {
-      inf>>ts;
-      inf>>ts>>xia[i];
+      cin>>ts;
+      cin>>ts>>xia[i];
       tong2[i]=ts;
     }
     for (i=1;i<=n;i++)
@@ -61,25 +61,40 @@ int main()
             if (tt==f[i][j])
               shu[i][j]=min(shu[i][j],shu[i-1][j-1]);
         }
-        else
+        if (f[i][j-1]==f[i-1][j])
         {
-          if (f[i][j-1]==f[i-1][j])
+          if (f[i][j-1]>f[i][j])
           {
             f[i][j]=f[i][j-1];
-            shu[i][j]=min(f[i][j-1],f[i-1][j]);
+            shu[i][j]=min(shu[i][j-1],shu[i-1][j]);
           }
           else
+            if (f[i][j]==f[i][j-1])
+              shu[i][j]=min(shu[i][j],min(shu[i][j-1],shu[i-1][j]));
+        }
+        else
+        {
+          if (f[i][j-1]>f[i-1][j])
           {
-            if (f[i][j-1]>f[i-1][j])
+            if (f[i][j-1]>f[i][j])
             {
               f[i][j]=f[i][j-1];
               shu[i][j]=shu[i][j-1];
             }
             else
+              if (f[i][j-1]==f[i][j])
+                shu[i][j]=min(shu[i][j],shu[i][j-1]);
+          }
+          else
+          {
+            if (f[i-1][j]>f[i][j])
             {
               f[i][j]=f[i-1][j];
               shu[i][j]=shu[i-1][j];
             }
+            else
+              if (f[i-1][j]==f[i][j])
+                shu[i][j]=min(shu[i][j],shu[i-1][j]);
           }
         }
       }
