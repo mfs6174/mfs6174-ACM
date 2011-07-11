@@ -19,7 +19,7 @@ ifstream inf("ti.in");
 const int maxlongint=2147483647;
 
 int i,j,k,n,m,t,zu,zz;
-map<int,string> tong1,tong2;
+string tong1[1005],tong2[1005];
 long long shang[1100],xia[1100],f[1100][1100],shu[1100][1100],mmd[1100][1100];
 string ts;
 int main()
@@ -46,30 +46,8 @@ int main()
       inf>>ts>>xia[i];
       tong2[i]=ts;
     }
-    for (i=1;i<=m;i++)
-      if (tong1[1]==tong2[i])
-      {
-        f[1][i]=shang[1]+xia[i];
-        shu[1][i]=1;
-      }
-      else
-      {
-        f[1][i]=0;
-        shu[1][i]=0;
-      }
     for (i=1;i<=n;i++)
-      if (tong2[1]==tong1[i])
-      {
-        f[i][1]=shang[i]+xia[1];
-        shu[i][1]=1;
-      }
-      else
-      {
-        f[i][1]=0;
-        shu[i][1]=0;
-      }
-    for (i=2;i<n;i++)
-      for (j=2;j<=m;j++)
+      for (j=1;j<=m;j++)
       {
         if (tong1[i]==tong2[j])
         {
