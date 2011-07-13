@@ -27,9 +27,9 @@ long long s[501000],f[501000];
 DIAN zhan[501000];
 
 
-inline double cha(DIAN a,DIAN b,DIAN c)
+inline long long  cha(DIAN a,DIAN b,DIAN c)
 {
-  double x1,x2,y1,y2;
+  long long  x1,x2,y1,y2;
   x1=b.x-a.x;
   y1=b.y-a.y;
   x2=c.x-b.x;
@@ -57,14 +57,18 @@ int main()
   freopen("ti.in","r",stdin);
   while (scanf("%lld%lld",&n,&m)!=EOF)
   {
+    s[0]=0;
     for (i=1;i<=n;i++)
     {
       s[i]=get();
       s[i]+=s[i-1];
     }
     ding=1;
-    dang=1;
+    dang=0;
+    f[0]=0;
     f[1]=fang(s[1])+m;
+    zhan[0].x=0;
+    zhan[0].y=0;
     zhan[1].x=s[1];
     zhan[1].y=f[1]+fang(s[1]);
     for (i=2;i<=n;i++)
@@ -86,7 +90,7 @@ int main()
       zhan[t].x=s[i];
       zhan[t].y=f[i]+fang(s[i]);
       if (ding-dang>0)
-        while (cha(zhan[ding-1],zhan[ding],zhan[t])<=0)
+        while ((j=cha(zhan[ding-1],zhan[ding],zhan[t]))<=0)
         {
           ding--;
           if (ding-dang==0)
