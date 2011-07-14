@@ -68,6 +68,44 @@ int main()
 {
   freopen("ti.in","r",stdin);
   scanf("%d",&zu);
+  memset(f,-1,sizeof(f));
+  while (!q.empty())
+    q.pop();
+  tt.d=1;
+  tt.x=0;
+  tt.y=0;
+  tt.l=0;
+  ff[0][0]=1;
+  q.push(tt);
+  while (!q.empty())
+  {
+    tt=q.front();q.pop();
+    if (tt.d!=ff[tt.x][tt.y])
+      continue;
+    ttt.l=tt.l+1;
+    for (i=tt.d;i<=9;i++)
+    {
+      ttt.x=tt.x+i;
+      ttt.y=tt.y+i*i;
+      if (ttt.x>810||ttt.y>8100||ttt.l>100)
+        continue;
+      ttt.d=i;
+      if (f[ttt.x][ttt.y]==-1)
+      {
+        q.push(ttt);
+        f[ttt.x][ttt.y]=ttt.l;
+        ff[ttt.x][ttt.y]=ttt.d;
+      }
+      // else
+      // if (f[ttt.x][ttt.y]>=ttt.l)
+      //   if (bi(ttt.x,ttt.y,ttt.x,ttt.y,ttt.d,ff[ttt.x][ttt.y])==-1)
+      //   {
+      //     ff[ttt.x][ttt.y]=ttt.d;
+      //     f[ttt.x][ttt.y]=ttt.l;
+      //     q.push(ttt);
+      //   }
+    }
+  }
   for (zz=1;zz<=zu;zz++)
   {
     scanf("%d%d",&n,&m);
@@ -75,44 +113,6 @@ int main()
     {
       cout<<"No solution"<<endl;
       continue;
-    }
-    memset(f,-1,sizeof(f));
-    while (!q.empty())
-      q.pop();
-    tt.d=1;
-    tt.x=0;
-    tt.y=0;
-    tt.l=0;
-    ff[0][0]=1;
-    q.push(tt);
-    while (!q.empty())
-    {
-      tt=q.front();q.pop();
-      if (tt.d!=ff[tt.x][tt.y])
-        continue;
-      ttt.l=tt.l+1;
-      for (i=tt.d;i<=9;i++)
-      {
-        ttt.x=tt.x+i;
-        ttt.y=tt.y+i*i;
-        if (ttt.x>n||ttt.y>m||ttt.l>100)
-          continue;
-        ttt.d=i;
-        if (f[ttt.x][ttt.y]==-1)
-        {
-          q.push(ttt);
-          f[ttt.x][ttt.y]=ttt.l;
-          ff[ttt.x][ttt.y]=ttt.d;
-        }
-        // else
-        // if (f[ttt.x][ttt.y]>=ttt.l)
-        //   if (bi(ttt.x,ttt.y,ttt.x,ttt.y,ttt.d,ff[ttt.x][ttt.y])==-1)
-        //   {
-        //     ff[ttt.x][ttt.y]=ttt.d;
-        //     f[ttt.x][ttt.y]=ttt.l;
-        //     q.push(ttt);
-        //   }
-      }
     }
     if (f[n][m]==-1)
       cout<<"No solution"<<endl;
