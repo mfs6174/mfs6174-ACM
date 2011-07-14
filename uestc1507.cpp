@@ -14,7 +14,7 @@ LANG: C++
 #include<vector>
 
 using namespace std;
-ifstream inf("ti.in");
+//ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 const int maxlongint=2147483647;
 
@@ -66,7 +66,8 @@ int bi(int x,int y,int xx,int yy,int d,int dd)
 
 int main()
 {
-  cin>>zu;
+  freopen("ti.in","r",stdin);
+  scanf("%d",&zu);
   for (zz=1;zz<=zu;zz++)
   {
     scanf("%d%d",&n,&m);
@@ -103,14 +104,14 @@ int main()
           f[ttt.x][ttt.y]=ttt.l;
           ff[ttt.x][ttt.y]=ttt.d;
         }
-        else
-        if (f[ttt.x][ttt.y]>=ttt.l)
-          if (bi(ttt.x,ttt.y,ttt.x,ttt.y,ttt.d,ff[ttt.x][ttt.y])==-1)
-          {
-            ff[ttt.x][ttt.y]=ttt.d;
-            f[ttt.x][ttt.y]=ttt.l;
-            q.push(ttt);
-          }
+        // else
+        // if (f[ttt.x][ttt.y]>=ttt.l)
+        //   if (bi(ttt.x,ttt.y,ttt.x,ttt.y,ttt.d,ff[ttt.x][ttt.y])==-1)
+        //   {
+        //     ff[ttt.x][ttt.y]=ttt.d;
+        //     f[ttt.x][ttt.y]=ttt.l;
+        //     q.push(ttt);
+        //   }
       }
     }
     if (f[n][m]==-1)
