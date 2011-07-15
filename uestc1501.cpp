@@ -82,11 +82,14 @@ int main()
       f[i][1]=max(f[i][1],(*it).d+1);
       mm=max(mm,f[i][1]);
       if (s.size()!=1)
+      {
         it=s.lower_bound(tt);
+        it--;
+      }
       else
         it=s.begin();
-      if (it==s.end())
-        it--; //非常重要！
+      //if (it==s.end())
+      // it--; //非常重要！
       if ((*it).p==shu[i])
       {
         if ((*it).d<f[i][0])
