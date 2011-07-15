@@ -42,13 +42,14 @@ int main()
     mm=0;
     shu[0]=0;
     s.clear();
+    // cout<<s.size()<<endl;
     scanf("%d",&n);
     for (i=1;i<=n;i++)
     {
       scanf("%d",&shu[i]);
       mm=max(mm,shu[i]);
     }
-    tt.p=mm;
+    tt.p=0;
     tt.d=0;
     s.insert(tt);
     mm=1;
@@ -67,12 +68,25 @@ int main()
       mm=max(mm,f[i][0]);
       tt.p=shu[i];
       tt.d=f[i][0];
-      set<D>::iterator it=s.upper_bound(tt);
-      if (((*it).p==tt.p)&&(it!=s.begin()))
+      // cout<<s.size()<<endl;
+      set<D>::iterator it;
+      if (s.size()!=1)
+      {
+        it=s.lower_bound(tt);
         it--;
+      }
+      else
+        it=s.begin();
+      //if (((*it).p==tt.p)&&(it!=s.begin()))
+      //  it--;
       f[i][1]=max(f[i][1],(*it).d+1);
       mm=max(mm,f[i][1]);
-      it=s.lower_bound(tt);
+      if (s.size()!=1)
+        it=s.lower_bound(tt);
+      else
+        it=s.begin();
+      if (it==s.end())
+        it--; //非常重要！
       if ((*it).p==shu[i])
       {
         if ((*it).d<f[i][0])
@@ -86,15 +100,11 @@ int main()
         if (f[i][0]>(*it).d)
         {
           it=(s.insert(tt)).first;
-          for (;;)
+          it++;
+          for (;it!=s.end();)
           {
-            if (it==s.begin())
-            {
-              s.erase(it);
-              break;
-            }
-            if ((*it).d<=f[i][0])
-              s.erase(it--);
+            if ((*it).d<f[i][0])
+              s.erase(it++);
             else
               break;
           }
