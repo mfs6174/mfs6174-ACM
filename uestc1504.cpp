@@ -25,7 +25,7 @@ string s,ss,xian;
 int main()
 {
   for (i=0;i<=9;i++)
-    f[1][i]=1;
+    f[1][i]=xx1;
   g[1][0]=1;
   for (i=1;i<=9;i++)
     for (j=i;j<=9;j++)
