@@ -49,10 +49,10 @@ int main()
       for (j=2;j<i;j++)
         for (k=0;k<=9;k++)//k=1是漏情况的
           shu[i]+=(ff[j][k]*g[i+1-j][k]);
-  inf>>zu;
+  cin>>zu;
   for (zz=1;zz<=zu;zz++)
   {
-    inf>>a>>ss;
+    cin>>a>>ss;
     s=str(a-1);
     m=s.size();
     memset(f,0,sizeof(f));
@@ -137,9 +137,9 @@ int main()
                 f[i][j][d][1]+=f[i-1][o][d][1];
             if (j==s[i-1]-48)
               if (s[i-1]>s[i-2])
-                f[i][j][d][0]=1;
-              else
-                f[i][j][d][0]=0;
+                f[i][j][d][0]+=f[i-1][s[i-2]-48][d][0];
+              // else
+              //   f[i][j][d][0]=0;
           }
           else
           {
@@ -151,9 +151,9 @@ int main()
                 f[i][j][d][1]+=f[i-1][o][d][1]+f[i-1][o][0][1];
             if (j==s[i-1]-48)
               if (s[i-1]<s[i-2])
-                f[i][j][d][0]=1;
-              else
-                f[i][j][d][0]=0;
+                f[i][j][d][0]+=(f[i-1][s[i-2]-48][d][0]+f[i-1][s[i-2]-48][0][0]);
+              // else
+              //   f[i][j][d][0]=0;
           }
         }
       }
