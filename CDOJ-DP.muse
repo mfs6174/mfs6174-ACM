@@ -1,0 +1,10 @@
+*** 成电OJ DP专题题解
+2011 UESTC ACM Training for Dynamic Programming 专题地址:http://acm.uestc.edu.cn/contest.php?cid=122
+**** CDOJ 1055 The Most Wonderful Competition
+题意:有一堆人,两个人之间有一个欢乐值,将这偶数个人两两配对使和谐值最大.
+
+解法:基本的 *集合DP*,一看到N只有16的配对问题就应该想到集合DP.用f[n][t]表示已经配了n个人,t为是否配对过的按位压缩的状态获得的最大欢乐值,转移只要扫描每个人,如果没配对则配上,加上获得的欢乐值.倒推记忆化搜索即可.mfs(n,[1111..]2).
+**** CDOJ 1477 Cheapest Cost
+题意:有一连串温度值,要求进行调整,相邻两天温度差不可以超过常数K,改变温度s代价s**2,相邻两天温度差为D,代价为a*d,求代价最小.
+
+解法: *线性连接型DP*,要用 _单调队列优化_.f[i][j]表示前i天已经调整完毕,第i天温
