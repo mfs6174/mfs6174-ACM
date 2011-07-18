@@ -21,7 +21,7 @@ LANG: C++
 
 #define sf scanf
 #define pf printf
-#define ll long long 
+#define llg long long 
 using namespace std;
 ifstream inf("ti.in");
 //ofstream ouf("ti.out");
