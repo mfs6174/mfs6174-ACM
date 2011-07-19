@@ -46,7 +46,7 @@ struct P
 
 llg i,j,k,n,m,t,w,tn,ttt;
 llg shu[100010],f[100010];
-set<llg> ss;
+mset<llg> ss;
 D q[150000],tt;
 P cha[100010],tp;
 
@@ -65,6 +65,7 @@ int main()
   w=1;
   q[1].p=1;
   q[1].d=shu[1];
+  f[1]=shu[1];
   for (i=2;i<=n;i++)
   {
     int cd=0;
