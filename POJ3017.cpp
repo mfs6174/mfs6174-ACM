@@ -1,7 +1,7 @@
 /*
 ID: mfs6174
 email: mfs6174@gmail.com
-PROG: ti
+PROG: POJ3017
 LANG: C++
 */
 
@@ -46,7 +46,7 @@ struct P
 
 llg i,j,k,n,m,t,w,tn,ttt;
 llg shu[100010],f[100010];
-mset<llg> ss;
+multiset<llg> ss;
 D q[150000],tt;
 P cha[100010],tp;
 
@@ -66,6 +66,7 @@ int main()
   q[1].p=1;
   q[1].d=shu[1];
   f[1]=shu[1];
+  f[0]=0;
   for (i=2;i<=n;i++)
   {
     int cd=0;
@@ -79,7 +80,7 @@ int main()
     if ((cd>0)&&(w>=t))
       ss.erase(q[w].w);
     if (w>=t)
-      q[w].w=(ss.insert(f[q[w].p]+shu[i])).first;
+      q[w].w=(ss.insert(f[q[w].p]+shu[i]));
     tt.d=shu[i];
     tt.p=i;
     q[++w]=tt;
