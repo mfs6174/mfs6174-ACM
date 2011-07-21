@@ -31,12 +31,15 @@ int sn[300];//每个字符的代号，无效字符是0
 int q[NODE];//队列
 
 char ss[60],s[1001000];
+int chu[10010];
 int mm;
+bool ff[10010];
 
 void init() //每次都要先执行
 {
   fail[0]=0;
   memset(zh[0],0,sizeof(zh[0]));
+  memset(ff,0,sizeof(ff));
   mm=0;
   cc=0;
 }
@@ -56,7 +59,14 @@ void ins(const char *s, int d) //建立trie
     }
     p =zh[p][t];
   }
-  shu[p]=d;
+  if (shu[p])
+    chu[shu[p]]++;
+  else
+  {
+    shu[p]=d;
+    chu[d]=1;
+  }
+  
 }
 
 void acinit()//自动机初始化，执行完以后zh里就是goto或fail的位置
@@ -94,10 +104,12 @@ void com(char *s)
     int t=p;
     while (t)
     {
+      if (ff[shu[t]])
+        break;
       if (shu[t])
       {
-        mm++;
-        shu[t]=0;
+        mm+=chu[shu[t]];
+        ff[shu[t]]=true;
       }
       t=fail[t];
     }
