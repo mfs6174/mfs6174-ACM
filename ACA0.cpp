@@ -82,6 +82,21 @@ void acinit()//自动机初始化，执行完以后zh里就是goto或fail的位�
   }
 }
 
+void com(char *s) //查找每个模式串出现的次数
+{
+  int p=0;
+  for (;*s;s++)
+  {
+    p=zh[p][sn[*s]];//转移
+    int t=p;
+    while (t)//跟随fail找符合的模式
+    {
+      if (shu[t])
+        ci[shu[t]]++;
+      t=fail[t];
+    }
+  }
+}
   
 
 int main()
