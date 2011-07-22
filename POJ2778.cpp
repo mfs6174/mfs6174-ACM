@@ -19,7 +19,7 @@ LANG: C++
 using namespace std;
 //ifstream inf("ti.in");
 //ofstream ouf("ti.out");
-const int maxlongint=2147483647;
+const long long maxlongint=2147483647;
 const long long mod=100000;
 
 class ZHEN
@@ -30,7 +30,7 @@ public:
   {
     ZHEN r;
     r.dx=dx;r.dy=x.dy;
-    int i,j,k;
+    long long i,j,k;
     for (i=1;i<=r.dx;i++)
       for (j=1;j<=r.dy;j++)
       {
@@ -40,10 +40,10 @@ public:
       }
     return r;
   }
-  void E(int x,int y)
+  void E(long long x,long long y)
   {
     dx=x;dy=y;
-    int i,j;
+    long long i,j;
     for (i=1;i<=dx;i++)
       z[i][i]=1;
   }
@@ -66,12 +66,12 @@ public:
 
 
 long long i,j,k,n,t,m;
-int cc,c;//cc是统计使用了多少个节点
-int zh[NODE][CH];//自动机机体
-int shu[NODE];//相应节点的数据域
-int fail[NODE];//失败指针，貌似是指向［彻底］失败的位置
-int sn[300];//每个字符的代号，无效字符是0
-int q[NODE];//队列
+long long cc,c;//cc是统计使用了多少个节点
+long long zh[NODE][CH];//自动机机体
+long long shu[NODE];//相应节点的数据域
+long long fail[NODE];//失败指针，貌似是指向［彻底］失败的位置
+long long sn[300];//每个字符的代号，无效字符是0
+long long q[NODE];//队列
 
 char ss[15][15],ke[5]="ATCG";
 ZHEN mm,rr;
@@ -85,12 +85,12 @@ void init() //每次都要先执行
   cc=0;
 }
 
-void ins(const char *s, int d) //建立trie
+void ins(const char *s, long long d) //建立trie
 {
-  int p=0;
+  long long p=0;
   for(;*s;s++)
   {
-    int t=sn[*s];
+    long long t=sn[*s];
     if(!zh[p][t])
     {
       cc++;
@@ -105,7 +105,7 @@ void ins(const char *s, int d) //建立trie
 
 void acinit()//自动机初始化，执行完以后zh里就是goto或fail的位置
 {
-  int *s=q,*e=q,i;
+  long long *s=q,*e=q,i;
   for (i=0;i<=CH;i++) //先把紧邻root的fail设成0
     if (zh[0][i])
     {
@@ -114,12 +114,12 @@ void acinit()//自动机初始化，执行完以后zh里就是goto或fail的位�
     }
   while (s!=e)
   {
-    int p=*s++;
+    long long p=*s++;
     for (i=0;i<=CH;i++)
     {
       if (zh[p][i])//如果goto存在
       {
-        int v=zh[p][i];
+        long long v=zh[p][i];
         *e++=v;
         fail[v]=zh[fail[p]][i];//fail直接设成彻底fail后应该转移的位置（最长后缀位置）
       }
@@ -129,18 +129,18 @@ void acinit()//自动机初始化，执行完以后zh里就是goto或fail的位�
   }
 }
 
-void make(int p)
+void make(long long p)
 {
   if (ff[p])
     return;
   ff[p]=true;
   char *s=ke;
-  int tt;
+  long long tt;
   for (;*s;s++)
   {
     tt=zh[p][sn[*s]];
     bool fl=false;
-    int t=tt;
+    long long t=tt;
     while (t)
     {
       if (fl)
@@ -170,7 +170,7 @@ int main()
   }
   acinit();
   make(0);
-  mm.dx=mm.dy=cc;
+  mm.dx=mm.dy=cc+1;
   rr=mm.power(m);
   for (i=1;i<=cc;i++)
     if (ff[i])
