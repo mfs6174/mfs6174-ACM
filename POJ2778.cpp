@@ -22,12 +22,51 @@ using namespace std;
 const int maxlongint=2147483647;
 
 
-struct ZHEN
+class ZHEN
 {
-  int z[300][300];
+public:
+  long long z[300][300],dx,dy;
+  ZHEN operator *(const ZHEN &x)
+  {
+    ZHEN r;
+    r.dx=dx;r.dy=x.dy;
+    int i,j,k;
+    for (i=1;i<=r.dx;i++)
+      for (j=1;j<=r.dy;j++)
+      {
+        r.z[i][j]=0;
+        for (k=1;k<=x.dx;k++)
+          r.z[i][j]=(r.z[i][j]+(z[i][k]*x.z[k][j])%100000)%100000;
+      }
+    return r;
+  }
+  void E(int x,int y)
+  {
+    dx=x;dy=y;
+    int i,j;
+    for (i=1;i<=dx;i++)
+      for (j=1;j<=dy;j++)
+        z[i][j]=1;
+  }
+  ZHEN power(long long e)
+  {
+    ZHEN tmp = (*this),rr;
+    if (e==1) return *this;
+    rr.E(dx,dy);
+    while (e)
+    {
+      if (e&1)
+        rr=rr*tmp;
+      tmp=tmp*tmp;
+      e=e>>1;
+    }
+    return rr;
+  }
+ 
 };
 
-int i,j,k,n,t,m;
+
+long long i,j,k,n,t,m;
 int cc,c;//cc是统计使用了多少个节点
 int zh[NODE][CH];//自动机机体
 int shu[NODE];//相应节点的数据域
@@ -36,8 +75,9 @@ int sn[300];//每个字符的代号，无效字符是0
 int q[NODE];//队列
 
 char ss[15][15],ke[5]="ATCG";
-ZHEN mm;
+ZHEN mm,rr;
 bool ff[300];
+long long res;
 
 void init() //每次都要先执行
 {
@@ -112,7 +152,7 @@ void make(int p)
     }
     if (!fl)
     {
-      mm.z[p][tt]++;
+      mm.z[p+1][tt+1]++;
       make(tt);
     }
   }
@@ -122,7 +162,7 @@ int main()
 {
   freopen("ti.in","r",stdin);
   sn['A']=1;sn['T']=2;sn['C']=3;sn['G']=4;
-  scanf("%d%d",&n,&m);
+  scanf("%lld%lld",&n,&m);
   init();
   for (i=1;i<=n;i++)
   {
@@ -131,5 +171,12 @@ int main()
   }
   acinit();
   make(0);
+  mm.dx=mm.dy=cc;
+  rr=mm.power(m);
+  for (i=1;i<=cc;i++)
+    if (ff[i])
+      res=(res+rr.z[1][i+1])%100000;
+  res=res+rr.z[1][1];
+  cout<<res%100000<<endl;
   return 0;
 }
