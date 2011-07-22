@@ -20,7 +20,7 @@ using namespace std;
 //ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 const int maxlongint=2147483647;
-
+const long long mod=100000;
 
 class ZHEN
 {
@@ -36,7 +36,7 @@ public:
       {
         r.z[i][j]=0;
         for (k=1;k<=x.dx;k++)
-          r.z[i][j]=(r.z[i][j]+(z[i][k]*x.z[k][j])%100000)%100000;
+          r.z[i][j]=(r.z[i][j]+(z[i][k]*x.z[k][j]))%mod;
       }
     return r;
   }
@@ -45,8 +45,7 @@ public:
     dx=x;dy=y;
     int i,j;
     for (i=1;i<=dx;i++)
-      for (j=1;j<=dy;j++)
-        z[i][j]=1;
+      z[i][i]=1;
   }
   ZHEN power(long long e)
   {
@@ -175,8 +174,8 @@ int main()
   rr=mm.power(m);
   for (i=1;i<=cc;i++)
     if (ff[i])
-      res=(res+rr.z[1][i+1])%100000;
+      res=(res+rr.z[1][i+1])%mod;
   res=res+rr.z[1][1];
-  cout<<res%100000<<endl;
+  cout<<res%mod<<endl;
   return 0;
 }
