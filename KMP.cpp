@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: ti
+PROG: kmp
 LANG: C++
 */
 
@@ -39,23 +39,28 @@ void kmpinit(char s[])
 
 int kmp(char s[],char ss[])
 {
-  int j=0,m=strlen(s),c=0;//c是匹配次数
-  for (i=1;i<m;i++)
+  int j=0,n=strlen(s),m=strlen(ss),c=0;//c是匹配次数
+  for (i=1;i<n;i++)
   {
     while (j>0&&s[i]!=ss[j+1]) j=p[j];
     if (s[i]==ss[j+1])
       j++;
-    if (j>=m)//以上同理
+    if (j>=m-1)//以上同理
     {
-      int t=i-m;
+      //int t=i-m;
       c++;
       j=p[j];//使匹配继续进行
     }
   }
   return c;
 }
-
 int main()
 {
-  
+  s[0]='.';
+  ss[0]='.';
+  scanf("%s",ss+1); //注意这里和下面，把s[0]设为一个字符，读入ss+1,参数ss，使字符串从1开始
+  kmpinit(ss);
+  scanf("%s",s+1);
+  cc=kmp(s,ss);
+  cout<<cc<<endl;
 }
