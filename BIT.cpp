@@ -24,6 +24,8 @@ int shu[MAXN],f[MAXN];
 int n;
 
 //f[x]总是表示x-lowbit+1 到 x的和
+//注意up中的n表示数组最大范围，如果离散化就是数字数，在线算法不方便离散化就是数字最大范围，灵活处理
+//注意从1开始，如果有0号数组，可以每个加1表示
 inline int lowbit(int x)
 {
   return x&(x^(x-1));
