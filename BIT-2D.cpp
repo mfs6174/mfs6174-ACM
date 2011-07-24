@@ -50,7 +50,7 @@ int downs(int x,int y)
   while (x>0)
   {
     int yy=y;
-    while (y>0)
+    while (yy>0)
     {
       s+=f[x][yy];
       yy-=lowbit(yy);
