@@ -19,8 +19,8 @@ using namespace std;
 //freopen("ti.i","r",stdin);
 const int maxlongint=2147483647;
 
-#define MAXN 100000
-int shu[MAXN],f[MAXN];
+#define MAXN 510000
+int f[MAXN];
 int n;
 
 //f[x]总是表示x-lowbit+1 到 x的和
@@ -49,27 +49,19 @@ int downs(int x)
   return s;
 }
 
-void downc(int x,int d)
+struct D
 {
-  while (x>0)
+  int d,p;
+  bool operator <(const D &x) const
   {
-    f[x]+=d;
-    x-=lowbit(x);
+    return d>x.d;
   }
-}
-int ups(int x,int d)
-{
-  int s=0;
-  while (x<=n)
-  {
-    s+=f[x];
-    x+=lowbit(x);
-  }
-  return s;
-}
-
+};
+D shu[MAXN];
+int i,j,k,t;
 
 int main()
 {
+  
   return 0;
 }
