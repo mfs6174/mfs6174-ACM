@@ -31,7 +31,7 @@ inline int lowbit(int x)
   return x&(x^(x-1));
 }
 
-void upc(int x,int d)
+void upc(int x,int d,int n)
 {
   while (x<=n)
   {
@@ -59,7 +59,7 @@ void downc(int x,int d)
     x-=lowbit(x);
   }
 }
-int ups(int x,int d)
+int ups(int x,int d,int n)
 {
   int s=0;
   while (x<=n)
