@@ -31,7 +31,7 @@ inline int lowbit(int x)
   return x&(x^(x-1));
 }
 
-void upc(int x,int d,int n)
+void upc(int x,int d,int n) //更新，x是位置，d是增加量，n是上界
 {
   while (x<=n)
   {
@@ -40,7 +40,7 @@ void upc(int x,int d,int n)
   }
 }
 
-int downs(int x)
+int downs(int x) //查找
 {
   int s=0;
   while (x>0)
@@ -51,7 +51,7 @@ int downs(int x)
   return s;
 }
 
-void downc(int x,int d)
+void downc(int x,int d) //相反的过程，用于s[i--n]的和
 {
   while (x>0)
   {
@@ -70,6 +70,24 @@ int ups(int x,int d,int n)
   return s;
 }
 
+
+int find(int k,int n) //树状数组上二分查找，用于寻找和为k的下标（一般是第k大的数）
+{
+  int x=1,y=n,m;
+  while (x<=y)
+  {
+    m=(x+y)>>1;
+    int t=k-downs(m-1);
+    if (shu[m]>0&&t>=1&&t<=shu[m])
+      return m;
+    t=downs(m);
+    if (t<k)
+      x=m+1;
+    else
+      y=m-1;
+  }
+  return -1;
+}
 
 int main()
 {
