@@ -56,6 +56,20 @@ struct D
   int s,t,f;
 };
 
+int pos=0,head[MAXN];
+struct Edge  
+{  
+  int next,u,v;  
+}node[MAXN*2];
+void add(int u,int v)  
+{  
+  if(u==v) return;  
+  node[pos].u=u;                 //如果指向自己的边则舍去  
+  node[pos].v=v;  
+  node[pos].next=head[u];  
+  head[u]=pos++;  
+}
+
 D shu[MAXN];
 int i,j,k,t,m,cc;
 char tc[3];
@@ -65,9 +79,9 @@ void dfs(int x,int ff)
 {
   shu[x].f=ff;
   shu[x].s=cc;
-  for (vector<int>::iterator i=shu[x].to.begin();i!=shu[x].to.end();i++)
-    if ((*i)!=ff)
-      dfs(*i,x);
+  for(int i=head[x];i!=-1;i=node[i].next)
+    if (node[i].v!=ff)
+      dfs(node[i].v,x);
   cc++;
   shu[x].t=cc;
 }
@@ -76,11 +90,13 @@ int main()
 {
   freopen("ti.in","r",stdin);
   scanf("%d",&n);
+  pos=1;  
+  memset(head,-1,sizeof(head)); 
   for (i=1;i<n;i++)
   {
     scanf("%d%d",&j,&k);
-    shu[j].to.push_back(k);
-    shu[k].to.push_back(j);
+    add(j,k);
+    add(k,j);
   }
   for (i=1;i<=n;i++)
     upc(i,1,n);
