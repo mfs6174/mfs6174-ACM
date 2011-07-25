@@ -24,7 +24,7 @@ int pos=0,head[MAXN];
 struct Edge  
 {  
   int next,u,v;  
-}node[MAXN*2]; //使用的结构
+}node[MAXN*2]; //使用的结构 这里由于是树，所以边数跟点数一样了，否则要单独算边数
 void add(int u,int v)  //这里没有边权，如果加上边权则结构里加一个东西
 {  
   if(u==v) return;  
