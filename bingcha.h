@@ -1,12 +1,18 @@
 #include <iostream>
 #include <fstream>
 
-ofstream outf("out.out");
-const int maxn=1000;
+const int MAXN=1000;
 
-int ff[maxn],n,m,i,j,t,tt;
+int ff[MAXN],n,m,i,j,t,tt;
 
-int cha(int x);
+void init(int n)
+{
+  int i;
+  for (i=1;i<=n;i++)
+    ff[i]=i;
+}
+
+int cha(int x)
 {
 	if (ff[x]==x)
 		return x;
@@ -14,7 +20,7 @@ int cha(int x);
 	return ff[x];
 }
 
-void bing(int x,int y);
+void bing(int x,int y)
 {
 	int i,j;
 	i=cha(x);j=cha(y);
@@ -24,20 +30,7 @@ void bing(int x,int y);
 
 int main()
 {
-	cin>>n>>m;
-	for (i=1;i<=n;i++)
-		ff[i]=i;
-	for (i=1;i<=m;i++)
-	{
-		cin>>t>>tt;
-		bing(t,tt);
-	}
-	cin>>m;
-	for (i=1;i<=m;i+=)
-	{
-		cin>>t>>tt;
-		outf<<(cha(t)==cha(tt));
-	}
+  return 0;
 }
 
 		
