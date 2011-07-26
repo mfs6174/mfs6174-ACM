@@ -71,7 +71,7 @@ int ins(int r,int x)//插入一个数
 }
 
 int i,j,k,t,n,m,a,b,tt,k1,k2,h,xin1,xin2;
-int ff[MAXD],dui[MAXD];
+int ff[MAXD],dui[MAXD],rank[MAXD];
 
 inline int  get()
 {
@@ -95,7 +95,16 @@ inline void bing(int x,int y)
 	int i,j;
 	i=cha(x);j=cha(y);
 	if (i!=j)
-	ff[i]=j;//总根为标志，把总根挂到另一个的总根下
+    {
+      if (rank[i]>rank[j])
+        ff[j]=i;
+      else
+      {
+        ff[i]=j;//总根为标志，把总根挂到另一个的总根下
+        if (rank[i]==rank[j])
+          rank[j]++;
+      }
+    }
 }
 
 int main()
@@ -104,6 +113,7 @@ int main()
   while (scanf("%d",&n)!=EOF)
   {
     init();
+    memset(rank,0,sizeof(rank));
     for (i=1;i<=n;i++)
     {
       hh[i]=get();
@@ -122,8 +132,8 @@ int main()
       }
       xin1=dui[t];xin2=dui[tt];
       k1=pop(xin1);k2=pop(xin2);
-      xin1=ins(xin1,k1/2);xin2=ins(xin2,k2/2);
-      xin1=mg(xin1,xin2);
+      int xin=mg(mk(k1/2),mk(k2/2));
+      xin1=mg(mg(xin1,xin2),xin);
       bing(t,tt);
       dui[cha(t)]=xin1;
       cout<<shu[xin1].k<<endl;
