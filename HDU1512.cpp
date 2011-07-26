@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: ti
+PROG: HDU 1512
 LANG: C++
 */
 
@@ -43,7 +43,7 @@ int mg(int x,int y)//合并，将x，y合并，返回合并后的根
 {
   if (!x) return y;
   if (!y) return x;
-  if (shu[y].k<shu[x].k) sw(x,y);//将大的合并到小的下面的右子树上（小根堆）
+  if (shu[y].k>shu[x].k) sw(x,y);//将大的合并到小的下面的右子树上（小根堆）
   shu[x].r=mg(shu[x].r,y);//递归合并
   if (shu[shu[x].r].d>shu[shu[x].l].d)
     sw(shu[x].l,shu[x].r);
@@ -70,7 +70,7 @@ int ins(int r,int x)//插入一个数
   return mg(r,t);
 }
 
-int i,j,k,t,n,m,a,b,tt;
+int i,j,k,t,n,m,a,b,tt,k1,k2,h,xin1,xin2;
 int ff[MAXD],dui[MAXD];
 
 inline int  get()
@@ -82,7 +82,7 @@ inline int  get()
     return ret;
 }
 
-int cha(int x);
+int cha(int x)
 {
   if (ff[x]==x)
     return x;
@@ -90,7 +90,7 @@ int cha(int x);
   return ff[x];
 }
 
-inline void bing(int x,int y);
+inline void bing(int x,int y)
 {
 	int i,j;
 	i=cha(x);j=cha(y);
@@ -120,6 +120,14 @@ int main()
         cout<<-1<<endl;
         continue;
       }
-      
+      xin1=dui[t];xin2=dui[tt];
+      k1=pop(xin1);k2=pop(xin2);
+      xin1=ins(xin1,k1/2);xin2=ins(xin2,k2/2);
+      xin1=mg(xin1,xin2);
+      bing(t,tt);
+      dui[cha(t)]=xin1;
+      cout<<shu[xin1].k<<endl;
+    }
+  }
   return 0;
 }
