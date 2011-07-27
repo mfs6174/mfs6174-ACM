@@ -21,33 +21,34 @@ const int maxlongint=2147483647;
 #define MAXD 4000000
 struct D
 {
-  int l,r,d,k,m;
+  int d,k,m;
+  D *l,*r;
 };
-D shu[MAXD];
+D *root;
 int cc;
 
-void sw(int &x,int &y)
+void sw(D* &x,D* &y)
 {
-  int t=x;
+  D *t=x;
   x=y;y=t;
 }
 
-void init()//初始化，每组数据执行
-{
-  memset(shu,0,sizeof(shu));
-  cc=0;shu[0].d=-1;
-}
+// void init()//初始化，每组数据执行
+// {
+//   memset(shu,0,sizeof(shu));
+//   cc=0;shu[0].d=-1;
+// }
 
-int mg(int x,int y)//合并，将x，y合并，返回合并后的根
+D *mg(D *x,D *y)//合并，将x，y合并，返回合并后的根
 {
-  if (!x) return y;
-  if (!y) return x;
-  if (shu[y].k>shu[x].k) sw(x,y);//将大的合并到小的下面的右子树上（小根堆）
-  shu[x].r=mg(shu[x].r,y);//递归合并
-  shu[x].m+=shu[y].m;
-  if (shu[shu[x].r].d>shu[shu[x].l].d)
-    sw(shu[x].l,shu[x].r);
-  shu[x].d=shu[shu[x].r].d+1;//交换维持性质并更新距离
+  if (x==NULL) return y;
+  if (y==NULL) return x;
+  if (x->k>y->k) sw(x,y);//将大的合并到小的下面的右子树上（小根堆）
+  x->r=mg(x->r,y);//递归合并
+  x->m+=y->m;
+  if (x->r->d>x->l->d)
+    sw(x->l,x->r);
+  x->d=x->r->d+1;//交换维持性质并更新距离
   return x;
 }
 
