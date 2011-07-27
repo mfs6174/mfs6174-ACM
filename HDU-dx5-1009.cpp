@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: ti
+PROG: BIT
 LANG: C++
 */
 
@@ -14,74 +14,43 @@ LANG: C++
 #include<vector>
 
 using namespace std;
-//ifstream inf("ti.in");
 //ofstream ouf("ti.out");
+//freopen("ti.i","r",stdin);
 const int maxlongint=2147483647;
 
-#define MAXD 4000000
-struct D
-{
-  int d,k,m;
-  D *l,*r;
-};
-D *root;
-int cc;
-
-void sw(D* &x,D* &y)
-{
-  D *t=x;
-  x=y;y=t;
-}
-
-// void init()//初始化，每组数据执行
-// {
-//   memset(shu,0,sizeof(shu));
-//   cc=0;shu[0].d=-1;
-// }
-
-D *mg(D *x,D *y)//合并，将x，y合并，返回合并后的根
-{
-  if (x==NULL) return y;
-  if (y==NULL) return x;
-  if (x->k>y->k) sw(x,y);//将大的合并到小的下面的右子树上（小根堆）
-  x->r=mg(x->r,y);//递归合并
-  x->m+=y->m;
-  if (x->r->d>x->l->d)
-    sw(x->l,x->r);
-  x->d=x->r->d+1;//交换维持性质并更新距离
-  return x;
-}
-
-int pop(int &x)//弹出根，返回值，x将变为弹出后的堆根
-{
-  int t=shu[x].k;
-  x=mg(shu[x].l,shu[x].r);
-  return t;
-}
-
-int mk(int d)//生成一个只有一个点的堆
-{
-  cc++;
-  shu[cc].k=d;
-  shu[cc].m=1;
-  return cc;
-}
-int ins(int r,int x)//插入一个数
-{
-  int t=mk(x);
-  return mg(r,t);
-}
-
-inline int  get()
-{
-    char c;
-    while (c=getchar(),c<'0'||c>'9');
-    int ret=c-'0';
-    while (c=getchar(),c>='0'&&c<='9') ret=ret*10+c-'0';
-    return ret;
-}
-
 #define MAXN 110000
+int shu[MAXN],f[MAXN];
+int n;
+int pre[MAXN];
+int vis[MAXN];
+
+//f[x]总是表示x-lowbit+1 到 x的和
+//注意up中的n表示数组最大范围，如果离散化就是数字数，在线算法不方便离散化就是数字最大范围，灵活处理
+//注意从1开始，如果有0号数组，可以每个加1表示
+inline int lowbit(int x)
+{
+  return x&(x^(x-1));
+}
+
+void upc(int x,int d,int n) //更新，x是位置，d是增加量，n是上界
+{
+  while (x<=n)
+  {
+    f[x]+=d;
+    x+=lowbit(x);
+  }
+}
+
+int downs(int x) //查找
+{
+  int s=0;
+  while (x>0)
+  {
+    s+=f[x];
+    x-=lowbit(x);
+  }
+  return s;
+}
 
 int pos=0,head[MAXN];
 struct Edge  
@@ -97,24 +66,46 @@ void add(int u,int v)  //这里没有边权，如果加上边权则结构里加�
   head[u]=pos++;  
 }
 
-int i,j,t,k,n,m,p;
-int f[MAXN],zhi[MAXN];
-
-void mfs(int x)
+void mfs(int fu,int u)
 {
-  int t=mk(x),tt;
-  for(int i=head[x];i!=-1;i=node[i].next)
-  {
-    mfs(node[i].v);
-    t=mg(t,zhi[node[i].v]);
+  int flag,v;
+  memset(vis,0,sizeof(vis));
+  pre[u]=0;
+  while (u!=0){
+    flag=0;
+    if (!vis[u]) {
+      shu[u]=downs(u-1);
+      vis[u]=1;
+    }
+    for(int i=head[u];i!=-1;i=node[i].next)
+    {
+      v=node[i].v;
+      if (v!=fu){
+        upc(v,1,n);
+        flag=1;
+        pre[v]=u;
+        fu=u;
+        u=v;
+        head[u]=node[i].next;
+        break;
+      }
+    }
+    if (flag) continue;
+    if (head[u]==-1) shu[u]=downs(u-1)-shu[u];
+    u=pre[u];
   }
-  tt=mk(pop(t));
-  while (shu[t].k>=x)
-    tt=ins(tt,pop(t));
-  f[x]=shu[t].m;
-  zhi[x]=mg(t,tt);
 }
 
+inline int  get()
+{
+    char c;
+    while (c=getchar(),c<'0'||c>'9');
+    int ret=c-'0';
+    while (c=getchar(),c>='0'&&c<='9') ret=ret*10+c-'0';
+    return ret;
+}
+
+int i,j,t,m,p,k;
 int main()
 {
   freopen("ti.in","r",stdin);
@@ -122,17 +113,19 @@ int main()
   {
     pos=1;  
     memset(head,-1,sizeof(head)); //2个初始化
-    for (i=1;i<=n;i++)
+    for (i=1;i<n;i++)
     {
       j=get();k=get();
       add(j,k);
+      add(k,j);
     }
     memset(f,0,sizeof(f));
-    init();
-    mfs(p);
+    memset(shu,0,sizeof(shu));
+    mfs(0,p);
+    shu[p]=downs(p-1);
     for (i=1;i<n;i++)
-      cout<<f[i]<<' ';
-    cout<<f[n]<<endl;
+      cout<<shu[i]<<' ';
+    cout<<shu[n]<<endl;
   }
   return 0;
 }
