@@ -20,7 +20,7 @@ const int maxlongint=2147483647;
 #define MAXN 110000
 #define LL long long
 LL i,j,k,t,n,m,zz,zu;
-LL shu[MAXN],dao[MAXN],f[MAXN],wei[MAXN*11];
+LL shu[MAXN],dao[MAXN],f[MAXN],wei[MAXN*2];
 struct Q
 {
   LL d,p;
@@ -100,15 +100,16 @@ void del(LL p,LL x,LL y)
     del(p<<1,x,y);
 }
 
-LL gm(LL p,LL x,LL y)
+LL gm(LL p,LL x,LL y,LL c)
 {
-  if (x<=ss[p].x&&y>=ss[p].y&&ss[p].d!=-1)
-    return ss[p].m+ss[p].d;
+  if (x<=ss[p].x&&y>=ss[p].y&&(ss[p].d!=-1||c!=-1))//注意这个c 往下走的时候，如果是区间包含了但是覆盖不全，没关系，往下走总会遇到覆盖全的，但是如果区间已经覆盖全，但是没有包含，往下走就会死循环，所以加一个参数保存是否路径上已经覆盖全了
+    return ss[p].m+max(ss[p].d,c);
   LL mm=maxlongint,m=(ss[p].x+ss[p].y)>>1;
+  c=max(c,ss[p].d);//用max是因为未覆盖全是-1，一定比那个小
   if (y>m)
-    mm=min(mm,gm((p<<1)+1,x,y));
+    mm=min(mm,gm((p<<1)+1,x,y,c));
   if (x<=m)
-    mm=min(mm,gm(p<<1,x,y));
+    mm=min(mm,gm(p<<1,x,y,c));
   return mm;
 }
 Q tt;
@@ -158,7 +159,7 @@ int main()
       else
         add(1,0,i-1,shu[i]);
       q[++dw]=tt;
-      f[i]=gm(1,dao[i],i-1);
+      f[i]=gm(1,dao[i],i-1,-1);
       push(1,i,f[i]);
     }
     cout<<f[n]<<endl;
