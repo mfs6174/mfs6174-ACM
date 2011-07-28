@@ -14,7 +14,7 @@ LANG: C++
 #include<vector>
 
 using namespace std;
-ifstream inf("ti.in");
+//ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 const int maxlongint=2147483647;
 #define MAXN 110000
