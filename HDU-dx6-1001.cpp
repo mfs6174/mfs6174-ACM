@@ -45,6 +45,8 @@ void upc(int f[],int x,int d)
 }
 void upc(double f[],int x,double d)
 {
+  if (x==0)
+    return;
   while (x<=cc)
   {
     f[x]+=d;
@@ -75,7 +77,7 @@ double downs(double f[],int x)
 
 struct C
 {
-  int x,y,s,f;
+  int x,y,s,f,p;
   bool operator <(const C &p) const
   {
     if (y!=p.y)
@@ -86,7 +88,7 @@ struct C
 };
 struct D
 {
-  int x,y,p;
+  int x,y,s,p;
   double d;
   bool operator <(const D &p) const
   {
@@ -97,13 +99,20 @@ struct D
   }
 };
 
+struct T
+{
+  int x,f,s;
+};
+
+
 int i,j,k,t,xx,yy,m,p;
 D xing[61000];
 C cha[420000];
 int ge[210000];
 double deng[210000];
+T tmp[300000];
 
-bool cmp(const D &a,const D &b)
+bool cmp(const T &a,const T &b)
 {
   return a.x<b.x;
 }
@@ -116,24 +125,41 @@ int main()
     memset(ge,0,sizeof(ge));
     memset(deng,0,sizeof(deng));
     for (i=1;i<=n;i++)
+    {
       scanf("%d%d%lf",&xing[i].x,&xing[i].y,&xing[i].d);
+      xing[i].s=i;
+      tmp[i].x=xing[i].x;
+      tmp[i].f=1;
+      tmp[i].s=i;
+    }
+    int c=0;
     for (i=1;i<=m;i++)
     {
       scanf("%d%d%d%d",&cha[i].x,&cha[i].y,&cha[i+m].x,&cha[i+m].y);
       cha[i].s=cha[m+i].s=i;
       cha[i].f=0;cha[m+i].f=1;
+      c++;
+      tmp[c+n].x=cha[i].x;
+      tmp[c+n].f=2;tmp[c+n].s=i;
+      c++;
+      tmp[c+n].x=cha[m+i].x;
+      tmp[c+n].f=2;tmp[c+n].s=m+i;
     }
-    sort(&xing[1],&xing[n+1],cmp);
+    sort(&tmp[1],&tmp[n+c+1],cmp);
     t=-maxlongint;
-    int c=0;
-    for (i=1;i<=n;i++)
-      if (xing[i].x!=t)
+    cc=0;
+    for (i=1;i<=c+n;i++)
+    {
+      if (tmp[i].x!=t)
       {
-        c++;
-        xing[i].p=c;
-        t=xing[i].x;
+        cc++;
+        t=tmp[i].x;
       }
-    cc=c;
+      if (tmp[i].f==1)
+        xing[tmp[i].s].p=cc;
+      else
+        cha[tmp[i].s].p=cc;
+    }
     sort(&xing[1],&xing[n+1]);
     sort(&cha[1],&cha[2*m+1]);
     bitinit();
@@ -144,13 +170,13 @@ int main()
       {
         if (cha[p].f)
         {
-          ge[cha[p].s]+=downs(f,xing[i-1].p);
-          deng[cha[p].s]+=downs(shu,xing[i-1].p);
+          ge[cha[p].s]+=downs(f,cha[p].p);
+          deng[cha[p].s]+=downs(shu,cha[p].p);
         }
         else
         {
-          ge[cha[p].s]-=downs(f,xing[i-1].p-1);
-          deng[cha[p].s]-=downs(shu,xing[i-1].p-1);
+          ge[cha[p].s]-=downs(f,cha[p].p-1);
+          deng[cha[p].s]-=downs(shu,cha[p].p-1);
         }
         p++;
       }
@@ -161,13 +187,13 @@ int main()
     {
      if (cha[p].f)
         {
-          ge[cha[p].s]+=downs(f,xing[n].p);
-          deng[cha[p].s]+=downs(shu,xing[n].p);
+          ge[cha[p].s]+=downs(f,cha[p].p);
+          deng[cha[p].s]+=downs(shu,cha[p].p);
         }
         else
         {
-          ge[cha[p].s]-=downs(f,xing[n].p);
-          deng[cha[p].s]-=downs(shu,xing[n].p);
+          ge[cha[p].s]-=downs(f,cha[p].p-1);
+          deng[cha[p].s]-=downs(shu,cha[p].p-1);
         }
         p++;
     }
