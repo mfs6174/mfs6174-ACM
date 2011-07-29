@@ -87,22 +87,7 @@ void mfs(int x,int fu)
     {
       zhan[dd].i=head[x];
       upc(x,1,n);
-      st=false;
-    }
-    ed=true;
-    for (;zhan[dd].i!=-1;zhan[dd].i=node[zhan[dd].i].next)
-      if (node[zhan[dd].i].v!=fu)
-      {
-        ed=false;
-        if (!ff[node[zhan[dd].i].v])
-        {
-          shu[node[zhan[dd].i].v]=downs(node[zhan[dd].i].v-1);
-          zhan[dd+1].x=node[zhan[dd].i].v;
-          zhan[dd+1].fu=x;
-          st=true;
-          dd++;
-          ff[zhan[dd].x]=true;
-          break;
+      
         }
         shu[node[zhan[dd].i].v]=downs(node[zhan[dd].i].v-1)-shu[node[zhan[dd].i].v];
         if (zhan[dd].i==-1)

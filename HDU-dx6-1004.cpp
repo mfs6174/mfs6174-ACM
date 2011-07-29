@@ -25,7 +25,7 @@ const long long mod=112233;
 class ZHEN
 {
 public:
-  long long z[20][20],dx,dy;
+  long long z[100][100],dx,dy;
   ZHEN operator *(const ZHEN &x)
   {
     ZHEN r;
@@ -74,7 +74,7 @@ long long fail[NODE];//失败指针，貌似是指向［彻底］失败的位置
 long long sn[300];//每个字符的代号，无效字符是0
 long long q[NODE];//队列
 
-char ss[15][15]={"","rr","oo","yy","gg","bb","vv","roygbv"},ke[10]="roygbv";
+char ss[15][15]={"","rr","oo","yy","gg","bb","vv","roygbv","vbgyor"},ke[10]="roygbv";
 ZHEN mm,rr,rr1;
 bool ff[300];
 long long res;
@@ -165,45 +165,48 @@ int main()
   freopen("ti.in","r",stdin);
   sn['r']=1;sn['o']=2;sn['y']=3;sn['g']=4;sn['b']=5;sn['v']=6;
   init();
-  for (i=1;i<=7;i++)
+  for (i=1;i<=8;i++)
     ins(ss[i],i);
   acinit();
   make(0);
   mm.dx=mm.dy=cc+1;
   while (scanf("%lld",&m)!=EOF)
   {
-    n=m/2;
+    n=m/2+1;
     rr=mm.power(n);
     memset(rrr,0,sizeof(rrr));
     for (i=1;i<=6;i++)
       rrr[i]=(rrr[i]+rr.z[1][2*i])%mod;
     for (i=2;i<=5;i++)
       rrr[i]=(rrr[i]+rr.z[1][i+12])%mod;
-    if (n-5>=0)
-    {
-      rr1=mm.power(n-5);
-      re=ree=0;
-      for (i=1;i<=6;i++)
-        rrr1[i]=(rrr1[i]+rr1.z[1][2*i])%mod;
-      for (i=2;i<=5;i++)
-        rrr1[i]=(rrr1[i]+rr1.z[1][i+12])%mod;
-      for (i=2;i<=6;i++)
-        re=(re+rrr1[i])%mod;
-      ree=(re+rrr1[1]-rrr1[6])%mod;
-      if (re==0)
-        re=ree=1;
-    }
+    rrr[5]=(rrr[5]+rr.z[1][19])%mod;
+    rrr[4]=(rrr[4]+rr.z[1][20])%mod;
+    rrr[3]=(rrr[3]+rr.z[1][21])%mod;
+    rrr[2]=(rrr[2]+rr.z[1][22])%mod;
+    // if (n-6>=0)
+    // {
+    //   rr1=mm.power(n-6);
+    //   re=ree=0;
+    //   for (i=1;i<=6;i++)
+    //     rrr1[i]=(rrr1[i]+rr1.z[1][2*i])%mod;
+    //   for (i=2;i<=5;i++)
+    //     rrr1[i]=(rrr1[i]+rr1.z[1][i+12])%mod;
+    //   for (i=2;i<=6;i++)
+    //     re=(re+rrr1[i])%mod;
+    //   if (re==0)
+    //     re=1;
+    // }
     res=0;
     if (m&1)
     {
       for (i=1;i<=6;i++)
         res=(res+rrr[i])%mod;
-      res=(res*5)%mod;
-      if (n-5>=0)
-      {
-        res-=re;
-        res-=ree;
-      }
+      // res=(res*5)%mod;
+      // if (n-5>=0)
+      // {
+      //   res-=re;
+      //   res-=ree;
+      // }
     }
     else
       res=0;
