@@ -158,7 +158,7 @@ void make(int p)
   }
 }
 
-long long rrr[10],rrr1[10],re;
+long long rrr[10],rrr1[10],re,ree;
 
 int main()
 {
@@ -179,16 +179,19 @@ int main()
       rrr[i]=(rrr[i]+rr.z[1][2*i])%mod;
     for (i=2;i<=5;i++)
       rrr[i]=(rrr[i]+rr.z[1][i+12])%mod;
-    if (n-5>=1)
+    if (n-5>=0)
     {
       rr1=mm.power(n-5);
-      re=0;
+      re=ree=0;
       for (i=1;i<=6;i++)
         rrr1[i]=(rrr1[i]+rr1.z[1][2*i])%mod;
       for (i=2;i<=5;i++)
         rrr1[i]=(rrr1[i]+rr1.z[1][i+12])%mod;
       for (i=2;i<=6;i++)
         re=(re+rrr1[i])%mod;
+      ree=(re+rrr1[1]-rrr1[6])%mod;
+      if (re==0)
+        re=ree=1;
     }
     res=0;
     if (m&1)
@@ -196,11 +199,16 @@ int main()
       for (i=1;i<=6;i++)
         res=(res+rrr[i])%mod;
       res=(res*5)%mod;
-      if (n-5>=1)
+      if (n-5>=0)
+      {
         res-=re;
+        res-=ree;
+      }
     }
     else
       res=0;
+    if (m==1)
+      res=6;
     cout<<(res%mod+mod*2)%mod<<endl;
   }
   return 0;
