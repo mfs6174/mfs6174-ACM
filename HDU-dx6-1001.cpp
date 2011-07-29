@@ -121,7 +121,7 @@ int main()
     {
       scanf("%d%d%d%d",&cha[i].x,&cha[i].y,&cha[i+m].x,&cha[i+m].y);
       cha[i].s=cha[m+i].s=i;
-      cha[i].f=0;cha[2+i].f=1;
+      cha[i].f=0;cha[m+i].f=1;
     }
     sort(&xing[1],&xing[n+1],cmp);
     t=-maxlongint;
@@ -156,6 +156,20 @@ int main()
       }
       upc(f,xing[i].p,1);
       upc(shu,xing[i].p,xing[i].d);
+    }
+    while (p<=2*m)
+    {
+     if (cha[p].f)
+        {
+          ge[cha[p].s]+=downs(f,xing[n].p);
+          deng[cha[p].s]+=downs(shu,xing[n].p);
+        }
+        else
+        {
+          ge[cha[p].s]-=downs(f,xing[n].p);
+          deng[cha[p].s]-=downs(shu,xing[n].p);
+        }
+        p++;
     }
     for (i=1;i<=m;i++)
     {
