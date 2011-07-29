@@ -44,6 +44,7 @@ public:
   {
     dx=x;dy=y;
     long long i;
+    memset(z,0,sizeof(z));
     for (i=1;i<=dx;i++)
       z[i][i]=1;
   }
@@ -74,7 +75,7 @@ long long sn[300];//每个字符的代号，无效字符是0
 long long q[NODE];//队列
 
 char ss[15][15]={"","rr","oo","yy","gg","bb","vv","roygbv"},ke[10]="roygbv";
-ZHEN mm,rr;
+ZHEN mm,rr,rr1;
 bool ff[300];
 long long res;
 
@@ -157,7 +158,7 @@ void make(int p)
   }
 }
 
-long long rrr[10];
+long long rrr[10],rrr1[10],re;
 
 int main()
 {
@@ -171,22 +172,36 @@ int main()
   mm.dx=mm.dy=cc+1;
   while (scanf("%lld",&m)!=EOF)
   {
-    rr=mm.power(m/2);
+    n=m/2;
+    rr=mm.power(n);
     memset(rrr,0,sizeof(rrr));
     for (i=1;i<=6;i++)
       rrr[i]=(rrr[i]+rr.z[1][2*i])%mod;
     for (i=2;i<=5;i++)
       rrr[i]=(rrr[i]+rr.z[1][i+12])%mod;
+    if (n-5>=1)
+    {
+      rr1=mm.power(n-5);
+      re=0;
+      for (i=1;i<=6;i++)
+        rrr1[i]=(rrr1[i]+rr1.z[1][2*i])%mod;
+      for (i=2;i<=5;i++)
+        rrr1[i]=(rrr1[i]+rr1.z[1][i+12])%mod;
+      for (i=2;i<=6;i++)
+        re=(re+rrr1[i])%mod;
+    }
     res=0;
     if (m&1)
     {
       for (i=1;i<=6;i++)
         res=(res+rrr[i])%mod;
       res=(res*5)%mod;
+      if (n-5>=1)
+        res-=re;
     }
     else
       res=0;
-    cout<<res<<endl;
+    cout<<(res%mod+mod*2)%mod<<endl;
   }
   return 0;
 }
