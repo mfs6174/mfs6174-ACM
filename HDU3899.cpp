@@ -3,7 +3,7 @@ ID: mfs6174
 PROG: ti
 LANG: C++
 */
-
+#pragma comment(linker, "/STACK:102400000,102400000")
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -64,13 +64,15 @@ void dfs1(int x,int fu)
   f[x]+=shu[x];
 }
 
-void dfs2(int x,int fu,int g,int gg)
+void dfs2(int x,int q,int fu,int g,int gg)
 {
-  gg[x]=gg[fu]+g[fu]*q;
-  mm=min(mm,gg[x]+ff[x]);
+  int i;
+  ff[x]+=(g*q+gg);
+  f[x]+=g;
+  mm=min(mm,ff[x]);
   for(i=head[x];i!=-1;i=node[i].next)
     if (node[i].v!=fu)
-      dfs2(node[i].v,x,node[i].w);
+      dfs2(node[i].v,node[i].w,x,f[x]-f[node[i].v],ff[x]-ff[node[i].v]-f[node[i].v]*node[i].w);
 }
   
 int main()
@@ -89,7 +91,7 @@ int main()
     }
     mm=maxlongint;
     dfs1(1,1);
-    dfs2(1,0,0);
+    dfs2(1,0,0,0,0);
     cout<<mm<<endl;
   }
   return 0;
