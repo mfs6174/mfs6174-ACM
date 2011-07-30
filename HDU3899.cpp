@@ -13,18 +13,18 @@ LANG: C++
 #include<map>
 #include<vector>
 #define MAXN 110000
-
+#define LL long long
 using namespace std;
 //ifstream inf("ti.in");
 //ofstream ouf("ti.out");
-const int maxlongint=2147483647;
+const LL maxlongint=(LL)2147483647*(LL)2147483647;
 
-int pos=0,head[MAXN];
+LL pos=0,head[MAXN];
 struct Edge  
 {  
-  int next,u,v,w;  
+  LL next,u,v,w;  
 }node[MAXN*2]; //使用的结构 这里由于是树，所以边数跟点数一样了，否则要单独算边数
-void add(int u,int v,int w)  //这里没有边权，如果加上边权则结构里加一个东西
+void add(LL u,LL v,LL w)  //这里没有边权，如果加上边权则结构里加一个东西
 {  
   if(u==v) return;  
   node[pos].u=u;                 //如果指向自己的边则舍去  
@@ -38,8 +38,8 @@ void elinit()
   pos=1;  
   memset(head,-1,sizeof(head)); //2个初始化
 }
-int f[MAXN],gg[MAXN],g[MAXN],shu[MAXN],ff[MAXN];
-int i,j,k,t,n,m,mm;
+LL f[MAXN],shu[MAXN],ff[MAXN];
+LL i,j,k,t,n,m,mm;
 
 inline long long  get()
 {
@@ -50,9 +50,9 @@ inline long long  get()
     return ret;
 }
 
-void dfs1(int x,int fu)
+void dfs1(LL x,LL fu)
 {
-  int i;
+  LL i;
   f[x]=ff[x]=0;
   for(i=head[x];i!=-1;i=node[i].next)
     if (node[i].v!=fu)
@@ -64,9 +64,9 @@ void dfs1(int x,int fu)
   f[x]+=shu[x];
 }
 
-void dfs2(int x,int q,int fu,int g,int gg)
+void dfs2(LL x,LL q,LL fu,LL g,LL gg)
 {
-  int i;
+  LL i;
   ff[x]+=(g*q+gg);
   f[x]+=g;
   mm=min(mm,ff[x]);
@@ -78,7 +78,7 @@ void dfs2(int x,int q,int fu,int g,int gg)
 int main()
 {
   freopen("ti.in","r",stdin);
-  while (scanf("%d",&n)!=EOF)
+  while (scanf("%lld",&n)!=EOF)
   {
     elinit();
     for (i=1;i<=n;i++)
