@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: POJ2352
+PROG: HDU3890
 LANG: C++
 */
 
@@ -19,8 +19,10 @@ using namespace std;
 const int maxlongint=2147483647;
 
 #define MAXN 70000
-double shu[MAXN];
-int f[MAXN];
+#define MAXT 500000
+
+double shu[MAXT];
+int f[MAXT];
 int n,cc;
 
 //f[x]表示x-lowbit+1 到 x的和
@@ -35,21 +37,14 @@ void bitinit()
   memset(shu,0,sizeof(shu));
 }
 
-void upc(int f[],int x,int d)
+void upc(int x,double d)
 {
+  // if (x==0)
+  //   return;
   while (x<=cc)
   {
-    f[x]+=d;
-    x+=lowbit(x);
-  }
-}
-void upc(double f[],int x,double d)
-{
-  if (x==0)
-    return;
-  while (x<=cc)
-  {
-    f[x]+=d;
+    shu[x]+=d;
+    f[x]++;
     x+=lowbit(x);
   }
 }
@@ -77,44 +72,29 @@ double downs(double f[],int x)
 
 struct C
 {
-  int x,y,s,f,p;
-  bool operator <(const C &p) const
-  {
-    if (y!=p.y)
-      return y<p.y;
-    else
-      return x<p.x;
-  }
+  int x,y;
 };
 struct D
 {
-  int x,y,s,p;
+  int x,y;
   double d;
-  bool operator <(const D &p) const
-  {
-    if (y!=p.y)
-      return y<p.y;
-    else
-      return x<p.x;
-  }
 };
 
-struct T
-{
-  int x,f,s;
-};
-
-
-int i,j,k,t,xx,yy,m,p;
-D xing[61000];
+int i,j,k,t,m,p;
+D xing[MAXN];
 C cha[420000];
+int chap[420000],xingp[MAXN];
 int ge[210000];
 double deng[210000];
-T tmp[300000];
+map<int,int> hash;
 
-bool cmp(const T &a,const T &b)
+inline bool cmpx(const int &a,const int &b)
 {
-  return a.x<b.x;
+  return xing[a].y<xing[b].y;
+}
+inline bool cmpc(const int &a,const int &b)
+{
+  return cha[a].y<cha[b].y;
 }
 
 int main()
@@ -124,78 +104,62 @@ int main()
   {
     memset(ge,0,sizeof(ge));
     memset(deng,0,sizeof(deng));
+    hash.clear();
     for (i=1;i<=n;i++)
     {
       scanf("%d%d%lf",&xing[i].x,&xing[i].y,&xing[i].d);
-      xing[i].s=i;
-      tmp[i].x=xing[i].x;
-      tmp[i].f=1;
-      tmp[i].s=i;
+      xingp[i]=i;
+      hash[xing[i].x]=1;
     }
-    int c=0;
     for (i=1;i<=m;i++)
     {
       scanf("%d%d%d%d",&cha[i].x,&cha[i].y,&cha[i+m].x,&cha[i+m].y);
-      cha[i].s=cha[m+i].s=i;
-      cha[i].f=0;cha[m+i].f=1;
-      c++;
-      tmp[c+n].x=cha[i].x;
-      tmp[c+n].f=2;tmp[c+n].s=i;
-      c++;
-      tmp[c+n].x=cha[m+i].x;
-      tmp[c+n].f=2;tmp[c+n].s=m+i;
+      chap[i]=i;chap[i+m]=i+m;
+      cha[i].x--;cha[i].y--;
+      hash[cha[i].x]=1;hash[cha[i+m].x]=1;
     }
-    sort(&tmp[1],&tmp[n+c+1],cmp);
-    t=-maxlongint;
-    cc=0;
-    for (i=1;i<=c+n;i++)
+    i=0;
+    for (map<int,int>::iterator it=hash.begin();it!=hash.end();it++)
     {
-      if (tmp[i].x!=t)
-      {
-        cc++;
-        t=tmp[i].x;
-      }
-      if (tmp[i].f==1)
-        xing[tmp[i].s].p=cc;
-      else
-        cha[tmp[i].s].p=cc;
+      i++;
+      (*it).second=i;
     }
-    sort(&xing[1],&xing[n+1]);
-    sort(&cha[1],&cha[2*m+1]);
+    cc=i;
+    sort(&xingp[1],&xingp[n+1],cmpx);
+    sort(&chap[1],&chap[2*m+1],cmpc);
     bitinit();
     p=1;
     for (i=1;i<=n;i++)
     {
-      while (xing[i].y>=cha[p].y&&xing[i].x>cha[p].x&&p<=2*m)
+      while (xing[xingp[i]].y>cha[chap[p]].y&&p<=2*m)
       {
-        if (cha[p].f)
+        if (chap[p]<=m)
         {
-          ge[cha[p].s]+=downs(f,cha[p].p);
-          deng[cha[p].s]+=downs(shu,cha[p].p);
+          ge[chap[p]]-=(downs(f,hash[cha[chap[p]+m].x])-downs(f,hash[cha[chap[p]].x]));
+          deng[chap[p]]-=(downs(shu,hash[cha[chap[p]+m].x])-downs(shu,hash[cha[chap[p]].x]));
         }
         else
         {
-          ge[cha[p].s]-=downs(f,cha[p].p-1);
-          deng[cha[p].s]-=downs(shu,cha[p].p-1);
+          ge[chap[p]-m]+=(downs(f,hash[cha[chap[p]].x])-downs(f,hash[cha[chap[p]-m].x]));
+          deng[chap[p]-m]+=(downs(shu,hash[cha[chap[p]].x])-downs(shu,hash[cha[chap[p]-m].x]));
         }
         p++;
       }
-      upc(f,xing[i].p,1);
-      upc(shu,xing[i].p,xing[i].d);
+      upc(hash[xing[xingp[i]].x],xing[xingp[i]].d);
     }
     while (p<=2*m)
     {
-     if (cha[p].f)
-        {
-          ge[cha[p].s]+=downs(f,cha[p].p);
-          deng[cha[p].s]+=downs(shu,cha[p].p);
-        }
-        else
-        {
-          ge[cha[p].s]-=downs(f,cha[p].p-1);
-          deng[cha[p].s]-=downs(shu,cha[p].p-1);
-        }
-        p++;
+      if (chap[p]<=m)
+      {
+        ge[chap[p]]-=(downs(f,hash[cha[chap[p]+m].x])-downs(f,hash[cha[chap[p]].x]));
+        deng[chap[p]]-=(downs(shu,hash[cha[chap[p]+m].x])-downs(shu,hash[cha[chap[p]].x]));
+      }
+      else
+      {
+        ge[chap[p]-m]+=(downs(f,hash[cha[chap[p]].x])-downs(f,hash[cha[chap[p]-m].x]));
+        deng[chap[p]-m]+=(downs(shu,hash[cha[chap[p]].x])-downs(shu,hash[cha[chap[p]-m].x]));
+      }
+      p++;
     }
     for (i=1;i<=m;i++)
     {
