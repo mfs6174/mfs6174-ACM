@@ -10,7 +10,7 @@ LANG: C++
 #include<sstream>
 #include<cstring>
 #include<algorithm>
-#include<map>
+#include<iomanip>
 #include<vector>
 
 using namespace std;
@@ -18,7 +18,7 @@ ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 //freopen("ti.i","r",stdin);
 const int maxlongint=2147483647;
-
+const int mod=100000000;
 int f[150][12][150][2];
 int a[150],b[150];
 bool ff[150][12][150][2];
@@ -69,11 +69,11 @@ void dfs(int x,int y,int g,int p)
     if (check(g,a[x-1],y))
     {
       dfs(x-1,a[x-1],g,p);
-      f[x][y][g][p]+=f[x-1][a[x-1]][g][p];
+      f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g][p])%mod;
       if (g-1>0)
       {
         dfs(x-1,a[x-1],g-1,p);
-        f[x][y][g][p]+=f[x-1][a[x-1]][g-1][p];
+        f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g-1][p])%mod;
       }
     }
   }
@@ -85,11 +85,11 @@ void dfs(int x,int y,int g,int p)
       if (check(g,i,y))
       {
         dfs(x-1,i,g,1);
-        f[x][y][g][p]+=f[x-1][i][g][1];
+        f[x][y][g][p]=(f[x][y][g][p]+f[x-1][i][g][1])%mod;
         if (g-1>=0)
         {
           dfs(x-1,i,g-1,1);
-          f[x][y][g][p]+=f[x-1][i][g-1][1];
+          f[x][y][g][p]=(f[x][y][g][p]+f[x-1][i][g-1][1])%mod;
         }
       }
       
@@ -99,11 +99,11 @@ void dfs(int x,int y,int g,int p)
       if (check(g,a[x-1],y))
       {
         dfs(x-1,a[x-1],g,0);
-        f[x][y][g][p]+=f[x-1][a[x-1]][g][0];
+        f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g][0])%mod;
         if (g-1>0)
         {
           dfs(x-1,a[x-1],g-1,0);
-          f[x][y][g][p]+=f[x-1][a[x-1]][g-1][0];
+          f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g-1][0])%mod;
         }
       } 
     }
@@ -142,8 +142,8 @@ int main()
       dfs(l,i,m,1);
       rb+=f[l][i][m][0]+f[l][i][m][1];
     }
-    //cout<<((((rb-ra)%mod)+mod)%mod)<<endl;
-    cout<<rb-ra<<endl;
+    cout<<setfill('0')<<setw(8)<<((((rb-ra)%mod)+mod)%mod)<<endl;
+    //cout<<rb-ra<<endl;
   }
   return 0;
 }
