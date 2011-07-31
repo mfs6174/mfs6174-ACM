@@ -44,17 +44,24 @@ void dfs(int x,int y,int g,int p)
   if (!g)
   {
     if (!y)
-    {
       f[x][y][g][p]=1;
-      return;
-    }
-    else
-      return;
+    return;
   }
   if (x==1)
   {
-    if (g==1||g==0)
-      f[x][y][g][p]=1;
+    if (p)
+    {
+      if (y<a[1])
+      {
+        if (g==0&&y==0)
+          f[x][y][g][p]=1;
+        if (g==1&&y!=0)
+          f[x][y][g][p]=1;
+      }
+    }
+    else
+      if (y==a[1]&&g==1)
+        f[x][y][g][p]=1;
     return;
   }
   if (!p)
@@ -63,11 +70,11 @@ void dfs(int x,int y,int g,int p)
     {
       dfs(x-1,a[x-1],g,p);
       f[x][y][g][p]+=f[x-1][a[x-1]][g][p];
-    }
-    if (g-1>0&&check(g-1,a[x-1],y))
-    {
-      dfs(x-1,a[x-1],g-1,p);
-      f[x][y][g][p]+=f[x-1][a[x-1]][g-1][p];
+      if (g-1>0)
+      {
+        dfs(x-1,a[x-1],g-1,p);
+        f[x][y][g][p]+=f[x-1][a[x-1]][g-1][p];
+      }
     }
   }
   else
@@ -79,12 +86,13 @@ void dfs(int x,int y,int g,int p)
       {
         dfs(x-1,i,g,1);
         f[x][y][g][p]+=f[x-1][i][g][1];
+        if (g-1>=0)
+        {
+          dfs(x-1,i,g-1,1);
+          f[x][y][g][p]+=f[x-1][i][g-1][1];
+        }
       }
-      if (g-1>=0&&check(g-1,i,y))
-      {
-        dfs(x-1,i,g-1,1);
-        f[x][y][g][p]+=f[x-1][i][g-1][1];
-      }
+      
     }
     if (y<a[x])
     {
@@ -92,12 +100,12 @@ void dfs(int x,int y,int g,int p)
       {
         dfs(x-1,a[x-1],g,0);
         f[x][y][g][p]+=f[x-1][a[x-1]][g][0];
-      }
-      if (g-1>0&&check(g-1,a[x-1],y))
-      {
-        dfs(x-1,a[x-1],g-1,0);
-        f[x][y][g][p]+=f[x-1][a[x-1]][g-1][0];
-      }
+        if (g-1>0)
+        {
+          dfs(x-1,a[x-1],g-1,0);
+          f[x][y][g][p]+=f[x-1][a[x-1]][g-1][0];
+        }
+      } 
     }
   }
 }
