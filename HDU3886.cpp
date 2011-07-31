@@ -68,8 +68,11 @@ void dfs(int x,int y,int g,int p)
   {
     if (check(g,a[x-1],y))
     {
-      dfs(x-1,a[x-1],g,p);
-      f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g][p])%mod;
+      if (g==1||s[g-1]!=s[g-2])
+      {
+        dfs(x-1,a[x-1],g,p);
+        f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g][p])%mod;
+      }
       if (g-1>0)
       {
         dfs(x-1,a[x-1],g-1,p);
@@ -84,8 +87,11 @@ void dfs(int x,int y,int g,int p)
     {
       if (check(g,i,y))
       {
-        dfs(x-1,i,g,1);
-        f[x][y][g][p]=(f[x][y][g][p]+f[x-1][i][g][1])%mod;
+        if (g==1||s[g-1]!=s[g-2])
+        {
+          dfs(x-1,i,g,1);
+          f[x][y][g][p]=(f[x][y][g][p]+f[x-1][i][g][1])%mod;
+        }
         if (g-1>=0)
         {
           dfs(x-1,i,g-1,1);
@@ -98,8 +104,11 @@ void dfs(int x,int y,int g,int p)
     {
       if (check(g,a[x-1],y))
       {
-        dfs(x-1,a[x-1],g,0);
-        f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g][0])%mod;
+        if (g==1||s[g-1]!=s[g-2])
+        {
+          dfs(x-1,a[x-1],g,0);
+          f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g][0])%mod;
+        }
         if (g-1>0)
         {
           dfs(x-1,a[x-1],g-1,0);
