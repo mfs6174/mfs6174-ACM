@@ -29,9 +29,9 @@ inline bool check(int p,int x,int y)
 {
   if (!p)
     return true;
-  if (s[p-1]='/')
+  if (s[p-1]=='/')
     return y>x;
-  if (s[p-1]='-')
+  if (s[p-1]=='-')
     return x==y;
   return y<x;
 }
@@ -44,12 +44,19 @@ void dfs(int x,int y,int g,int p)
   if (!g)
   {
     if (!y)
-      return 1;
+    {
+      f[x][y][g][p]=1;
+      return;
+    }
     else
-      return 0;
+      return;
   }
   if (x==1)
-    return 1;
+  {
+    if (g==1||g==0)
+      f[x][y][g][p]=1;
+    return;
+  }
   if (!p)
   {
     if (check(g,a[x-1],y))
@@ -107,11 +114,12 @@ int main()
       a[i+1]=sa[i]-'0';
     for (i=0;i<p;i++)
       b[i+1]=sb[i]-'0';
+    a[l]--;
     for (i=0;i<10;i++)
     {
       if (i==a[l])
-        dfs(a,l,i,m,0);
-      dfs(a,l,i,m,1);
+        dfs(l,i,m,0);
+      dfs(l,i,m,1);
       ra+=f[l][i][m][0]+f[l][i][m][1];
     }
     memset(f,0,sizeof(f));
@@ -122,11 +130,12 @@ int main()
     for (i=0;i<10;i++)
     {
       if (i==a[l])
-        dfs(b,l,i,m,0);
-      dfs(b,l,i,m,1);
+        dfs(l,i,m,0);
+      dfs(l,i,m,1);
       rb+=f[l][i][m][0]+f[l][i][m][1];
     }
-    cout<<((((rb-ra)%mod)+mod)%mod)<<endl;
+    //cout<<((((rb-ra)%mod)+mod)%mod)<<endl;
+    cout<<rb-ra<<endl;
   }
   return 0;
 }
