@@ -41,6 +41,8 @@ void dfs(int x,int y,int g,int p)
   if (ff[x][y][g][p])
     return;
   ff[x][y][g][p]=true;
+  // if (x<=g)
+  //   return;
   if (!g)
   {
     if (!y)
@@ -125,23 +127,41 @@ int main()
   {
     memset(f,0,sizeof(f));
     memset(ff,0,sizeof(ff));
-    for (string::iterator it=sa.begin();it!=sa.end();it++)
+    for (string::iterator it=sa.begin();it!=sa.end();)
       if (*it=='0')
         it=sa.erase(it);
       else
         break;
-    for (string::iterator it=sb.begin();it!=sb.end();it++)
+    for (string::iterator it=sb.begin();it!=sb.end();)
       if (*it=='0')
         it=sb.erase(it);
       else
         break;
-    l=sa.size();p=sb.size();m=s.size();
+    l=sa.length();p=sb.length();m=s.length();
     ra=rb=0;
     for (i=0;i<l;i++)
       a[i+1]=sa[i]-'0';
     for (i=0;i<p;i++)
       b[i+1]=sb[i]-'0';
-    a[l]--;
+
+    a[0]=1;
+    i=l;
+    bool fl=false;
+    if (!l)
+      fl=true;
+    while (!a[i])
+    {
+      a[i]=9;
+      i--;
+    }
+    a[i]--;
+    if (!a[1])
+    {
+      l--;
+      memcpy(a+1,a+2,sizeof(a+2));
+    }
+    if (fl)
+      l=1;
     for (i=0;i<10;i++)
     {
       if (i==a[l])
@@ -149,6 +169,8 @@ int main()
       dfs(l,i,m,1);
       ra+=f[l][i][m][0]+f[l][i][m][1];
     }
+    if (l<=m)
+      ra=0;
     memset(f,0,sizeof(f));
     memset(ff,0,sizeof(ff));
     l=p;
@@ -161,6 +183,9 @@ int main()
       dfs(l,i,m,1);
       rb+=f[l][i][m][0]+f[l][i][m][1];
     }
+    if (fl)
+      ra=0;
+    
     cout<<setfill('0')<<setw(8)<<((((rb-ra)%mod)+mod)%mod)<<endl;
     //cout<<rb-ra<<endl;
   }
