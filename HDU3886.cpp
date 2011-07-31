@@ -125,6 +125,16 @@ int main()
   {
     memset(f,0,sizeof(f));
     memset(ff,0,sizeof(ff));
+    for (string::iterator it=sa.begin();it!=sa.end();it++)
+      if (*it=='0')
+        it=sa.erase(it);
+      else
+        break;
+    for (string::iterator it=sb.begin();it!=sb.end();it++)
+      if (*it=='0')
+        it=sb.erase(it);
+      else
+        break;
     l=sa.size();p=sb.size();m=s.size();
     ra=rb=0;
     for (i=0;i<l;i++)
