@@ -45,10 +45,12 @@ void dfs(int x,int y,int g,int p)
   //   return;
   if (!g)
   {
-    if (!y)
+    if ((!y)&&x<l-1)
       f[x][y][g][p]=1;
     return;
   }
+  if (x==2&&g>1)
+    return;
   if (x==1)
   {
     if (p)
@@ -111,7 +113,7 @@ void dfs(int x,int y,int g,int p)
           dfs(x-1,a[x-1],g,0);
           f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g][0])%mod;
         }
-        if (g-1>0)
+        if (g-1>=0)
         {
           dfs(x-1,a[x-1],g-1,0);
           f[x][y][g][p]=(f[x][y][g][p]+f[x-1][a[x-1]][g-1][0])%mod;
@@ -185,7 +187,8 @@ int main()
     }
     if (fl)
       ra=0;
-    
+    if (l<=m)
+      rb=0;
     cout<<setfill('0')<<setw(8)<<((((rb-ra)%mod)+mod)%mod)<<endl;
     //cout<<rb-ra<<endl;
   }
