@@ -140,6 +140,7 @@ int main()
           cout<<"MANUALLY"<<endl;
       cout<<endl;
     }
+    cout<<endl;
   }
   return 0;
 }
