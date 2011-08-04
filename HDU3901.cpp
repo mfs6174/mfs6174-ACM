@@ -28,7 +28,7 @@ char ss[MAXM],s[MAXN],st[MAXN];
 
 inline bool bi(char a,char b)
 {
-  if (a=='?'||b=='?')
+  if (b=='?')
     return true;
   else
     return a==b;
@@ -40,8 +40,8 @@ void kmpinit(char s[])
   pp[1]=0;//如果第2位就失败，那么只能讲第一位与其对齐比较，所以指针指0
   for (i=2;i<m;i++)
   {
-    while (j>0&&(!bi(s[j+1],s[i]))) j=pp[j];//当未完全失败，继续寻找更小的后缀来尝试是否可连接
-    if (bi(s[j+1],s[i]))//如果是因为可连接而停止的才加，必须判
+    while (j>0&&(!bi(s[i],s[j+1]))) j=pp[j];//当未完全失败，继续寻找更小的后缀来尝试是否可连接
+    if (bi(s[i],s[j+1]))//如果是因为可连接而停止的才加，必须判
       j++;
     pp[i]=j;
   }
