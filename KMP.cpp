@@ -54,6 +54,46 @@ int kmp(char s[],char ss[])
   }
   return c;
 }
+
+inline bool bi(char a,char b)//以下是模式中带?（匹配任意一个字母）通配符的匹配
+{
+  if (b=='?')
+    return true; //这里很重要，只有一个是?才认为是相等，具体是哪一个见下面
+  else
+    return a==b;
+}
+
+void kmpinit(char s[])
+{
+  int i,j=0,m=strlen(s);
+  pp[1]=0;
+  for (i=2;i<m;i++)
+  {
+    while (j>0&&(!bi(s[i],s[j+1]))) j=pp[j];
+    if (bi(s[i],s[j+1]))//这里注意，只有前面是?才能next过去，否则abca...ab?a处会next到4，明显是错的，因为?处在主串中不一定匹配到c的
+      j++;
+    pp[i]=j;
+  }
+}
+
+int kmp(int st,char s[],char ss[])
+{
+  int j=0,n=strlen(s),m=strlen(ss),c=0;
+  for (i=st;i<n;i++)
+  {
+    while (j>0&&(!bi(s[i],ss[j+1])))
+      j=pp[j];
+    if (bi(s[i],ss[j+1]))
+      j++;
+    if (j>=m-1)//以上同理
+    {
+      c=i;//记录位置并break，也可以改成上面模板那种
+      break;
+    }
+  }
+  return c;
+}
+
 int main()
 {
   s[0]='.';
