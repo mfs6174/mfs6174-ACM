@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: ti
+PROG: POJ3905
 LANG: C++
 */
 
@@ -67,4 +67,3 @@ int main()
   return 0;
 }
 
-    
