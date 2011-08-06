@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: ti
+PROG: HDU3911
 LANG: C++
 */
 
@@ -20,21 +20,10 @@ const int maxlongint=2147483647;
 
 struct T
 {
-  int x,y,m[2],mz[2],my[2],d;
+  int x,y,m[2],mz[2],my[2],d,l,f;
 };
 
-T ss[MAXN*5];
-
-void stinit(int p,int x,int y)
-{
-  ss[p].x=x;ss[p].y=y;
-  ss[p].m=0;ss[p].d=ss[p].mz=ss[p].my;
-  ss[p].b=ss[p].by=ss[p].bz=0;
-  if (x==y)
-    return;
-  stinit(p<<1,x,(x+y)>>1);
-  stinit((p<<1)+1,((x+y)>>1)+1,y);
-}
+T shu[MAXN*5];
 
 inline int  get()
 {
@@ -45,77 +34,139 @@ inline int  get()
     return ret;
 }
 
+void stinit(int p,int x,int y)
+{
+  shu[p].x=x;shu[p].y=y;shu[p].l=y-x+1;shu[p].f=-1;
+  if (x==y)
+    return;
+  stinit(p<<1,x,(x+y)>>1);
+  stinit((p<<1)+1,((x+y)>>1)+1,y);
+}
+
+inline void sw(int &x,int &y)
+{
+  int t;
+  t=x;x=y;y=t;
+}
+
+inline void sw(T &a)
+{
+  sw(a.m[0],a.m[1]);
+  sw(a.mz[0],a.mz[1]);
+  sw(a.my[0],a.my[1]);
+}  
+  
+void pd(int x)
+{
+  if (shu[x].d)
+    sw(shu[x]);
+  shu[x<<1].d=shu[x<<1].d^shu[x].d;
+  shu[(x<<1)+1].d=shu[(x<<1)+1].d^shu[x].d;
+  shu[x].d=0;
+}
+
 void ins(int p,int x,int y,int d)
 {
   int mid=(shu[p].x+shu[p].y)>>1;
   if (x<=shu[p].x&&y>=shu[p].y)
   {
-    shu[p].m[d]=shu[p].y-shu[p].x+1;
-    shu[p].mz[d]=shu[p].my=shu[p].m;
+    shu[p].m[d]=shu[p].l;
+    shu[p].mz[d]=shu[p].my[d]=shu[p].m[d];
     return;
   }
-  if (x<=m)
-    ins(p<<1,x,y);
-  if (y>=m+1)
-    ins((p<<1)+1,x,y);
-  if (x<=shu[p].x)
-    shu[p].mz[d]=max(shu[p].mz[d],y-shu[p].x+1);
-  if (y>=shu[p].y)
-    shu[p].my[d]=max(shu[p].my[d],shu[p].y-x+1);
-  //update zuo you
-  shu[p].m[d]=max(shu[p].m[d],shu[p<<1].my[d]+shu[(p<<1)+1].mz[d]);
+  if (x<=mid)
+    ins(p<<1,x,y,d);
+  if (y>=mid+1)
+    ins((p<<1)+1,x,y,d);
+  if (shu[p<<1].l==shu[p<<1].m[d])
+    shu[p].mz[d]=shu[(p<<1)+1].mz[d]+shu[p<<1].l;
+  else
+    shu[p].mz[d]=shu[p<<1].mz[d];
+  if (shu[(p<<1)+1].l==shu[(p<<1)+1].m[d])
+    shu[p].my[d]=shu[(p<<1)+1].l+shu[p<<1].my[d];
+  else
+    shu[p].my[d]=shu[(p<<1)+1].my[d];
+  shu[p].m[d]=shu[p<<1].my[d]+shu[(p<<1)+1].mz[d];
   shu[p].m[d]=max(shu[p].m[d],max(shu[p].mz[d],shu[p].my[d]));
-  shu[p].m[d]=max(shu[p].m[d],max(shu[p<<1].m[d],shu[(p<<1)+1].m[d]);
+  shu[p].m[d]=max(shu[p].m[d],max(shu[p<<1].m[d],shu[(p<<1)+1].m[d]));
 }
 void md(int p,int x,int y)
 {
-  int mid=(shu[p].x+shu[p].y)>>1;
+  pd(x);
   if (x<=shu[p].x&&y>=shu[p].y)
   {
+    shu[p].d=shu[p].d^1;
     return;
   }
-  if (x<=m)
+  int mid=(shu[p].x+shu[p].y)>>1;
+  if (x<=mid)
     md(p<<1,x,y);
-  if (y>=m+1)
+  if (y>=mid+1)
     md((p<<1)+1,x,y);
-  shu[p].m=max(shu[p].m,shu[p<<1].my+shu[(p<<1)+1].mz);
-  shu[p].m=max(shu[p].m,max(shu[p].mz,shu[p].my));
+  pd(p<<1);pd((p<<1)+1);
+  for (int d=0;d<=1;d++)
+  {
+    if (shu[p<<1].l==shu[p<<1].m[d])
+      shu[p].mz[d]=shu[(p<<1)+1].mz[d]+shu[p<<1].l;
+    else
+      shu[p].mz[d]=shu[p<<1].mz[d];
+    if (shu[(p<<1)+1].l==shu[(p<<1)+1].m[d])
+      shu[p].my[d]=shu[(p<<1)+1].l+shu[p<<1].my[d];
+    else
+      shu[p].my[d]=shu[(p<<1)+1].my[d];
+    shu[p].m[d]=shu[p<<1].my[d]+shu[(p<<1)+1].mz[d];
+    shu[p].m[d]=max(shu[p].m[d],max(shu[p].mz[d],shu[p].my[d]));
+    shu[p].m[d]=max(shu[p].m[d],max(shu[p<<1].m[d],shu[(p<<1)+1].m[d]));
+  }
 }
 
 int qr(int p,int x,int y)
 {
-  int mid=(shu[p].x+shu[p].y)>>1,mt=0;
+  pd(p);
+  
   if (x<=shu[p].x&&y>=shu[p].y)
-    return shu[p].m;
-  if (x<=m)
+    return shu[p].m[1];
+  int mid=(shu[p].x+shu[p].y)>>1,mt=0,st=0;
+  if (x<=mid)
+  {
     mt=max(mt,qr(p<<1,x,y));
-  if (y>=m+1)
+    //(p<<1);
+    st=min(shu[p<<1].my[1],mid-x+1);
+  }
+  if (y>=mid+1)
+  {
     mt=max(mt,qr((p<<1)+1,x,y));
+    //((p<<1)+1);
+    st+=min(shu[(p<<1)+1].mz[1],y-mid);
+  }
+  if (x<=mid&&y>=mid+1)
+    mt=max(mt,st);
   return mt;
 }
 
 int i,j,k,t,n,m,a,b,mm;
-int shu[MAXN];
+int s[MAXN];
 
 int main()
 {
   freopen("ti.in","r",stdin);
   while (scanf("%d",&n)!=EOF)
   {
-    shu[0]=0;
-    spinit(1,1,n);
+    s[0]=0;
+    memset(shu,0,sizeof(shu));
+    stinit(1,1,n);
     j=1;
-    shu[1]=get();
+    s[1]=get();
     for (i=2;i<=n;i++)
     {
-      shu[i]=get();
-      if (shu[i]!=shu[i-1])
+      s[i]=get();
+      if (s[i]!=s[i-1])
       {
-        ins(1,j,i-1,shu[i-1]);
+        ins(1,j,i-1,s[i-1]);
         j=i;
       }
     }
-    ins(1,j,n,shu[n]);
+    ins(1,j,n,s[n]);
     m=get();
     for (i=1;i<=m;i++)
     {
