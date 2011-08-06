@@ -20,7 +20,7 @@ const int maxlongint=2147483647;
 
 struct T
 {
-  int x,y,m[2],mz[2],my[2];
+  int x,y,m[2],mz[2],my[2],d;
 };
 
 T ss[MAXN*5];
