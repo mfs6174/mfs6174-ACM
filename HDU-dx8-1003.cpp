@@ -20,7 +20,7 @@ const int maxlongint=2147483647;
 
 int cao[5][2]={{0,0},{0,1},{-1,0},{0,-1},{1,0}};
 int bb[5][5]={{0,0,0,0,0},{0,4,1,2,3},{0,1,2,3,4},{0,2,3,4,1},{0,3,4,1,2}};
-bool tu[510][510][5],ff[510][510][5],f[510][510];
+bool tu[510][510][5],f[510][510];
 int i,j,k,t,n,m,tt,zz,zu,st,ed,df;
 bool fl;
 
@@ -48,9 +48,6 @@ void dfsf(int x,int y,int z)
     fl=true;
     return;
   }
-  // if (ff[x][y][z])
-  // return;
-  ff[x][y][z]=true;
   int i;
   for (i=1;i<=4;i++)
     if (tu[x][y][bb[z][i]])
