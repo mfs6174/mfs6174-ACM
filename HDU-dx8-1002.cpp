@@ -123,7 +123,6 @@ void md(int p,int x,int y)
 int qr(int p,int x,int y)
 {
   pd(p);
-  
   if (x<=shu[p].x&&y>=shu[p].y)
     return shu[p].m[1];
   int mid=(shu[p].x+shu[p].y)>>1,mt=0,st=0;
@@ -138,6 +137,21 @@ int qr(int p,int x,int y)
     mt=max(mt,qr((p<<1)+1,x,y));
     //((p<<1)+1);
     st+=min(shu[(p<<1)+1].mz[1],y-mid);
+  }
+  pd(p<<1);pd((p<<1)+1);
+  for (int d=0;d<=1;d++)
+  {
+    if (shu[p<<1].l==shu[p<<1].m[d])
+      shu[p].mz[d]=shu[(p<<1)+1].mz[d]+shu[p<<1].l;
+    else
+      shu[p].mz[d]=shu[p<<1].mz[d];
+    if (shu[(p<<1)+1].l==shu[(p<<1)+1].m[d])
+      shu[p].my[d]=shu[(p<<1)+1].l+shu[p<<1].my[d];
+    else
+      shu[p].my[d]=shu[(p<<1)+1].my[d];
+    shu[p].m[d]=shu[p<<1].my[d]+shu[(p<<1)+1].mz[d];
+    shu[p].m[d]=max(shu[p].m[d],max(shu[p].mz[d],shu[p].my[d]));
+    shu[p].m[d]=max(shu[p].m[d],max(shu[p<<1].m[d],shu[(p<<1)+1].m[d]));
   }
   if (x<=mid&&y>=mid+1)
     mt=max(mt,st);
