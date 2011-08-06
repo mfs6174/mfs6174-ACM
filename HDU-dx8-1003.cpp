@@ -64,7 +64,6 @@ int main()
   for (zz=1;zz<=zu;zz++)
   {
     memset(tu,0,sizeof(tu));
-    memset(ff,0,sizeof(ff));
     memset(f,0,sizeof(f));
     sf("%d%d%d%d",&n,&m,&st,&ed);
     for (i=1;i<=n;i++)
