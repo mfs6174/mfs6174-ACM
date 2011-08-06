@@ -56,7 +56,7 @@ inline void sw(T &a)
   sw(a.my[0],a.my[1]);
 }  
   
-void pd(int x)
+void pd(int x)//pushdown函数 用延迟标记影响节点，把延迟标记传到子节点（比较懒所以只传递并不递归处理）
 {
   if (shu[x].d)
     sw(shu[x]);
@@ -72,8 +72,10 @@ void ins(int p,int x,int y,int d)
   {
     shu[p].m[d]=shu[p].l;
     shu[p].mz[d]=shu[p].my[d]=shu[p].m[d];
-    return;
+    //return;//这里很重要，初始插入的时候不能覆盖就退出，应该走到底，这样才能保证后面md和qr的有效性 当然简单的情况也可以查询时对已经覆盖的点传一个参数下去
   }
+  if (shu[p].x==shu[p].y)
+    return;
   if (x<=mid)
     ins(p<<1,x,y,d);
   if (y>=mid+1)
@@ -92,7 +94,7 @@ void ins(int p,int x,int y,int d)
 }
 void md(int p,int x,int y)
 {
-  pd(x);
+  pd(x);//访问一个点之前必须pd
   if (x<=shu[p].x&&y>=shu[p].y)
   {
     shu[p].d=shu[p].d^1;
@@ -103,7 +105,7 @@ void md(int p,int x,int y)
     md(p<<1,x,y);
   if (y>=mid+1)
     md((p<<1)+1,x,y);
-  pd(p<<1);pd((p<<1)+1);
+  pd(p<<1);pd((p<<1)+1);//访问后应当pd子节点，更新最优值
   for (int d=0;d<=1;d++)
   {
     if (shu[p<<1].l==shu[p<<1].m[d])
