@@ -49,6 +49,9 @@ int main()
   }
   else
   {
+    cin>>j;
+    if (j<=t)
+      cout<<'.'<<endl;
     
   }
   return 0;
