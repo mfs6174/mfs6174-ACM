@@ -133,6 +133,8 @@ int main()
     exit(0);
   }
   sv();
+  for (i=0;i<n;i++)
+    fl=fl&&(!h[i]);
   if (fl&&cc>=3)
     cout<<"FHTAGN!"<<endl;
   else
