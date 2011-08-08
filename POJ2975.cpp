@@ -1,4 +1,4 @@
-/*
+2/*
 ID: mfs6174
 PROG: ti
 LANG: C++
