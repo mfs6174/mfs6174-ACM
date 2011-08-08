@@ -14,7 +14,7 @@ LANG: C++
 #include<vector>
 #define maxn 110
 using namespace std;
-//ifstream inf("ti.in");
+ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 //freopen("ti.i","r",stdin);
 const int maxlongint=100000;
@@ -108,7 +108,7 @@ void sv()
 
 int main()
 {
-  cin>>n>>m;
+  inf>>n>>m;
    for(int i=0;i<n;i++) //初始化 
      for(int j=0;j<n;j++)
      {
@@ -118,7 +118,7 @@ int main()
      }
   for (i=1;i<=m;i++)
   {
-    cin>>j>>k;
+    inf>>j>>k;
     g[j-1][k-1]=1;
     g[k-1][j-1]=1;
     dis[j-1][k-1]=1;
@@ -134,7 +134,7 @@ int main()
   }
   sv();
   for (i=0;i<n;i++)
-    fl=fl&&(!h[i]);
+    fl=fl&&(h[i]);
   if (fl&&cc>=3)
     cout<<"FHTAGN!"<<endl;
   else
