@@ -54,7 +54,7 @@ int kmp(char s[],char ss[])
   }
   return c;
 }
-
+/*
 inline bool bi(char a,char b)//以下是模式中带?（匹配任意一个字母）通配符的匹配
 {
   if (b=='?')
@@ -93,7 +93,7 @@ int kmp(int st,char s[],char ss[])
   }
   return c;
 }
-
+*/
 int main()
 {
   s[0]='.';
