@@ -28,7 +28,23 @@ struct P
   double y;
   //constructor
   P(double a=0, double b=0) 
-  { x=a; y=b;}  
+  { x=a; y=b;}
+  P operator+(const P &b) const
+  {  
+    return P(x + b.x, y + b.y);  
+  }
+  Point operator - (const Point &b) const
+  {  
+    return Point(x - b.x, y - b.y);  
+  }  
+  bool operator<(const Point &b) const//逆时针 
+  {   
+    return x * b.y < y * b.x;  
+  }
+  double operator ^ (const Point &b) const //aXb
+  {
+    return x*b.y-b.x*y;
+  }
 }; 
 struct LINESEG 
 { 
@@ -52,13 +68,10 @@ inline double dst(P p1,P p2)
 	return( sqrt( (p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y) ) ); 
 }
 
-inline int cha(P a,P b,P c)
+inline double cha(P a,P b,P c)
 {
-  double x1,x2,y1,y2;
-  x1=b.x-a.x;
-  y1=b.y-a.y;
-  x2=c.x-b.x;
-  y2=c.y-b.y;
-  return x1*y2-x2*y1;
+  return (b-a)^(c-a);
 }
+
+
 
