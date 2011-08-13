@@ -73,5 +73,13 @@ inline double cha(P a,P b,P c)
   return (b-a)^(c-a);
 }
 
+P lcp(P aa, P ad, P ba, P bd)
+{ // 求直线交点  
+  ad = ad - aa;  
+  bd = bd - ba;  
+  double tmp = bd ^ ad;  
+  return P((ad.x * bd.x * (ba.y - aa.y) + aa.x * bd.x * ad.y - ba.x * ad.x * bd.y) / tmp,  
+               (ad.y * bd.y * (aa.x - ba.x) + ba.y * ad.y * bd.x - aa.y * bd.y * ad.x) / tmp);  
+}  
 
 
