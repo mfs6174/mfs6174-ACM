@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: ti
+PROG: 计算几何基本函数
 LANG: C++
 */
 
@@ -10,7 +10,7 @@ LANG: C++
 #include<sstream>
 #include<cstring>
 #include<algorithm>
-#include<map>
+#include<cmath>
 #include<vector>
 #define sf scanf
 using namespace std;
@@ -37,7 +37,7 @@ struct P
   {  
     return Point(x - b.x, y - b.y);  
   }  
-  bool operator<(const Point &b) const//逆时针 
+  bool operator<(const Point &b) const//a在b逆时针 
   {   
     return x * b.y < y * b.x;  
   }
@@ -81,5 +81,17 @@ P lcp(P aa, P ad, P ba, P bd)
   return P((ad.x * bd.x * (ba.y - aa.y) + aa.x * bd.x * ad.y - ba.x * ad.x * bd.y) / tmp,  
                (ad.y * bd.y * (aa.x - ba.x) + ba.y * ad.y * bd.x - aa.y * bd.y * ad.x) / tmp);  
 }  
+
+bool scwa(P &a,P &b)
+{   //与射线相交判断 a,b是线段两端点  
+  P tmp(-1.0, 0.0);//其实是坐标轴  
+  return (a^b) * (a^tmp) > 0.0  
+    && (a ^tmp) * (tmp^b) > 0.0;  
+}  
+
+inline bool cmp(const P &a, const P &b)
+{ //中心极角排序 从-PI到-PI内   
+  return atan2(a.y, a.x) > atan2(b.y, b.x);
+}
 
 
