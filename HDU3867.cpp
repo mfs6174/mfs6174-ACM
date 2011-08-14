@@ -48,17 +48,7 @@ struct P
   {
     return sqrt(x*x+y*y);
   }
-}; 
-
-inline double dst(P p1,P p2)                
-{ 
-	return( sqrt( (p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y) ) ); 
-}
-
-inline double cha(P a,P b,P c)
-{
-  return (b-a)^(c-a);
-}
+};
 
 P lcp(P aa, P ad, P ba, P bd)
 { // 求直线交点  
@@ -85,9 +75,9 @@ struct D
   }
 };
 
-inline bool cmp(const D &a,const D &b)
-{
-  return cha(ling,duan[a.s],duan[b.s])<0;
+inline bool cmp(const D &a, const D &b)
+{ //极角排序 从-PI到-PI内   
+        return atan2(duan[a.s].y, duan[a.s].x) > atan2(duan[b.s].y, duan[b.s].x);
 }
 
 D ss[21000];
@@ -115,6 +105,8 @@ int main()
     {
       scanf("%lf%lf",&at.x,&at.y);
       scanf("%lf%lf",&bt.x,&bt.y);
+      at=at-yuan;
+      bt=bt-yuan;
       if (bt<at)
       {
         dang=at;
@@ -134,6 +126,7 @@ int main()
     }
     for (i=1;i<=2*n;i++)
     {
+      dang=duan[ss[i].s];
       if (ss[i].tp==0)
         sc.insert(ss[i]);
       else
