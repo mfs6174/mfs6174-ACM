@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: ti
+PROG: 扫描线辐射检测模板
 LANG: C++
 */
 
