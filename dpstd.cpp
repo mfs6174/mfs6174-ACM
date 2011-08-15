@@ -24,7 +24,7 @@ LANG: C++
 
 using namespace std;
 ifstream inf("dpin.in");
-//ofstream ouf("ti.out");
+ofstream ouf("dpout.out");
 //freopen("ti.in","r",stdin);
 const int maxlongint=2147483647;
 
@@ -60,7 +60,7 @@ int main()
     mm=-maxlongint;
     for (i=0;i<=m;i++)
       mm=max(mm,f[n][i]);
-    cout<<mm<<endl;
+    ouf<<mm<<endl;
   }
   return 0;
 }
