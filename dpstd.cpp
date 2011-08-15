@@ -23,7 +23,7 @@ LANG: C++
 #define llg long long 
 
 using namespace std;
-ifstream inf("ti.in");
+ifstream inf("dpin.in");
 //ofstream ouf("ti.out");
 //freopen("ti.in","r",stdin);
 const int maxlongint=2147483647;
