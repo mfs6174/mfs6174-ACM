@@ -23,6 +23,14 @@ const double INF=1e200;
 const double Ling=1e-8;
 bool fail;
 
+inline int cwz(double x)
+{
+  if (abs(x)<Ling)
+    return 0;
+  else
+    return (x>0)?1:-1;
+}
+
 struct P 
 { 
   double x; 
@@ -42,16 +50,33 @@ struct P
   {   
     return x * b.y < y * b.x;  
   }
+  bool operator==(const P &b) const
+  {
+    return ((cwz(x-b.x)==0)&&(cwz(y-b.y)==0));
+  }
   double operator ^ (const P &b) const //aXb
   {
     return x*b.y-b.x*y;
   }
+  double operator *(const P &b) const
+  {
+    return x*b.x+y*b.y;
+  }
+  void input()
+  {
+    scanf("%lf%lf",&x,&y);
+  }
+
 }; 
+
 struct SEG 
 { 
   P s,e; 
-  LINESEG(POINT a, POINT b) { s=a; e=b;} 
-  LINESEG() { } 
+  SEG(P a=P(0,0), P b=P(0,0)) { s=a; e=b;}
+  void input()
+  {
+    s.input();e.input();
+  }
 }; 
 
 // 直线的解析方程 a*x+b*y+c=0  为统一表示，约定 a >= 0 
@@ -62,14 +87,6 @@ struct L
    double c; 
    L(double d1=1, double d2=-1, double d3=0) {a=d1; b=d2; c=d3;} 
 };
-
-inline int cwz(double x)
-{
-  if (abs(x)<Ling)
-    return 0;
-  else
-    return (x>0)?1:-1;
-}
 
 inline double dst(P p1,P p2)                
 { 
@@ -102,7 +119,23 @@ bool scwa(P &a,P &b)
   P tmp(-1.0, 0.0);//其实是坐标轴  
   return (a^b) * (a^tmp) > 0.0  
     && (a ^tmp) * (tmp^b) > 0.0;  
-}  
+}
+
+inline bool os(SEG &l,P &p) //点在线段上
+{ 
+  return( (cwz(cha(l.s,l.e,p))==0) &&( ( cwz((p.x-l.s.x)*(p.x-l.e.x))<=0 )&&( cwz((p.y-l.s.y)*(p.y-l.e.y))<=0 ) ) ); 
+}
+
+inline P scp(SEG l1,SEG l2) //线段交点 不考虑（部分）重合的数据 fail表示不相交
+{
+  P rr;
+  rr=lcp(l1.s,l1.e,l2.s,l2.e);
+  if (!fail)
+    if (os(l1,rr)&&os(l2,rr))
+      return rr;
+  fail=true;
+  return P(0,0);
+}
 
 inline bool cmp(const P &a, const P &b)
 { //中心极角排序 从-PI到-PI内   
