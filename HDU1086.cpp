@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: 计算几何基本函数
+PROG: 判断线段相交
 LANG: C++
 */
 
@@ -14,9 +14,8 @@ LANG: C++
 #include<vector>
 #define sf scanf
 using namespace std;
-ifstream inf("ti.in");
+//ifstream inf("ti.in");
 //ofstream ouf("ti.out");
-//freopen("ti.i","r",stdin);
 const int maxlongint=2147483647;
 
 const double INF=1e200;
@@ -46,22 +45,20 @@ struct P
   {
     return x*b.y-b.x*y;
   }
+  void input()
+  {
+    scanf("%lf%lf",&x,&y);
+  }
 }; 
 struct SEG 
 { 
   P s,e; 
-  LINESEG(POINT a, POINT b) { s=a; e=b;} 
-  LINESEG() { } 
+  SEG(P a=P(0,0), P b=P(0,0)) { s=a; e=b;}
+  void input()
+  {
+    s.input();e.input();
+  }
 }; 
-
-// 直线的解析方程 a*x+b*y+c=0  为统一表示，约定 a >= 0 
-struct L           
-{ 
-   double a; 
-   double b; 
-   double c; 
-   L(double d1=1, double d2=-1, double d3=0) {a=d1; b=d2; c=d3;} 
-};
 
 inline int cwz(double x)
 {
@@ -71,17 +68,12 @@ inline int cwz(double x)
     return (x>0)?1:-1;
 }
 
-inline double dst(P p1,P p2)                
-{ 
-  return( sqrt( (p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y) ) ); 
-}
-
 inline double cha(P a,P b,P c)
 {
   return (b-a)^(c-a);
 }
 
-P lcp(P aa, P ad, P ba, P bd)//返回fail如果true说明平行或重合再交叉相减叉积即可
+inline P lcp(P aa, P ad, P ba, P bd)//返回fail如果true说明平行或重合再交叉相减叉积即可
 { // 求直线交点  
   ad = ad - aa;  
   bd = bd - ba;  
@@ -97,16 +89,33 @@ P lcp(P aa, P ad, P ba, P bd)//返回fail如果true说明平行或重合再交�
              (ad.y * bd.y * (aa.x - ba.x) + ba.y * ad.y * bd.x - aa.y * bd.y * ad.x) / tmp);  
 }  
 
-bool scwa(P &a,P &b)
-{   //与射线相交判断 a,b是线段两端点  
-  P tmp(-1.0, 0.0);//其实是坐标轴  
-  return (a^b) * (a^tmp) > 0.0  
-    && (a ^tmp) * (tmp^b) > 0.0;  
-}  
-
-inline bool cmp(const P &a, const P &b)
-{ //中心极角排序 从-PI到-PI内   
-  return atan2(a.y, a.x) > atan2(b.y, b.x);
+inline bool os(SEG &l,P &p) 
+{ 
+  return( (cwz(cha(l.s,l.e,p))==0) &&( ( cwz((p.x-l.s.x)*(p.x-l.e.x))<=0 )&&( cwz((p.y-l.s.y)*(p.y-l.e.y))<=0 ) ) ); 
 }
 
+int i,j,t,n,m,mm;
+SEG shu[110];
+P rr;
+
+int main()
+{
+  freopen("ti.in","r",stdin);
+  while (scanf("%d",&n)!=EOF&&n)
+  {
+    mm=0;
+    for (i=1;i<=n;i++)
+      shu[i].input();
+    for (i=1;i<n;i++)
+      for (j=i+1;j<=n;j++)
+      {
+        rr=lcp(shu[i].s,shu[i].e,shu[j].s,shu[j].e);
+        if (!fail)
+          if (os(shu[i],rr)&&os(shu[j],rr))
+            mm++;
+      }
+    cout<<mm<<endl;
+  }
+  return 0;
+}
 
