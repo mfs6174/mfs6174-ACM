@@ -34,15 +34,15 @@ struct P
   {  
     return P(x + b.x, y + b.y);  
   }
-  Point operator - (const Point &b) const
+  P operator - (const P &b) const
   {  
-    return Point(x - b.x, y - b.y);  
+    return P(x - b.x, y - b.y);  
   }  
-  bool operator<(const Point &b) const//a在b逆时针 
+  bool operator<(const P &b) const//a在b逆时针 
   {   
     return x * b.y < y * b.x;  
   }
-  double operator ^ (const Point &b) const //aXb
+  double operator ^ (const P &b) const //aXb
   {
     return x*b.y-b.x*y;
   }
@@ -82,11 +82,12 @@ inline double cha(P a,P b,P c)
   return (b-a)^(c-a);
 }
 
-P lcp(P aa, P ad, P ba, P bd)
+P lcp(P aa, P ad, P ba, P bd)//返回fail如果true说明平行或重合再交叉相减叉积即可
 { // 求直线交点  
   ad = ad - aa;  
   bd = bd - ba;  
   double tmp = bd ^ ad;
+  fail=false;
   if (cwz(tmp)==0)
   {
     fail=true;
