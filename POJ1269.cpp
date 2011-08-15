@@ -1,6 +1,6 @@
 /*
 ID: mfs6174
-PROG: 计算几何基本函数
+PROG: ti
 LANG: C++
 */
 
@@ -12,14 +12,12 @@ LANG: C++
 #include<algorithm>
 #include<cmath>
 #include<vector>
-#define sf scanf
+
 using namespace std;
 ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 //freopen("ti.i","r",stdin);
 const int maxlongint=2147483647;
-
-const double INF=1e200;
 const double Ling=1e-8;
 bool fail;
 
@@ -34,35 +32,19 @@ struct P
   {  
     return P(x + b.x, y + b.y);  
   }
-  Point operator - (const Point &b) const
+  P operator - (const P &b) const
   {  
-    return Point(x - b.x, y - b.y);  
+    return P(x - b.x, y - b.y);  
   }  
-  bool operator<(const Point &b) const//a在b逆时针 
+  bool operator<(const P &b) const//a在b逆时针 
   {   
     return x * b.y < y * b.x;  
   }
-  double operator ^ (const Point &b) const //aXb
+  double operator ^ (const P &b) const //aXb
   {
     return x*b.y-b.x*y;
   }
 }; 
-struct LINESEG 
-{ 
-	POINT s; 
-	POINT e; 
-	LINESEG(POINT a, POINT b) { s=a; e=b;} 
-	LINESEG() { } 
-}; 
-
-// 直线的解析方程 a*x+b*y+c=0  为统一表示，约定 a >= 0 
-struct L           
-{ 
-   double a; 
-   double b; 
-   double c; 
-   L(double d1=1, double d2=-1, double d3=0) {a=d1; b=d2; c=d3;} 
-};
 
 inline int cwz(double x)
 {
@@ -72,21 +54,12 @@ inline int cwz(double x)
     return (x>0)?1:-1;
 }
 
-inline double dst(P p1,P p2)                
-{ 
-	return( sqrt( (p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y) ) ); 
-}
-
-inline double cha(P a,P b,P c)
-{
-  return (b-a)^(c-a);
-}
-
 P lcp(P aa, P ad, P ba, P bd)
 { // 求直线交点  
   ad = ad - aa;  
   bd = bd - ba;  
   double tmp = bd ^ ad;
+  fail=false;
   if (cwz(tmp)==0)
   {
     fail=true;
@@ -97,16 +70,30 @@ P lcp(P aa, P ad, P ba, P bd)
              (ad.y * bd.y * (aa.x - ba.x) + ba.y * ad.y * bd.x - aa.y * bd.y * ad.x) / tmp);  
 }  
 
-bool scwa(P &a,P &b)
-{   //与射线相交判断 a,b是线段两端点  
-  P tmp(-1.0, 0.0);//其实是坐标轴  
-  return (a^b) * (a^tmp) > 0.0  
-    && (a ^tmp) * (tmp^b) > 0.0;  
-}  
+int i,j,t,n,m,zz,zu;
+P a1,a2,b1,b2,rr;
 
-inline bool cmp(const P &a, const P &b)
-{ //中心极角排序 从-PI到-PI内   
-  return atan2(a.y, a.x) > atan2(b.y, b.x);
+int main()
+{
+  cin>>zu;
+  cout<<"INTERSECTING LINES OUTPUT"<<endl;
+  for (zz=1;zz<=zu;zz++)
+  {
+    cin>>a1.x>>a1.y>>a2.x>>a2.y>>b1.x>>b1.y>>b2.x>>b2.y;
+    rr=lcp(a1,a2,b1,b2);
+    if (fail)
+    {
+      if (cwz((b2-a1)^(b1-a2))==0)
+        cout<<"LINE"<<endl;
+      else
+        cout<<"NONE"<<endl;
+    }
+    else
+    {
+      printf("POINT %.2lf %.2lf\n",rr.x,rr.y);
+    }
+  }
+  cout<<"END OF OUTPUT"<<endl;
+  return 0;
 }
-
 
