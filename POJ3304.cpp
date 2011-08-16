@@ -126,7 +126,7 @@ inline P scp(const SEG &l1,SEG &l2) //线段交点 不考虑（部分）重合�
   return P(0,0);
 }
 
-int i,j,k,t,n,m;
+int i,j,k,t,n,m,aa,bb;
 int zz,zu;
 SEG shu[120],nw;
 P dd;
@@ -136,6 +136,8 @@ bool check(const SEG &ta)
   int i;
   for (i=1;i<=n;i++)
   {
+    if (i==aa||i==bb)
+      continue;
     scp(ta,shu[i]);
     if (fail)
       return false;
@@ -153,26 +155,35 @@ int main()
     scanf("%d",&n);
     for (i=1;i<=n;i++)
       shu[i].input();
+    if (n==1||n==2)
+    {
+      cout<<"Yes!"<<endl;
+      continue;
+    }
     for (i=1;i<=n;i++)
     {
-      fl=fl||check(shu[i]);
+      //if (!(shu[i].s==shu[i].e))
+      //  fl=fl||check(shu[i]);
       if (fl)
         break;
       dd=shu[i].s;
-      for (j=i+1;j<=n;j++)
+      aa=i;
+      for (j=1;j<=n;j++)
       {
-        if (!(dd==shu[i].s))
-          fl=fl||check(SEG(dd,shu[i].s));
-        if (!(dd==shu[i].e))
-          fl=fl||check(SEG(dd,shu[i].e));
+        bb=j;
+        if (!(dd==shu[j].s))
+          fl=fl||check(SEG(dd,shu[j].s));
+        if (!(dd==shu[j].e))
+          fl=fl||check(SEG(dd,shu[j].e));
       }
       dd=shu[i].e;
-      for (j=i+1;j<=n;j++)
+      for (j=1;j<=n;j++)
       {
-        if (!(dd==shu[i].s))
-          fl=fl||check(SEG(dd,shu[i].s));
-        if (!(dd==shu[i].e))
-          fl=fl||check(SEG(dd,shu[i].e));
+        bb=j;
+        if (!(dd==shu[j].s))
+          fl=fl||check(SEG(dd,shu[j].s));
+        if (!(dd==shu[j].e))
+          fl=fl||check(SEG(dd,shu[j].e));
       }
     }
     if (fl)
