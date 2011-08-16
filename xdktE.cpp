@@ -109,6 +109,7 @@ inline bool cmp(const int a,const int b)
 {
   return dis[a]<dis[b];
 }
+//标准做法：与源点作差，变成一个向量，求gcd，除gcd，如果得到的向量相同，则在一条射线上，gcd越大则越远
 
 int main()
 {
