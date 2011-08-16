@@ -137,6 +137,18 @@ inline P scp(SEG l1,SEG l2) //线段交点 不考虑（部分）重合的数据 
   return P(0,0);
 }
 
+inline bool scwl(SEG s,const SEG l)//线段与直线相交判度
+{
+  double d1,d2;
+  d1=cha(l.s,s.s,l.e);
+  d2=cha(l.s,s.e,l.e);
+  if( (d1>Ling&&d2<-Ling || d1<-Ling&&d2>Ling) ) //跨立试验
+    return true ;
+  if( abs(d1)<Ling || abs(d2)<Ling )//这里特判了共线的情况，共线认为是相交
+    return true ;
+  return false ;
+}
+
 inline bool cmp(const P &a, const P &b)
 { //中心极角排序 从-PI到-PI内   
   return atan2(a.y, a.x) > atan2(b.y, b.x);
