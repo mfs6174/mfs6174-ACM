@@ -12,7 +12,7 @@ LANG: C++
 #include<algorithm>
 #include<cmath>
 #include<vector>
-
+#define LL long long
 using namespace std;
 //ifstream inf("ti.in");
 //ofstream ouf("ti.out");
@@ -22,7 +22,7 @@ const double INF=1e200;
 const double Ling=1e-8;
 bool fail;
 
-inline int cwz(double x)
+inline int cwz(LL x)
 {
   if (abs(x)<Ling)
     return 0;
@@ -32,10 +32,10 @@ inline int cwz(double x)
 
 struct P 
 { 
-  double x; 
-  double y;
+  LL x; 
+  LL y;
   //constructor
-  P(double a=0, double b=0) 
+  P(LL a=0, LL b=0) 
   { x=a; y=b;}
   P operator+(const P &b) const
   {  
@@ -53,17 +53,17 @@ struct P
   {
     return ((cwz(x-b.x)==0)&&(cwz(y-b.y)==0));
   }
-  double operator ^ (const P &b) const //aXb
+  LL operator ^ (const P &b) const //aXb
   {
     return x*b.y-b.x*y;
   }
-  double operator *(const P &b) const
+  LL operator *(const P &b) const
   {
     return x*b.x+y*b.y;
   }
   void input()
   {
-    scanf("%lf%lf",&x,&y);
+    scanf("%lld%lld",&x,&y);
   }
 
 }; 
@@ -78,7 +78,7 @@ struct SEG
   }
 }; 
 
-inline double cha(P a,P b,P c)
+inline LL cha(P a,P b,P c)
 {
   return (b-a)^(c-a);
 }
@@ -88,7 +88,7 @@ inline bool ol(SEG &l,P &p)
   return( (cwz(cha(l.s,l.e,p))==0)&&(cwz((p-l.s)*(l.e-l.s))>0) ); 
 }
 
-inline double dst(P &p1,P &p2)                
+inline LL dst(P &p1,P &p2)                
 { 
   return (abs(p1.x-p2.x)+abs(p1.y-p2.y));
 }
@@ -100,7 +100,7 @@ int shi[550],shu[550];
 int she[550][550];
 int cc[550];
 int tou[550];
-double dis[550];
+LL dis[550];
 int shih[550][550],shuh[550][550];
 int mm;
 int f[550][10100];
@@ -157,7 +157,7 @@ int main()
     for (i=1;i<=c;i++)
     {
       f[i][0]=0;
-      for (j=1;j<=m;j++)
+      for (j=0;j<=m;j++)
       {
         if (f[i-1][j]!=-1)
           f[i][j]=f[i-1][j];
