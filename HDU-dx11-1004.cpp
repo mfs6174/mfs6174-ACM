@@ -95,11 +95,11 @@ void cha(int x,int k,int a,int b)
 
 int main()
 {
-  inf>>zu;
+  cin>>zu;
   for (zz=1;zz<=zu;zz++)
   {
     printf("Case #%lld:\n",zz);
-    inf>>a>>b>>n>>m;
+    cin>>a>>b>>n>>m;
     memset(f,-1,sizeof(f));
     for (i=0;i<=9;i++)
     {
@@ -120,12 +120,12 @@ int main()
     bb=0;
     l=strlen(b);
     tongji(b,strlen(b),n,m,bb);
-    inf>>kk;
+    cin>>kk;
     l=max(strlen(a),strlen(b));
     for (i=1;i<=kk;i++)
     {
       memset(shu,0,sizeof(shu));
-      inf>>k;
+      cin>>k;
       k+=aa;
       if (k>bb)
       {
@@ -136,11 +136,11 @@ int main()
       bool fl=false;
       for (j=1;j<=l;j++)
         if (fl||shu[j])
+        {
           cout<<shu[j];
-        else
-          if (shu[j])
-            fl=true;
-      cout<<endl;
+          fl=true;
+        }
+        cout<<endl;
     }
   }
   return 0;
