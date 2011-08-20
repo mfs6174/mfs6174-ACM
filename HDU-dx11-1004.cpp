@@ -60,6 +60,8 @@ void tongji(char s[],LL w,LL x,LL y,LL &aa)
   int i;
   for (i=0;i<s[0]-48;i++)
     aa+=f[w][x][y][i]>0?f[w][x][y][i]:0;
+  if (w==1)
+    aa+=f[1][x][y][s[0]-48];
   if (s[0]-48==4)
     x--;
   if (s[0]-48==7)
@@ -93,11 +95,11 @@ void cha(int x,int k,int a,int b)
 
 int main()
 {
-  cin>>zu;
+  inf>>zu;
   for (zz=1;zz<=zu;zz++)
   {
     printf("Case #%lld:\n",zz);
-    cin>>a>>b>>n>>m;
+    inf>>a>>b>>n>>m;
     memset(f,-1,sizeof(f));
     for (i=0;i<=9;i++)
     {
@@ -118,12 +120,12 @@ int main()
     bb=0;
     l=strlen(b);
     tongji(b,strlen(b),n,m,bb);
-    cin>>kk;
+    inf>>kk;
     l=max(strlen(a),strlen(b));
     for (i=1;i<=kk;i++)
     {
       memset(shu,0,sizeof(shu));
-      cin>>k;
+      inf>>k;
       k+=aa;
       if (k>bb)
       {
