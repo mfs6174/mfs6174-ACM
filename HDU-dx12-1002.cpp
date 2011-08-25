@@ -13,19 +13,19 @@ LANG: C++
 #include<map>
 #include<vector>
 
-#define NODE 300 //最大可能出现的节点数
+#define NODE 50 //最大可能出现的节点数
 #define CH 5 //分支数
 
 using namespace std;
 //ifstream inf("ti.in");
 //ofstream ouf("ti.out");
 const long long maxlongint=2147483647;
-const long long mod=100000;
+const long long mod=10007;
 
 class ZHEN
 {
 public:
-  long long z[300][300],dx,dy;
+  long long z[NODE*4][NODE*4],dx,dy;
   ZHEN operator *(const ZHEN &x)
   {
     ZHEN r;
@@ -43,7 +43,8 @@ public:
   void E(long long x,long long y)
   {
     dx=x;dy=y;
-    long long i,j;
+    long long i;
+    memset(z,0,sizeof(z));
     for (i=1;i<=dx;i++)
       z[i][i]=1;
   }
@@ -61,7 +62,10 @@ public:
     }
     return rr;
   }
- 
+  void zero()
+  {
+    memset(z,0,sizeof(z));
+  }
 };
 
 
@@ -75,14 +79,14 @@ long long q[NODE];//队列
 
 char ss[15][15],ke[5]="ATCG";
 ZHEN mm,rr;
-bool ff[300];
+bool ff[NODE][2];
 long long res;
 
 void init() //每次都要先执行
 {
   fail[0]=0;
   memset(zh[0],0,sizeof(zh[0]));
-  cc=0;
+  cc=0;res=0;
 }
 
 void ins(const char *s, long long d) //建立trie
@@ -129,53 +133,77 @@ void acinit()//自动机初始化，执行完以后zh里就是goto或fail的位�
   }
 }
 
-void make(long long p)
+void make(long long p,long long ti,long long w)
 {
-  if (ff[p])
+  if (ff[p][ti])
     return;
-  ff[p]=true;
+  ff[p][ti]=true;
   char *s=ke;
   long long tt;
   for (;*s;s++)
   {
     tt=zh[p][sn[*s]];
     bool fl=false;
+    int flt=0;
     long long t=tt;
     while (t)
     {
-      if (fl)
-        break;
       if (shu[t])
-        fl=true;
+      {
+        flt++;
+        if ((shu[t]==w)||w==0)
+          fl=true;
+      }
       t=fail[t];
     }
     if (!fl)
     {
-      mm.z[p+1][tt+1]++;
-      make(tt);
+      mm.z[p+1+(cc+1)*ti][tt+1+(cc+1)*ti]++;
+      make(tt,ti,w);
+    }
+    else
+    {
+      if (flt<2)
+        mm.z[p+1][tt+1+(cc+1)*(ti+1)]++;
+      if (ti<2)
+        make(tt,ti,w);
     }
   }
 }
 
 int main()
 {
-  //  freopen("ti.in","r",stdin);
+  freopen("ti.in","r",stdin);
   sn['A']=1;sn['T']=2;sn['C']=3;sn['G']=4;
-  scanf("%lld%lld",&n,&m);
-  init();
-  for (i=1;i<=n;i++)
+  while (scanf("%lld%lld",&n,&m)!=EOF)
   {
-    scanf("%s",ss[i]);
-    ins(ss[i],i);
+    init();
+    for (i=1;i<=n;i++)
+    {
+      scanf("%s",ss[i]);
+      ins(ss[i],i);
+    }
+    acinit();
+    for (i=1;i<=n;i++)
+    {
+      mm.zero();
+      memset(ff,0,sizeof(ff));
+      make(0,0,i);
+      mm.dx=mm.dy=(cc+1)*2;
+      rr=mm.power(m);
+      for (i=0;i<=cc;i++)
+        res=(res-rr.z[1][i+1+cc+1])%mod;
+      res%=mod;
+    }
+    mm.zero();
+    memset(ff,0,sizeof(ff));
+    make(0,0,0);
+    mm.dx=mm.dy=cc+1;
+    rr=mm.power(m);
+    for (i=0;i<=cc;i++)
+      res=(res-rr.z[1][i+1])%mod;
+    res%=mod;
+    cout<<res<<endl;
   }
-  acinit();
-  make(0);
-  mm.dx=mm.dy=cc+1;
-  rr=mm.power(m);
-  for (i=1;i<=cc;i++)
-    if (ff[i])
-      res=(res+rr.z[1][i+1])%mod;
-  res=res+rr.z[1][1];
-  cout<<res%mod<<endl;
   return 0;
 }
