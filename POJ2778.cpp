@@ -159,7 +159,7 @@ void make(long long p)
 
 int main()
 {
-  //  freopen("ti.in","r",stdin);
+  freopen("ti.in","r",stdin);
   sn['A']=1;sn['T']=2;sn['C']=3;sn['G']=4;
   scanf("%lld%lld",&n,&m);
   init();

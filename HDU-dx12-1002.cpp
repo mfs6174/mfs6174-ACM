@@ -163,10 +163,11 @@ void make(long long p,long long ti,long long w)
     }
     else
     {
-      if (flt<2)
+      if (ti<1&&flt<2)
+      {
         mm.z[p+1][tt+1+(cc+1)*(ti+1)]++;
-      if (ti<2)
-        make(tt,ti,w);
+        make(tt,ti+1,w);
+      }
     }
   }
 }
