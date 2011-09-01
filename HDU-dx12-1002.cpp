@@ -133,7 +133,7 @@ void acinit()//自动机初始化，执行完以后zh里就是goto或fail的位�
   }
 }
 
-void make(long long p,long long ti,long long w)
+void make(long long p,long long ti)
 {
   if (ff[p][ti])
     return;
@@ -143,30 +143,25 @@ void make(long long p,long long ti,long long w)
   for (;*s;s++)
   {
     tt=zh[p][sn[*s]];
-    bool fl=false;
     int flt=0;
     long long t=tt;
     while (t)
     {
       if (shu[t])
-      {
         flt++;
-        if ((shu[t]==w)||w==0)
-          fl=true;
-      }
       t=fail[t];
     }
-    if (!fl)
+    if (!flt)
     {
       mm.z[p+1+(cc+1)*ti][tt+1+(cc+1)*ti]++;
-      make(tt,ti,w);
+      make(tt,ti);
     }
     else
     {
-      if (ti<1&&flt<2)
+      if (ti+flt<2)
       {
-        mm.z[p+1][tt+1+(cc+1)*(ti+1)]++;
-        make(tt,ti+1,w);
+        mm.z[p+1+(cc+1)*ti][tt+1+(cc+1)*(ti+1)]++;
+        make(tt,ti+1);
       }
     }
   }
@@ -185,24 +180,17 @@ int main()
       ins(ss[i],i);
     }
     acinit();
-    for (i=1;i<=n;i++)
-    {
-      mm.zero();
-      memset(ff,0,sizeof(ff));
-      make(0,0,i);
-      mm.dx=mm.dy=(cc+1)*2;
-      rr=mm.power(m);
-      for (i=0;i<=cc;i++)
-        res=(res-rr.z[1][i+1+cc+1])%mod;
-      res%=mod;
-    }
     mm.zero();
     memset(ff,0,sizeof(ff));
-    make(0,0,0);
-    mm.dx=mm.dy=cc+1;
+    make(0,0);
+    mm.dx=mm.dy=(cc+1)*2;
     rr=mm.power(m);
+    res=0;
     for (i=0;i<=cc;i++)
+    {
       res=(res-rr.z[1][i+1])%mod;
+      res=(res-rr.z[1][i+1+cc+1])%mod;
+    }
     res%=mod;
     cout<<res<<endl;
   }
