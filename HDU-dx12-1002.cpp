@@ -180,18 +180,21 @@ int main()
       ins(ss[i],i);
     }
     acinit();
+    mm.z[1][1]=4;
+    mm.dx=mm.dy=1;
+    rr=mm.power(m);
+    res=rr.z[1][1];
     mm.zero();
     memset(ff,0,sizeof(ff));
     make(0,0);
     mm.dx=mm.dy=(cc+1)*2;
     rr=mm.power(m);
-    res=0;
     for (i=0;i<=cc;i++)
     {
       res=(res-rr.z[1][i+1])%mod;
       res=(res-rr.z[1][i+1+cc+1])%mod;
     }
-    res%=mod;
+    res%=mod;res+=mod;res%=mod;
     cout<<res<<endl;
   }
   return 0;
