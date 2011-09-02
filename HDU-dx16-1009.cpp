@@ -60,13 +60,13 @@ inline long long getn(long long x)
 int main()
 {
   freopen("ti.in","r",stdin);
-  scanf("%I64d",&zu);
+  scanf("%lld",&zu);
   for (zz=1;zz<=zu;zz++)
   {
-    scanf("%I64d",&n);
+    scanf("%lld",&n);
     memset(f,0,sizeof(f));
     for (i=1;i<=n;i++)
-      scanf("%I64d",&shu[i]);
+      scanf("%lld",&shu[i]);
     long long c=0,ss=0;
     for (i=n;i>=1;i--)
     {
@@ -85,7 +85,7 @@ int main()
       ss=(ss-(qx[i]*hd[i])%mod)%mod;
       upc(shu[i],1,n);
     }
-    printf("Case #%I64d: %I64d\n",zz,((ss%mod+mod)%mod));
+    printf("Case #%lld: %lld\n",zz,((ss%mod+mod)%mod));
   }
   return 0;
 }
