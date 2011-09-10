@@ -57,13 +57,15 @@ void ins(LL p,LL x,LL y)
   //pd(p);
   if (x<=shu[p].x&&y>=shu[p].y)
   {
-    shu[p].lz++;
+    if (shu[p].d!=-1)
+      shu[p].d++;
+    else
+    {
+      ins(p<<1,x,y);
+      ins((p<<1)+1,x,y);
+    }
     return;
   }
-  if (shu[p].d>0)
-    shu[p].lz=shu[p].d;
-  shu[p].d=-1;
-  //pd(p);
   LL mid=(shu[p].y+shu[p].x)>>1;
   if (x<=mid)
     ins(p<<1,x,y);
@@ -72,9 +74,9 @@ void ins(LL p,LL x,LL y)
   //pd(p);
 }
 
-LL qr(LL p,LL x,LL y)
+LL qr(LL p,LL x,LL y,LL s)
 {
-  pd(p);
+  //pd(p);
   if (x<=shu[p].x&&y>=shu[p].y)
   {
     if (shu[p].d!=-1)
