@@ -154,4 +154,16 @@ inline bool cmp(const P &a, const P &b)
   return atan2(a.y, a.x) > atan2(b.y, b.x);
 }
 
+inline double polys(P shu[],int n)//多边形面积
+{
+  int i;
+  double ss;
+  for (i=1;i<n;i++)
+    ss+=shu[i]^shu[i+1];
+  ss+=shu[n]^shu[1];
+  if (ss<0) ss=-ss;
+  ss/=2;
+  return ss;
+}
+
 
