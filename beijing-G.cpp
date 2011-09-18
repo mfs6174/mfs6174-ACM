@@ -73,9 +73,12 @@ int main()
       if (t==0)
       {
         scanf("%d",&b);b++;
-        rr=downs(b)-downs(a-1);
-        if ( ( (a>1)&&ss[a]=='b'&&ss[a-1]=='w'&&ss[a+1]=='w' )|| ( (a>2)&&ss[a]=='w'&&ss[a-1]=='b'&&ss[a-2]=='w'))
-          rr--;
+        if ((a+1<=n)&&(b-a+1>=3))
+          rr=downs(b)-downs(a+1);
+        else
+          rr=0;
+        // if ( ( (a>1)&&ss[a]=='b'&&ss[a-1]=='w'&&ss[a+1]=='w' )|| ( (a>2)&&ss[a]=='w'&&ss[a-1]=='b'&&ss[a-2]=='w'))
+        //   rr--;
         cout<<rr<<endl;
       }
       else
