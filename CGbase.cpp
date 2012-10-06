@@ -88,6 +88,28 @@ struct L
    L(double d1=1, double d2=-1, double d3=0) {a=d1; b=d2; c=d3;} 
 };
 
+struct RECT
+{
+  P zs,yx;
+  double w,h;
+  RECT(){}
+  RECT(P a,P b)
+  {
+    zs=a;
+    yx=b;
+    w=yx.x-zs.x;
+    h=zs.y-yx.y;
+  }
+  P mid()
+  {
+    return P(zs.x+w/2,yx.y+h/2);
+  }
+  RECT sub(int x,int y,int fks)
+  {
+    return RECT(P(zs.x+(x-1)*w/fks,yx.y+y*h/fks),P(zs.x+x*w/fks,yx.y+(y-1)*h/fks));
+  }
+};
+
 inline double dst(P p1,P p2)                
 { 
   return( sqrt( (p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y) ) ); 

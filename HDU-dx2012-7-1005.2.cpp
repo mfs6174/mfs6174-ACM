@@ -1,0 +1,127 @@
+/*
+ID: mfs6174
+email: mfs6174@gmail.com
+PROG: ti
+LANG: C++
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<sstream>
+#include<cstring>
+#include<algorithm>
+#include<map>
+#include<vector>
+#include<queue>
+#include<deque>
+#include<iomanip>
+#include<cmath>
+#include<set>
+#define sf scanf
+#define pf printf
+#define llg long long 
+
+using namespace std;
+//ifstream inf("ti.in");
+//ofstream ouf("ti.out");
+const int maxlongint=2147483647;
+
+int i,j,k,t,n,m,zu,zz,p,b,th;
+int f[110][11000];
+int s[110][11000];
+
+struct D1
+{
+  int f,x;
+  bool operator <(const D1 &p) const
+  {
+    if (p.f!=f)
+      return f<p.f;
+    return x<p.x;
+  }
+};
+
+struct D2
+{
+  int f,x;
+  bool operator <(const D2 &p) const
+  {
+    if (p.f!=f)
+      return f<p.f;
+    return x>p.x;
+  }
+};
+
+
+D1 t1;
+D2 t2;
+
+int main()
+{
+  freopen("ti.in","r",stdin);
+  while (sf("%d%d%d%d",&n,&m,&b,&th)!=EOF)
+  {
+    for (i=1;i<=n;i++)
+      for (j=1;j<=m;j++)
+        sf("%d",&s[i][j]);
+    for (i=1;i<=n;i++)
+      for (j=1;j<=m;j++)
+        s[i][j]+=s[i][j-1];
+    for (i=1;i<=m;i++)
+      s[n+1][i]=0;
+    priority_queue<D1> qx[105];
+    priority_queue<D2> qd[105];
+    for (i=1;i<=n;i++)
+    {
+      while (!qx[i].empty()) qx[i].pop();
+      while (!qd[i].empty()) qd[i].pop();
+    }
+    for (i=1;i<=m;i++)
+      f[1][i]=-maxlongint;
+    f[1][b]=0; 
+    // t1.f=-s[1][b-1];
+    // t2.x=t1.x=b;
+    // qx[1].push(t1);
+    // t2.f=s[1][b];
+    // qd[1].push(t2);
+    for (i=2;i<=n+1;i++)
+    {
+      for (j=1;j<=m;j++)
+      {
+        if (f[i-1][j]!=-maxlongint)
+        {
+          t1.f=f[i-1][j]-s[i-1][j-1];
+          t1.x=j;
+          qx[i-1].push(t1);
+        }
+        while ( (!qx[i-1].empty()) && qx[i-1].top().x+th<j)
+          qx[i-1].pop();
+        if (!qx[i-1].empty())
+          f[i][j]=qx[i-1].top().f+s[i-1][j];
+        else
+          f[i][j]=-maxlongint;
+      }
+      for (j=m;j>=1;j--)
+      {
+        if (f[i-1][j]!=-maxlongint)
+        {
+          t2.f=f[i-1][j]+s[i-1][j];
+          t2.x=j;
+          qd[i-1].push(t2);
+        }
+        while ( (!qd[i-1].empty()) && qd[i-1].top().x-th>j)
+          qd[i-1].pop();
+        if (!qd[i-1].empty())
+          f[i][j]=max(f[i][j],qd[i-1].top().f-s[i-1][j-1]);
+      }
+    }
+    int mm=-maxlongint;
+    for (i=1;i<=m;i++)
+      mm=max(mm,f[n+1][i]);
+    cout<<mm<<endl;
+  }
+  return 0;
+}
+
+ 
