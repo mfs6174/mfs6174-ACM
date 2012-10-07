@@ -164,6 +164,7 @@ int main()
     point ooo=calpnt(point(x0,y0),vv,xi,time,gra);
     for (int i = 0; i < n; i++)
       area += kuras_area(polygon[i], polygon[(i + 1) % n],ooo);
+    //圆与多边形面积交,ooo为圆心,半径为全局变量radius
     printf("%.2f\n", fabs(area));
   }
   return 0;  
