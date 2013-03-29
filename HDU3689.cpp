@@ -1,3 +1,4 @@
+#pragma comment(linker, "/STACK:102400000,102400000")
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -12,17 +13,17 @@
 using namespace std;
 //ifstream inf("ti.in");
 //ofstream ouf("ti.out");
-const long long maxlongint =2147483647;
+const int maxlongint =2147483647;
 class ZHEN
 {
 public:
     double z[300][300];
-    long long dx,dy;
+    int dx,dy;
     ZHEN operator *(const ZHEN &x)
     {
         ZHEN r;
         r.dx=dx;r.dy=dy;
-        long long i,j,k;
+        int i,j,k;
         for(i=1;i<=r.dx;i++)
             for(j=1;j<=r.dy;j++)
             {
@@ -32,14 +33,14 @@ public:
             }
         return r;
     }
-    void E(long long x,long long y)
+    void E(int x,int y)
     {
         dx=x;dy=y;
-        long long i,j;
+        int i,j;
         for(i=1;i<=dx;i++)
             z[i][i]=1;
     }
-    ZHEN power(long long e)
+    ZHEN power(int e)
     {
         ZHEN tmp=(*this),rr;
         if(e==1) return *this;
@@ -56,10 +57,10 @@ public:
     }
 };
 
-long long i,j,k,n,t,m;
-long long c,cc;
-long long zh[NODE][CH+5];
-long long shu[NODE],fail[NODE],sn[300],q[NODE];
+int  i,j,k,n,t,m;
+int c,cc;
+int zh[NODE][CH+5];
+int shu[NODE],fail[NODE],sn[300],q[NODE];
 
 char ss[1000],ke[30];
 ZHEN mm,rr;
@@ -74,12 +75,12 @@ void init()
     res=0;
 }
 
-void ins(const char *s,long long d)
+void ins(const char *s,int d)
 {
-    long long p=0;
+    int p=0;
     for(;*s;s++)
     {
-        long long t=sn[*s];
+        int t=sn[*s];
         if(!zh[p][t])
         {
             cc++;
@@ -94,7 +95,7 @@ void ins(const char *s,long long d)
 
 void acinit()
 {
-    long long *s=q,*e=q,i;
+    int *s=q,*e=q,i;
     for(i=0;i<=CH;i++)
         if(zh[0][i])
         {
@@ -103,12 +104,12 @@ void acinit()
         }
     while(s!=e)
     {
-        long long p=*s++;
+        int p=*s++;
         for(i=0;i<=CH;i++)
         {
             if(zh[p][i])
             {
-                long long v=zh[p][i];
+                int v=zh[p][i];
                 *e++=v;
                 fail[v]=zh[fail[p]][i];
             }
@@ -118,18 +119,18 @@ void acinit()
     }
 }
 
-void make(long long p)
+void make(int p)
 {
     if(ff[p])
         return ;
     ff[p]=true;
     char*s=ke;
-    long long tt;
+    int tt;
     for(;*s;s++)
     {
         tt=zh[p][sn[*s]];
         bool fl=false;
-        long long t=tt;
+        int t=tt;
         while(t)
         {
             if(fl)
@@ -150,7 +151,7 @@ ZHEN tmp;
 int main()
 {
    freopen("ti.in","r",stdin);
-   while (scanf("%lld%lld",&n,&m)!=EOF&&(n||m))
+   while (scanf("%d%d",&n,&m)!=EOF&&(n||m))
    {
        init();
        ke[n]=0;
