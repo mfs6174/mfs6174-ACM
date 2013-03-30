@@ -108,19 +108,19 @@ void LxKDTree::set(int _dim,int _size)
   sflag=0;
 }
 
-void LxKDTree::build(int now,int l,int r,int dep)//comment out code is only used in rangesearch
+void LxKDTree::build(int now,int lft,int r,int dep)//comment out code is only used in rangesearch
 {
   sflag=nodes[now].spt=dep%dim;
-  if (l==r)
+  if (lft==r)
   {
-    nodes[now].pnt=pset[l];
+    nodes[now].pnt=pset[lft];
     nodes[now].left=nodes[now].right=-1;
     nodes[now].mid=data[nodes[now].pnt].d[nodes[now].spt];
     return;
   }
-  int t=(r-l)>>1;
-  nth_element(&pset[l],&pset[l+t],&pset[r+1],cmp);
-  nodes[now].pnt=pset[l+t];
+  int t=(r-lft)>>1;
+  nth_element(&pset[lft],&pset[lft+t],&pset[r+1],cmp);
+  nodes[now].pnt=pset[lft+t];
   nodes[now].mid=data[nodes[now].pnt].d[nodes[now].spt];
   if (t>=1)
   {
@@ -132,7 +132,7 @@ void LxKDTree::build(int now,int l,int r,int dep)//comment out code is only used
     //   nodes[nd].rect[i][1]=nodes[now].rect[i][1];
     // }
     // nodes[nd].rect[nodes[now].spt][1]=nodes[now].mid;
-    build(nd,l,l+t-1,dep+1);
+    build(nd,lft,lft+t-1,dep+1);
   }
   else
     nodes[now].left=-1;
@@ -144,7 +144,7 @@ void LxKDTree::build(int now,int l,int r,int dep)//comment out code is only used
   // }
   // nodes[nd].rect[nodes[now].spt][0]=nodes[now].mid;
   nodes[now].right=nd;
-  build(nd,l+t+1,r,dep+1);
+  build(nd,lft+t+1,r,dep+1);
 }
 
 bool LxKDTree::cmp(const int a,const int b)
